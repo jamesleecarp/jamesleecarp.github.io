@@ -1,0 +1,150 @@
+h1 {
+	color: black; 
+	font-family: 'Raleway',sans-serif;
+	font-size: 38px;
+	font-style: italic;
+}
+h3 {
+	position: absolute;
+	top:0px;
+	right:0px;
+	padding: 15px;
+	font-size: 28px;
+	font-style: italic;
+}
+body {
+	font-family: 'Raleway',sans-serif;
+    background-size;
+    background-color: #999966;
+}
+ul {
+	font-family: 'Raleway',sans-serif;
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: inline-block;
+}
+li {
+	font-family: 'Raleway',sans-serif;
+    display: inline-block;
+}
+a.one:link, a.one:visited {
+    display: block;
+    width: 120px;
+    font-weight: bold;
+    font-family: 'Raleway',sans-serif;
+    color: white;
+    background-color: black;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.2em 0.6em;
+    border-right: 1px solid white;
+    position:relative;
+}
+a.two:link, a.two:visited {
+    display: block;
+    padding: 5px 5px;
+}
+a.one:hover {
+    background-color: grey;
+}
+.boxes {
+	margin: auto;
+    width: 80%;
+}
+.exp {
+	display: inline-block;
+	position: fixed;
+}
+.nav {
+	display: block;
+}
+.black {
+	display: inline-block;
+	float: right;
+	background: black;
+	text-align: center;
+	border-color: white;
+	border-left: 1em;
+}
+.red {
+	float: right;
+	border-radius: 15px;
+	background: red;
+	top: 180px;
+	text-align: center;
+}
+.blue {
+	float: right;
+	background: blue;
+	top: 180px;
+}
+.green {
+	position: absolute;
+	background: green;
+	border:5px solid;
+	border-color: black;
+	top: 410px;
+}
+.grey {
+	
+}
+.box {
+	right: 5px;
+	width: 150px;
+	height: 20px;
+}
+.circle {
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	left: 150px;
+}
+.class1 {
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	left: 150px;
+	background: yellow;
+	position: absolute;
+	border:5px solid;
+	border-color: black;
+	top: 410px;
+}
+.map {
+	height: 400px;
+	width: 100%;
+	background-image: url("../img/capecod2.png");
+	background-size: 100% 400px;
+    background-repeat: no-repeat;
+}
+.class2 {
+	background-size: 100% 100%;
+	background-image: url("../img/capecod.png");
+}
+.house{
+	width: 600px;
+	height: 100px;
+	background-color: lightgray;
+	margin: auto;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+.providence {
+}
+​.house:hover {
+	background-color:yellow;
+}
+.door{
+	width: 100px;
+	height: 170px;
+	background-color: maroon;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+}
