@@ -12,13 +12,37 @@ $(function() {
 });
 $(function() {
 	console.log('yo');
-	$('.nav').mouseover(function() {
-		$('.map').addClass('class2');
+	$('.one.projects').mouseover(function() {
+		$('.ncmap').addClass('ncmapprojects');
 	});
 });
 $(function() {
 	console.log('yo');
-	$('.nav').mouseleave(function() {
-		$('.map').removeClass('class2');
+	$('.one.projects').mouseleave(function() {
+		$('.ncmap').removeClass('ncmapprojects');
+	});
+});
+$(function() {
+	console.log('yo');
+	$('.one.about').mouseover(function() {
+		$('.ncmap').addClass('ncmapabout');
+	});
+});
+$(function() {
+	console.log('yo');
+	$('.one.about').mouseleave(function() {
+		$('.ncmap').removeClass('ncmapabout');
+	});
+});
+$(function() {
+	console.log('yo');
+	$('.one.contact').mouseover(function() {
+		$('.ncmap').addClass('ncmapcontact');
+	});
+});
+$(function() {
+	console.log('yo');
+	$('.one.contact').mouseleave(function() {
+		$('.ncmap').removeClass('ncmapcontact');
 	});
 });
