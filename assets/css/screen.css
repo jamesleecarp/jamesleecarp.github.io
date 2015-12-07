@@ -1,6 +1,6 @@
 h1 {
 	color: black; 
-	font-family: 'Raleway',sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 38px;
 	font-style: italic;
 }
@@ -13,12 +13,12 @@ h3 {
 	font-style: italic;
 }
 body {
-	font-family: 'Raleway',sans-serif;
+	font-family: 'Montserrat', sans-serif;
     background-size;
     background-color: #999966;
 }
 ul {
-	font-family: 'Raleway',sans-serif;
+	font-family: 'Montserrat', sans-serif;
     display: inline-block;
     width: 100%;
     padding: 0;
@@ -27,14 +27,14 @@ ul {
     display: inline-block;
 }
 li {
-	font-family: 'Raleway',sans-serif;
+	font-family: 'Montserrat', sans-serif;
     display: inline-block;
 }
 a.one.home:link, a.one:visited {
     display: block;
     width: 120px;
     font-weight: bold;
-    font-family: 'Raleway',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: white;
     background-color: black;
     text-align: center;
@@ -47,7 +47,7 @@ a.one.projects:link, a.one:visited {
     display: block;
     width: 120px;
     font-weight: bold;
-    font-family: 'Raleway',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: white;
     background-color: black;
     text-align: center;
@@ -60,7 +60,7 @@ a.one.about:link, a.one:visited {
     display: block;
     width: 120px;
     font-weight: bold;
-    font-family: 'Raleway',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: white;
     background-color: black;
     text-align: center;
@@ -73,7 +73,7 @@ a.one.contact:link, a.one:visited {
     display: block;
     width: 120px;
     font-weight: bold;
-    font-family: 'Raleway',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: white;
     background-color: black;
     text-align: center;
