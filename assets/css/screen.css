@@ -1,7 +1,13 @@
 .page-wrap {
      width: 1200px;
+	 height auto;
+	 min-height: 100%;
      margin: auto;
+	 padding: 10px;
 	 position: relative;
+	 background-color: #999966;
+	 border: solid 5px;
+	 border-color: black;
 }
 h1 {
 	color: black; 
@@ -17,10 +23,10 @@ h3 {
 	font-size: 28px;
 	font-style: italic;
 }
-body {
+body,html {
+	height:  100%;
 	font-family: 'Montserrat', sans-serif;
-    background-size;
-    background-color: #999966;
+    background-color: #669999;
 }
 ul {
 	font-family: 'Montserrat', sans-serif;
