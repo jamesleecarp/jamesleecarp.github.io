@@ -46,6 +46,11 @@ li.pics {
   width:400px;
   padding: 0 20px 0 20px;
 }
+li.qual {
+  display:block;
+  width:100%;
+  list-style-type: square;
+}
 a.one.home:link, a.one:visited {
     display: block;
     font-weight: bold;
