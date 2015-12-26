@@ -98,9 +98,6 @@ a.one:hover {
     background-color: grey;
 }
 .exp {
-	display: inline-block;
-	position: absolute;
-	padding: 0px;
 }
 .nav {
 	display: block;
