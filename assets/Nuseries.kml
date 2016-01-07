@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="Nuseries.lyr" xsi:schemaLocation="http://www.opengis.net/kml/2.2 http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd http://www.google.com/kml/ext/2.2 http://code.google.com/apis/kml/schema/kml22gx.xsd">
+	<name>Nuseries.lyr</name>
+	<Snippet maxLines="0"></Snippet>
+	<Style id="IconStyle00">
+		<IconStyle>
+			<scale>0.25</scale>
+			<Icon>
+				<href>Layer0_Symbol_1059d7e0_0.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>00000000</color>
+			<scale>0</scale>
+		</LabelStyle>
+		<PolyStyle>
+			<color>ff000000</color>
+			<outline>0</outline>
+		</PolyStyle>
+	</Style>
+	<Folder id="FeatureLayer0">
+		<name>Nuseries.lyr</name>
+		<Snippet maxLines="0"></Snippet>
+		<Placemark id="ID_00000">
+			<name>Banner Nursery &amp; Garden Center</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Banner Nursery &amp; Garden Center</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>0</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td>Banner Nursery &amp; Garden Center</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+
+<td>4400 Monroe Rd</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>City</td>
+
+<td>Charlotte</td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td>NC</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ZipCode</td>
+
+<td>28205</td>
+
+</tr>
+
+<tr>
+
+<td>Latitude</td>
+
+<td>35.193983</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Longitude</td>
+
+<td>-80.786461</td>
+
+</tr>
+
+<tr>
+
+<td>F8</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>F9</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#IconStyle00</styleUrl>
+			<Point>
+				<coordinates>-80.78646422317468,35.19398987632701,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="ID_00001">
+			<name>Baucoms Nursery Farm</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Baucoms Nursery Farm</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>1</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td>Baucoms Nursery Farm</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+
+<td>10020 John Russell Rd</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>City</td>
+
+<td>Charlotte</td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td>NC</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ZipCode</td>
+
+<td>28213</td>
+
+</tr>
+
+<tr>
+
+<td>Latitude</td>
+
+<td>35.283411</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Longitude</td>
+
+<td>-80.707685</td>
+
+</tr>
+
+<tr>
+
+<td>F8</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>F9</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#IconStyle00</styleUrl>
+			<Point>
+				<coordinates>-80.70768820451923,35.28341789830432,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="ID_00002">
+			<name>Campbells Greenhouses</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Campbells Greenhouses</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>2</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td>Campbells Greenhouses</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+
+<td>209 McDonald Ave</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>City</td>
+
+<td>Charlotte</td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td>NC</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ZipCode</td>
+
+<td>28203</td>
+
+</tr>
+
+<tr>
+
+<td>Latitude</td>
+
+<td>35.207751</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Longitude</td>
+
+<td>-80.859744</td>
+
+</tr>
+
+<tr>
+
+<td>F8</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>F9</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#IconStyle00</styleUrl>
+			<Point>
+				<coordinates>-80.85974724576984,35.20775787659407,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="ID_00003">
+			<name>Growers Outlet</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Growers Outlet</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>3</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td>Growers Outlet</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+
+<td>313 N Polk St</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>City</td>
+
+<td>Pineville</td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td>NC</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ZipCode</td>
+
+<td>28134</td>
+
+</tr>
+
+<tr>
+
+<td>Latitude</td>
+
+<td>35.087979</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Longitude</td>
+
+<td>-80.888478</td>
+
+</tr>
+
+<tr>
+
+<td>F8</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>F9</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#IconStyle00</styleUrl>
+			<Point>
+				<coordinates>-80.88848124785793,35.08798584993568,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="ID_00004">
+			<name>Martin&apos;s Produce &amp; Nursery</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Martin's Produce &amp; Nursery</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>4</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td>Martin's Produce &amp; Nursery</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+
+<td>7750 Matthews Mint Hill Rd</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>City</td>
+
+<td>Mint Hill</td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td>NC</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ZipCode</td>
+
+<td>28227</td>
+
+</tr>
+
+<tr>
+
+<td>Latitude</td>
+
+<td>35.17767</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Longitude</td>
+
+<td>-80.64974</td>
+
+</tr>
+
+<tr>
+
+<td>F8</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>F9</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#IconStyle00</styleUrl>
+			<Point>
+				<coordinates>-80.64974318150553,35.17767687781146,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="ID_00005">
+			<name>Norwood Plants &amp; Garden Center</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Norwood Plants &amp; Garden Center</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>5</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td>Norwood Plants &amp; Garden Center</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+
+<td>8837 Albemarle Rd</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>City</td>
+
+<td>Charlotte</td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td>NC</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ZipCode</td>
+
+<td>28227</td>
+
+</tr>
+
+<tr>
+
+<td>Latitude</td>
+
+<td>35.211837</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Longitude</td>
+
+<td>-80.695396</td>
+
+</tr>
+
+<tr>
+
+<td>F8</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>F9</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#IconStyle00</styleUrl>
+			<Point>
+				<coordinates>-80.69539919697407,35.211843883461,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="ID_00006">
+			<name>Southern Styles Nursery &amp; Garden Center</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Southern Styles Nursery &amp; Garden Center</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>6</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td>Southern Styles Nursery &amp; Garden Center</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+
+<td>4245 Rea Rd</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>City</td>
+
+<td>Charlotte</td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td>NC</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ZipCode</td>
+
+<td>28226</td>
+
+</tr>
+
+<tr>
+
+<td>Latitude</td>
+
+<td>35.10594</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Longitude</td>
+
+<td>-80.80524</td>
+
+</tr>
+
+<tr>
+
+<td>F8</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>F9</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#IconStyle00</styleUrl>
+			<Point>
+				<coordinates>-80.80524322402312,35.1059468568078,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="ID_00007">
+			<name>John Deere Landscapes</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>John Deere Landscapes</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>7</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td>John Deere Landscapes</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+
+<td>11601 Downs Road</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>City</td>
+
+<td>Pineville</td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td>NC</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ZipCode</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Latitude</td>
+
+<td>0</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Longitude</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>F8</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>F9</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#IconStyle00</styleUrl>
+			<Point>
+				<coordinates>-80.90696974538319,35.10463055807079,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="ID_00008">
+			<name>Blackhawk Garden Center</name>
+			<Snippet maxLines="0"></Snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Blackhawk Garden Center</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>FID</td>
+
+<td>8</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Name</td>
+
+<td>Blackhawk Garden Center</td>
+
+</tr>
+
+<tr>
+
+<td>Address</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>City</td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>State</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>ZipCode</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Latitude</td>
+
+<td>0</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Longitude</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>F8</td>
+
+<td></td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>F9</td>
+
+<td></td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>]]></description>
+			<styleUrl>#IconStyle00</styleUrl>
+			<Point>
+				<coordinates>-80.84828054660039,35.17449203522031,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

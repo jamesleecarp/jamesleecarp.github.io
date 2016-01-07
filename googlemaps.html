@@ -14,17 +14,15 @@
     <div id="map"></div>
     <script>
 		function initMap() {
-		  var myLatLng = {lat: 35.218455, lng: -80.812960};
-
 		  var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 12,
-			center: myLatLng
+			zoom: 11,
+			center: {lat: 35.218455, lng: -80.812960}
 		  });
-			var marker = new google.maps.Marker({
-				position: myLatLng,
-				map: map,
-				title: 'Hello World!'
-			});
+
+		  var ctaLayer = new google.maps.KmlLayer({
+			url: 'http://jamesleecarp.github.io/assets/nurseries.kmz',
+			map: map
+		  });
 		}
     </script>
     <script async defer
