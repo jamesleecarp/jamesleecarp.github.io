@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	<title>Google Maps Javascript API</title>
-	<meta name="description" content="portfolio">
-	<link href="assets/css/screen.css" rel="stylesheet" type="text/css">
-    </script>
-    <style type="text/css">
-      html, body {height: 400px; width: 75%; margin: 0; padding: 0; }
-      #map { height: 100%; }
-	  #ctaLayer {width: 5px}}
-    </style>
-  </head>
-  <body>
-  	<h1>Google Nurseries Map</h1>
+	<head>
+		<title>Google Maps Javascript API</title>
+		<meta name="description" content="portfolio">
+		<link href="assets/css/screen.css" rel="stylesheet" type="text/css">
+		</script>
+		<style type="text/css">
+		  #map {height: 400px; width: 75%; margin: 0; padding: 0; }
+		  #ctaLayer {width: 5px}
+		</style>
+	</head>
+	<div class="page-wrap">
+		  	<h1>Google Nurseries Map</h1>
+	<body>
+		<div class="nav">
+			<ul>
+				<li><a class="one home" href="index.html">Home</a></li>
+				<li><a class="one projects" href="projects.html">Projects</a></li>
+				<li><a class="one about" href="about.html">About</a></li>
+				<li><a class="one contact" href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		<br>
     <div id="map"></div>
     <script>
 		function initMap() {
@@ -30,5 +39,8 @@
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap">
     </script>
-  </body>
+		<br>
+		<p>This will be the caption explanation about this map.</p>  			
+	</body>
+	</div>
 </html>

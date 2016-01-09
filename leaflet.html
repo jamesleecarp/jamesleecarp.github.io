@@ -3,21 +3,27 @@
 	<head>
 		<title>leaflet</title>
 		<meta name="description" content="portfolio">
-		<meta charset="UTF-8">
+		<link href="assets/css/screen.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<style>
-		html, body {height: 400px; width: 75%; margin: 0; padding: 0; }
-        #map { height: 100%; }
-    body {
-	    background-color: #F0EAD6;
-	  }
+        #map {height: 400px; width: 75%; margin: 0; padding: 0; }
     </style>
 	</head>
+	<div class="page-wrap">
+		<h1>leaflet Rex Hospital Map</h1>
   	<body>
-	<h1>leaflet Rex Hospital Map</h1>
+		<div class="nav">
+			<ul>
+				<li><a class="one home" href="index.html">Home</a></li>
+				<li><a class="one projects" href="projects.html">Projects</a></li>
+				<li><a class="one about" href="about.html">About</a></li>
+				<li><a class="one contact" href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		<br>
   		<div id="map"></div>
-  		<script>
+			<script>
   			// Add map
   			var map = L.map('map').setView([35.817894, -78.702989], 10);
   
@@ -33,5 +39,8 @@
   				.openPopup();
   
   		</script>
+		<br>
+		<p>This will be the caption explanation about this map.</p>  			
   	</body>
+	</div>
 </html>

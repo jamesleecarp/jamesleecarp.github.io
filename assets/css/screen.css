@@ -109,6 +109,11 @@ a.one:hover {
 }
 .exp {
 }
+.mypics {
+    float: right;
+    margin: 0 0 10px 10px;
+	width: 50%;
+}
 .nav {
 	display: block;
 	width: 100%;

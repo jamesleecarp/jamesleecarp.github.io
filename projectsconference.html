@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Conference Presentations</title>
+		<meta name="description" content="portfolio">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<link rel="stylesheet" href="assets/css/jquery.fancybox.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="assets/js/jquery.fancybox.pack.js"></script>
+		<link rel="stylesheet" href="assets/css/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="assets/js/jquery.fancybox-buttons.js"></script>
+	</head>
+	<style>
+	</style>
+	<div class="page-wrap">
+	<h1>Conference Presentations</h1>
+	<h3>James Carpenter, GISP</h3>
+	<body>
+	<div>
+	  <script type="text/javascript">
+    	$(document).ready(function() {
+    		$(".fancybox").fancybox();
+    	});
+    	$(document).ready(function() {
+      	$(".fancybox-button").fancybox({
+      		prevEffect		: 'fade',
+      		nextEffect		: 'fade',
+      		closeBtn		: 'false',
+      		nextClick: 'true',
+      		helpers		: {
+      			title	: { type : 'inside' },
+      			buttons	: {}
+      		}
+      	});
+      });
+````</script>
+    <a class="fancybox-button" rel="gallery" href="assets/img/CalloutProject.jpg"><img src="assets/img/CalloutProject.jpg" alt="" width=25%/></a>
+		<p><em>Custom Callout Labeling Poster presented at the 2013 NC GIS Conference</em></p>
+		<a class="fancybox-button" rel="gallery" href="assets/img/ZipCodeStudyAnalysis.jpg"><img src="assets/img/ZipCodeStudyAnalysis.jpg" alt="" width=25%/></a>
+		<p><em>Zip Code Study Analysis presented at the NACIS 2013 Conference in Greenville, NC</em></p>
+	</div>
+	</body>
+	</div>
+</html>
