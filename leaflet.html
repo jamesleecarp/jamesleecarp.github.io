@@ -11,7 +11,7 @@
     </style>
 	</head>
 	<div class="page-wrap">
-		<h1>leaflet Rex Hospital Map</h1>
+		<h1>Rex Hospital Map</h1>
   	<body>
 		<div class="nav">
 			<ul>
@@ -30,17 +30,17 @@
   			// Add base tiles to the map
   			L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  				maxZoom: 18
+  				maxZoom: 20
   			}).addTo(map);
   
   			// Add marker
   			L.marker([35.817894, -78.702989]).addTo(map)
-  				.bindPopup('Rex Hospital (Where I was born)')
+  				.bindPopup('Rex Hospital')
   				.openPopup();
   
   		</script>
 		<br>
-		<p>This will be the caption explanation about this map.</p>  			
+		<p>Where it all began. Raleigh, NC</p>  			
   	</body>
 	</div>
 </html>
