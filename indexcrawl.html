@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AshevilleBarCrawl</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/own_style.css">
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+		<script src="assets/js/leaflet-hash.js"></script>
+		<script src="assets/js/Autolinker.min.js"></script>
+	</head>
+	<body>
+		<div id="map"></div>
+		<script src="assets/data/exp_aldi.js"></script>
+		<script>
+		var map = L.map('map', {
+			zoomControl:true, maxZoom:19
+		}).fitBounds([[31.6168511047,-90.4374984741],[40.3239180908,-75.979234314]]);
+		var hash = new L.Hash(map);
+		var additional_attrib = 'created w. <a href="https://github.com/geolicious/qgis2leaf" target ="_blank">qgis2leaf</a> by <a href="http://www.geolicious.de" target ="_blank">Geolicious</a> & contributors<br>';
+		var feature_group = new L.featureGroup([]);
+		var raster_group = new L.LayerGroup([]);
+		var basemap_0 = L.tileLayer('http://a.tile.stamen.com/watercolor/{z}/{x}/{y}.png', { 
+			attribution: additional_attrib + 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data: &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});	
+		basemap_0.addTo(map);	
+		var layerOrder=new Array();
+		function pop_aldi(feature, layer) {					
+			var popupContent = '<table><tr><th scope="row">id_1</th><td>' + Autolinker.link(String(feature.properties['id_1'])) + '</td></tr><tr><th scope="row">id_0</th><td>' + Autolinker.link(String(feature.properties['id_0'])) + '</td></tr><tr><th scope="row">id</th><td>' + Autolinker.link(String(feature.properties['id'])) + '</td></tr><tr><th scope="row">name</th><td>' + Autolinker.link(String(feature.properties['name'])) + '</td></tr><tr><th scope="row">address</th><td>' + Autolinker.link(String(feature.properties['address'])) + '</td></tr><tr><th scope="row">city</th><td>' + Autolinker.link(String(feature.properties['city'])) + '</td></tr><tr><th scope="row">state</th><td>' + Autolinker.link(String(feature.properties['state'])) + '</td></tr><tr><th scope="row">zip</th><td>' + Autolinker.link(String(feature.properties['zip'])) + '</td></tr><tr><th scope="row">latitude</th><td>' + Autolinker.link(String(feature.properties['latitude'])) + '</td></tr><tr><th scope="row">longitude</th><td>' + Autolinker.link(String(feature.properties['longitude'])) + '</td></tr><tr><th scope="row">tdlinx</th><td>' + Autolinker.link(String(feature.properties['tdlinx'])) + '</td></tr><tr><th scope="row">number</th><td>' + Autolinker.link(String(feature.properties['number'])) + '</td></tr><tr><th scope="row">country</th><td>' + Autolinker.link(String(feature.properties['country'])) + '</td></tr><tr><th scope="row">channel</th><td>' + Autolinker.link(String(feature.properties['channel'])) + '</td></tr><tr><th scope="row">subchannel</th><td>' + Autolinker.link(String(feature.properties['subchannel'])) + '</td></tr><tr><th scope="row">census</th><td>' + Autolinker.link(String(feature.properties['census'])) + '</td></tr><tr><th scope="row">sqft</th><td>' + Autolinker.link(String(feature.properties['sqft'])) + '</td></tr><tr><th scope="row">weekly</th><td>' + Autolinker.link(String(feature.properties['weekly'])) + '</td></tr><tr><th scope="row">yearly</th><td>' + Autolinker.link(String(feature.properties['yearly'])) + '</td></tr><tr><th scope="row">weeklytota</th><td>' + Autolinker.link(String(feature.properties['weeklytota'])) + '</td></tr><tr><th scope="row">yearlytota</th><td>' + Autolinker.link(String(feature.properties['yearlytota'])) + '</td></tr><tr><th scope="row">orig_fid</th><td>' + Autolinker.link(String(feature.properties['orig_fid'])) + '</td></tr></table>';
+			layer.bindPopup(popupContent);
+		}
+
+		var exp_aldiJSON = new L.geoJson(exp_aldi,{
+			onEachFeature: pop_aldi,
+			pointToLayer: function (feature, latlng) {  
+				return L.circleMarker(latlng, {
+					radius: 4.0,
+					fillColor: '#981a01',
+					color: '#000000',
+					weight: 1,
+					opacity: 1.0,
+					fillOpacity: 1.0
+				})
+			}
+		});
+		//add comment sign to hide this layer on the map in the initial view.
+		feature_group.addLayer(exp_aldiJSON);
+
+		feature_group.addTo(map);
+		var title = new L.Control();
+		title.onAdd = function (map) {
+			this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+			this.update();
+			return this._div;
+		};
+		title.update = function () {
+			this._div.innerHTML = '<h2>Bar Crawl</h2>Asheville, NC'
+		};
+		title.addTo(map);
+	var baseMaps = {
+		'Stamen Watercolor': basemap_0
+	};
+		L.control.layers(baseMaps,{"aldi": exp_aldiJSON},{collapsed:false}).addTo(map);
+		L.control.scale({options: {position: 'bottomleft',maxWidth: 100,metric: true,imperial: false,updateWhenIdle: false}}).addTo(map);
+	</script>
+</body>
+</html>
