@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script src="jquery.min.js"></script>
+        <script src="raphael-min.js"></script>
+        <script src="kartograph.js"></script>
+    </head>
+    <body>
+        <div id="map"></div>
+		<script>
+			var map = kartograph.map('#map', 600, 400);
+				map.loadMap('mymap.svg', function() {
+    // do something with your map, add layers etc.
+});
+			
+		</scrppt>
+    </body>
+</html>
