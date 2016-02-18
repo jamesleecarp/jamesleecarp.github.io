@@ -24,7 +24,7 @@ var map = new ol.Map({
     overlays: [overlayPopup],
     layers: layersList,
     view: new ol.View({
-         maxZoom: 24, minZoom: 1
+         maxZoom: 28, minZoom: 1
     })
 });
 map.getView().fit([-9394973.845689, 3862173.191810, -8358537.665098, 4500435.376852], map.getSize());
