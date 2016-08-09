@@ -21,11 +21,10 @@
           })
         ],
         view: new ol.View({
-          center: ol.proj.transform([-81.019983, 37.067400], 'EPSG:4326', 'EPSG:3857'),
+          center: ol.proj.fromLonLat([-81.019983, 37.067400]),
           zoom: 4
         })
       });
     </script>
   </body>
 </html>
-
