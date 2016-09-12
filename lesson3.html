@@ -23,14 +23,12 @@
     <div id="map"></div>
     <script>
       var myMap;
-      function initMap() {
 
-        var myMapOptions = {
-          center: {lat: 35.782253, lng: -78.639689},
+      function initMap() {
+        myMap = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
           zoom: 8
-        }
-      
-        myMap = new google.maps.Map(document.getElementById('map'), myMapOptions);
+        });
         
         var myLatLng = new google.maps.LatLng(35.782253, -78.639689);
       
@@ -50,7 +48,7 @@
     <br />
     I'm also not very good with terminology. The DIV is an Element. The myMap in our initMap function is a 
     <br />
-    It was very interesting to see the documentation of all the reqired paramenters in each class on the Google Maps API reference page. Each step builds on the previous one. So, to make a marker (myMarker) you first need a LatLng object (myLatLng), then a MarkerOptions object (myMarkerOptions).add
+    It was very interesting to see the documentation of all the reqired paramenters in each class on the Google Maps API reference page. Each step builds on the previous one. So, to make a marker (myMarker) you first need a LatLng object (myLatLng), then a MarkerOptions object (myMarkerOptions).
     </p>
   </body>
 </html>
