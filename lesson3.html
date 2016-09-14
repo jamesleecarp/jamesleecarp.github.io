@@ -22,7 +22,6 @@
   <body>
     <div id="map"></div>
       <script>
-      var myMap;
       function initMap() {
 
       var myLatLng = new google.maps.LatLng(35.782253, -78.639689);
@@ -32,7 +31,7 @@
         zoom: 8
       }
 
-      myMap = new google.maps.Map(document.getElementById('map'), myMapOptions);
+      var myMap = new google.maps.Map(document.getElementById('map'), myMapOptions);
 
       var myMarkerOptions = {
         position: myLatLng,
@@ -45,13 +44,15 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap"
     async defer></script>
     <h1> Comments </h1>
-    <p>
-    The concept I found most confusing about this project was the DOM Programming Interface.The "document.getElementById('map')" is calling the div with an id of "map". 
-    <br />
-    I'm also not very good with terminology. The DIV is an Element. The myMap in our initMap function is a 
-    <br />
-    It was very interesting to see the documentation of all the reqired paramenters in each class on the Google Maps API reference page. Each step builds on the previous one. So, to make a marker (myMarker) you first need a LatLng object (myLatLng), then a MarkerOptions object (myMarkerOptions). What seems to make a difference. 
-    </p>
+    <ul>
+      <li>The concepts I found challenging were in the DOM Programming Interface. The "document.getElementById('map')" is calling the div element with an id of "map".</li> 
+      <li>I'm also trying to learn the terminology.</li>
+      <li>The div "map" is an HTML Element. </li>
+      <li>myMap, myLatLng, myMarkerOptions, and myMarker are all variable objects. </li>
+      <li>The google.maps.Marker() class and google.maps.Map() make them do something! Correct?</li>
+      <li>It was very interesting to see the documentation of all the required parameters in each class on the Google Maps API reference page. Each step builds on the previous one. So, to make a marker (myMarker) you first need a LatLng object (myLatLng), then a MarkerOptions object (myMarkerOptions).</li>
+      <li>Also, the order your code is in depends on how the browser will read it. You have to define a variable before you use it in a function.</li> 
+    </ul>
   </body>
 </html>
 
