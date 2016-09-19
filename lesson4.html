@@ -51,7 +51,7 @@
           infoWindow.open(myMap,myMarker); 
         });
 
-        var icon = 'icons/'+ img;
+        var icon = "icons/"+ img;
         var iconSize = new google.maps.Size(20,34);
         var iconOrigin = new google.maps.Point(0,0);
         var iconAnchor = new google.maps.Point(10,34);
@@ -100,11 +100,11 @@
       var myLatLng = new google.maps.LatLng(35.989939, -78.564726);
 
       createMarker(myLatLng, '<a href="http://www.gopsusports.com/facilities/' +
-        'beaver-stadium.html">Beaver Stadium</a>', myMap);
+        'beaver-stadium.html">Beaver Stadium</a>', myMap, "blue_MarkerA.png");
       
       var myLatLng = new google.maps.LatLng(35.996050, -78.898435);
 
-      createMarker(myLatLng, 'Bull City', myMap);
+      createMarker(myLatLng, 'Bull City', myMap, "blue_MarkerA.png");
     }
       </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap"
