@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Lesson 4 Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 80%;
+        width: 80%;
+        margin: auto;
+        border:5px solid;
+        border-color: black;  
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+      <script>
+      function createMarker(point,info,map,img) {
+
+        var myMarkerOptions = {
+          position: point,
+          map: myMap,
+          icon: myIcon,
+        };
+
+        var myMarker = new google.maps.Marker(myMarkerOptions);
+
+        var infoWindowOpts = { content: info };
+        var infoWindow = new google.maps.InfoWindow(infoWindowOpts);
+
+        google.maps.event.addListener(myMarker, 'click', function() {
+          infoWindow.open(myMap,myMarker); 
+        });
+
+        var icon = 'icons/'+ img;
+        var iconSize = new google.maps.Size(20,34);
+        var iconOrigin = new google.maps.Point(0,0);
+        var iconAnchor = new google.maps.Point(10,34);
+
+        var myIcon = {
+        url: iconURL,
+        size: iconSize,
+        origin: iconOrigin,
+        anchor: iconAnchor
+        };
+
+      }
+    function initMap() {
+
+      var myLatLng = new google.maps.LatLng(35.782253, -78.639689);
+
+      var mapTypeControlOpts = {
+        mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.HYBRID],
+        position: google.maps.ControlPosition.TOP_RIGHT,
+        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+      };
+
+      var mapZoomControlOpts = {
+        position: google.maps.ControlPosition.DEFAULT,
+        style: google.maps.ZoomControlStyle.DEFAULT,
+      }
+
+      var myMapOptions = {
+        center: myLatLng,
+        zoom: 8,
+        mapTypeControl: true,
+        mapTypeControlOptions: mapTypeControlOpts,
+        zoomControlOptions: mapZoomControlOpts,
+        scaleControl: true,
+        streetViewControl: false,
+      }
+
+      myMap = new google.maps.Map(document.getElementById('map'), myMapOptions);
+
+
+      //** 1st marker 
+      createMarker(myLatLng, '<a href="http://www.youtube.com/watch?v=aLSFcF8SOiw">' + 
+          'My Hometown</a>', myMap, "blue_MarkerA.png");
+
+      //** 2nd marker
+      var myLatLng = new google.maps.LatLng(35.989939, -78.564726);
+
+      createMarker(myLatLng, '<a href="http://www.gopsusports.com/facilities/' +
+        'beaver-stadium.html">Beaver Stadium</a>', myMap);
+      
+      var myLatLng = new google.maps.LatLng(35.996050, -78.898435);
+
+      createMarker(myLatLng, 'Bull City', myMap);
+    }
+      </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap"
+    async defer></script>
+    <h1> Comments </h1>
+    <ul>
+      <li>The concepts I found challenging were in the DOM Programming Interface. The "document.getElementById('map')" is calling the div element with an id of "map".</li> 
+      <li>I'm also trying to learn the terminology.</li>
+      <li>The div "map" is an HTML Element. </li>
+      <li>myMap, myLatLng, myMarkerOptions, and myMarker are all variable objects. </li>
+      <li>The google.maps.Marker() class and google.maps.Map() make them do something! Correct?</li>
+      <li>It was very interesting to see the documentation of all the required parameters in each class on the Google Maps API reference page. Each step builds on the previous one. So, to make a marker (myMarker) you first need a LatLng object (myLatLng), then a MarkerOptions object (myMarkerOptions).</li>
+      <li>Also, the order your code is in depends on how the browser will read it. You have to define a variable before you use it in a function.</li> 
+    </ul>
+  </body>
+</html>
+
