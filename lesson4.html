@@ -24,6 +24,18 @@
       <script>
       function createMarker(point,info,map,img) {
 
+      	var icon = 'icons/'+ img;
+		var iconSize = new google.maps.Size(20,34);
+		var iconOrigin = new google.maps.Point(0,0);
+		var iconAnchor = new google.maps.Point(10,34);
+
+		var myIcon = {
+		url: iconURL,
+		size: iconSize,
+		origin: iconOrigin,
+		anchor: iconAnchor
+		};
+
         var myMarkerOptions = {
           position: point,
           map: myMap,
