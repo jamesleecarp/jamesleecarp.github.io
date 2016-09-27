@@ -17,8 +17,8 @@
   </head>
   <body>
     <div id="map"></div>
-    <script src="dbf.js"></script>
-    <script src="shp.js"></script>
+    <script src="assets/js/dbf.js"></script>
+    <script src="assets/shp.js"></script>
     <script type="text/javascript">
       var map;
       var shpfiles = [];
@@ -34,7 +34,7 @@
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 		
-        shpfiles = new Array('counties','interstates','candidate_cities');
+        shpfiles = new Array('counties','interstates','assets/data/candidate_cities');
 
         for (var i=0; i < shpfiles.length; i++) {
           shpfile = shpfiles[i];
@@ -107,6 +107,7 @@
             var overlay;
             switch (shape.type) {
               case 1:
+                //point
                 var marker = new google.maps.Marker({
                   position: new google.maps.LatLng(shape.content.y,shape.content.x),
                   map: map,
@@ -114,7 +115,7 @@
                 });
                 overlay = marker;
                 break;
-
+                //line
               case 3:
                 points = pathToArray(shape.content.points);
                 var polyline = new google.maps.Polyline({
