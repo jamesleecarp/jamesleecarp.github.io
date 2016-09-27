@@ -24,6 +24,7 @@
 	  var shp;
 	  var dbf;
     var infoWindow;
+
       function createMarker(point,info) {
         var iconURL = 'icons/cone.png';				var iconSize = new google.maps.Size(20,34);
         var iconOrigin = new google.maps.Point(0,0);	var iconAnchor = new google.maps.Point(10,34);
@@ -45,10 +46,9 @@
 
         var marker = new google.maps.Marker(myMarkerOpts);
 
-        var infoWindowOpts = { content: info };
-        var infoWindow = new google.maps.InfoWindow(infoWindowOpts);
-
         google.maps.event.addListener(marker, 'click', function() {
+          infoWindow.close();
+          infoWindow.setContent(info);
           infoWindow.open(map,marker); 
         });
       }
