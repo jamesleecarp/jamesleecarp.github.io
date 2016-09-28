@@ -115,8 +115,11 @@
           cellpadding="5"> \
             <thead> \
               <tr style="background-color:#e0e0e0"> \
+                <th>Division</th> \
+                <th>Address</th> \
                 <th>City</th> \
-                <th>Population</th> \
+                <th>State</th> \
+                <th>Zip</th> \
               </tr> \
             </thead> \
             <tbody>';
@@ -127,14 +130,17 @@
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
 		  var division = dbfRecord["DIV"];
-		  var pop = dbfRecord["ADDRESS"];
-		  var info = '<strong>' + division + '</strong><br />' + pop;
+		  var address = dbfRecord["ADDRESS"];
+		  var city = dbfRecord["CITY"];
+		  var state = dbfRecord["STATE"];
+		  var zip = dbfRecord["ZIP"];
+		  var info = '<strong>' + division + '</strong><br />' + address;
 		  createMarker(pt, info);
 
           side_html += 
             '<tr> \
                <td><a href="javascript:myclick(' + i + ')">' + division + '</a></td> \
-               <td>' + pop + '</td> \
+               <td>' + address + '</td> \
              </tr>';
         }
         
