@@ -24,12 +24,22 @@
     }
     </style>
   </head>
+  	<script type="text/javascript" src="assets/js/jquery-latest.js"></script> 
+	<script type="text/javascript" src="assets/js/jquery.tablesorter.js"></script>
+	<script type="text/javascript" id="js"> 
+	$(document).ready(function() { 
+	    // call the tablesorter plugin 
+	    $("myTable").tablesorter({ 
+	        // sort on the first column and second column, order asc 
+	        sortList: [[0,0],[1,0]] 
+	    }); 
+	}); 
+	</script>
   <body>
     <div id="map"></div><div id="sidebar"></div>
     <script src="assets/js/dbf.js"></script>
     <script src="assets/js/shp.js"></script>
-	<script type="text/javascript" src="assets/js/jquery-latest.js"></script> 
-	<script type="text/javascript" src="assets/js/jquery.tablesorter.js"></script> 
+
     <script type="text/javascript">
 
       var map;
@@ -103,14 +113,6 @@
           render();
         }
       }
-
-      $(document).ready(function() { 
-		    // call the tablesorter plugin 
-		    $("myTable").tablesorter({ 
-		        // sort on the first column and third column, order asc 
-		        sortList: [[0,0],[2,0]] 
-		    }); 
-		}); 
 
       // Adds overlays for all features in the shpfile
       function render() {
