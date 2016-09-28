@@ -104,6 +104,14 @@
         }
       }
 
+      $(document).ready(function() { 
+		    // call the tablesorter plugin 
+		    $("table").tablesorter({ 
+		        // sort on the first column and third column, order asc 
+		        sortList: [[0,0],[2,0]] 
+		    }); 
+		}); 
+
       // Adds overlays for all features in the shpfile
       function render() {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
@@ -150,14 +158,8 @@
         document.getElementById("sidebar").innerHTML = side_html;
       }
 
-      $(document).ready(function() { 
-		    // call the tablesorter plugin 
-		    $("table").tablesorter({ 
-		        // sort on the first column and third column, order asc 
-		        sortList: [[0,0],[2,0]] 
-		    }); 
-		}); 
-      
+
+
       // error handler for shploader.
       function shpLoadError() {
         window.console.log('shp file failed to load');
