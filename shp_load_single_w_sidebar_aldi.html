@@ -116,7 +116,6 @@
                 <th>Address</th> \
                 <th>City</th> \
                 <th>State</th> \
-                <th>Zip</th> \
               </tr> \
             </thead> \
             <tbody>';
@@ -135,8 +134,8 @@
 
           side_html += 
             '<tr> \
-               <td><a href="javascript:myclick(' + i + ')">' + division + '</a></td> \
-               <td>' + address + '</td> \
+               <td>' + division + '</a></td> \
+               <td><a href="javascript:myclick(' + i + ')">' + address + '</td> \
                <td>' + city + '</td> \
                <td>' + state + '</td> \
              </tr>';
