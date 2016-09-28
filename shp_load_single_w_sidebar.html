@@ -19,6 +19,7 @@
        width: 800px;
        float: left;
     }
+
     #sidebar {
       width: 300px;
       height: 600px;
@@ -27,8 +28,7 @@
     </style>
   </head>
   <body>
-    <div id="map"></div>
-    <div id="sidebar"></div>
+    <div id="map"></div><div id="sidebar"></div>
     <script src="assets/js/dbf.js"></script>
     <script src="assets/js/shp.js"></script>
     <script type="text/javascript">
@@ -36,7 +36,7 @@
 	  var shp;
 	  var dbf;
     var infoWindow;
-    var markers;
+      var markers;
 
       function myclick(num) {
         google.maps.event.trigger(markers[num], "click");
