@@ -17,13 +17,13 @@
        padding: 0;
        height: 600px;
        width: 800px;
-       float: left;
+       float: right;
     }
 
     #sidebar {
       width: 300px;
       height: 600px;
-      float: right;
+      float: left;
     }
     </style>
   </head>
@@ -126,14 +126,14 @@
 
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
-		  var name = dbfRecord["NUMBER"];
+		  var division = dbfRecord["DIV"];
 		  var pop = dbfRecord["ADDRESS"];
-		  var info = '<strong>' + name + '</strong><br />' + pop;
+		  var info = '<strong>' + division + '</strong><br />' + pop;
 		  createMarker(pt, info);
 
           side_html += 
             '<tr> \
-               <td><a href="javascript:myclick(' + i + ')">' + name + '</a></td> \
+               <td><a href="javascript:myclick(' + i + ')">' + division + '</a></td> \
                <td>' + pop + '</td> \
              </tr>';
         }
