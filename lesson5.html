@@ -24,18 +24,20 @@
       top:0px;
       background-color: white;
       overflow:hidden;
-      border-width: 3px solid;
-      border-color: black;
     }
     table.scroll {
     }
     table.scroll tbody,
-    table.scroll thead tr
+    table.scroll thead tr { display: block; }
 
     table.scroll tbody {
-    height: 100%;
+    height: 600px;
     overflow-y: auto;
     overflow-x: hidden;
+    }
+    table.scroll tbody td,
+    table.scroll thead th {
+    width: 140px;
     }
     </style>
   </head>
@@ -127,8 +129,8 @@
 		var bounds = new google.maps.LatLngBounds(sw, ne);
         map.fitBounds(bounds);
 
-		var side_html = '<table style="border-collapse: collapse" border="1" \
-          cellpadding="5" class="scroll"> \
+		var side_html = '<table class="scroll" style="border-collapse: collapse" border="1" \
+          cellpadding="5"> \
             <thead> \
               <tr style="background-color:#e0e0e0"> \
                 <th>Division</th> \
