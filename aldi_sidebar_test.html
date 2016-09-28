@@ -23,19 +23,10 @@
       height: 600px;
     }
     </style>
-  </head>
+
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  	<script type="text/javascript" src="assets/js/jquery-latest.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.tablesorter.js"></script>
-	<script type="text/javascript" id="js">
-	  $(document).ready(function() { 
-	    // call the tablesorter plugin 
-	    $("table").tablesorter({ 
-	        // sort on the first column and second column, order asc 
-	        sortList: [[0,0],[1,0]] 
-	    }); 
-	}); 
-	</script>
+	<script type="text/javascript" src="assets/jquery/jquery.easyui.min.js"></script>
+  </head>
   <body>
     <div id="map"></div><div id="sidebar"></div><div id="demo"></div>
     <script src="assets/js/dbf.js"></script>
@@ -44,12 +35,18 @@
       var map;
 	  var shp;
 	  var dbf;
-	  var demo;
+
     var infoWindow;
       var markers;
 
       function myclick(num) {
         google.maps.event.trigger(markers[num], "click");
+      }
+
+      function addToSidebar(name, pop, i) {
+        var lastRow = $('<tr/>').appendTo($("#sidebar").find('tbody:last'));
+        lastRow.append( $('<td><a href="javascript:myclick(' + i + ')">' + name + '</a></td>') );
+        lastRow.append($('<td/>').text(pop));  
       }
 
       function createMarker(point,info) {
@@ -145,23 +142,12 @@
 		  var info = '<strong>' + city + '</strong><br />' + address;
 		  createMarker(pt, info);
 
-          side_html += 
-            '<tr> \
-               <td>' + division + '</a></td> \
-               <td><a href="javascript:myclick(' + i + ')">' + address + '</td> \
-               <td>' + city + '</td> \
-               <td>' + state + '</td> \
-             </tr>';
+          addToSidebar(division,address,i);
         }
         
-        side_html += 
-            '</tbody> \
-          </table>';
-          
-        document.getElementById("sidebar").innerHTML = side_html;
+        $('#sidebar').datagrid();
       }
-
-
+          
       // error handler for shploader.
       function shpLoadError() {
         window.console.log('shp file failed to load');
