@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<!--
+ * Demonstrates how to load a single shapefile with a clickable sidebar
+ * Adapted from https://code.google.com/p/gmaps-samples/source/browse/trunk/shapefileloader/?r=2692, authored by Mano Marks, Google
+ * 
+-->
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shapefile Loader Example - Single</title>
+	<style type="text/css">
+    html { height: 100% }
+    body { height: 100%; margin: 0px; padding: 0px }
+	  #map {
+       margin: 0;
+       padding: 0;
+       height: 600px;
+       width: 800px;
+       float: right;
+    }
+    #sidebar {
+      height: 600px;
+    }
+    </style>
+  </head>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  	<script type="text/javascript" src="assets/js/jquery-latest.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.tablesorter.js"></script>
+	<script type="text/javascript" id="js">
+	  $(document).ready(function() { 
+	    // call the tablesorter plugin 
+	    $("table").tablesorter({ 
+	        // sort on the first column and second column, order asc 
+	        sortList: [[0,0],[1,0]] 
+	    }); 
+	}); 
+	</script>
+  <body>
+    <div id="map"></div><div id="sidebar"></div><div id="demo"></div>
+    <script src="assets/js/dbf.js"></script>
+    <script src="assets/js/shp.js"></script>
+    <script type="text/javascript">
+      var map;
+	  var shp;
+	  var dbf;
+	  var demo;
+    var infoWindow;
+      var markers;
+
+      function myclick(num) {
+        google.maps.event.trigger(markers[num], "click");
+      }
+
+      function createMarker(point,info) {
+        var iconURL = 'icons/Aldi.png';				var iconSize = new google.maps.Size(20,34);
+        var iconOrigin = new google.maps.Point(0,0);  var iconAnchor = new google.maps.Point(10,34);
+
+        var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
+
+        var iconShape = [8,33, 4,15, 1,15, 0,12, 0,5, 6,0, 12,0, 19,14, 15,15, 10,33];
+        var myMarkerShape = {
+          coord: iconShape,
+          type: 'poly'
+        };
+
+        var myMarkerOpts = {
+          position: point,
+          map: map,
+          icon: myIcon,
+          shape: myMarkerShape
+        };
+
+        var marker = new google.maps.Marker(myMarkerOpts);
+
+        markers.push(marker);
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infoWindow.close();
+          infoWindow.setContent(info);
+          infoWindow.open(map,marker); 
+        });
+      }
+	  
+      // Creates the map, loads in the SHP and DBF files.
+      function initMap() {
+        infoWindow = new google.maps.InfoWindow();
+        markers = [];
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: new google.maps.LatLng(36.673002, -79.741175),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+		
+        shpfile = 'assets/data/aldi_merge';
+
+        SHPParser.load(shpfile + '.shp', shpLoad, shpLoadError);
+        DBFParser.load(shpfile + '.dbf', dbfLoad, dbfLoadError);
+      }
+
+      // Handles the callback from loading DBFParser by assigning the dbf to a global.
+      function dbfLoad(db) {
+        dbf = db;
+        if (dbf && shp) {
+          render();
+        }
+      }
+
+      // Handles the callback from loading SHPParser by assigning the shp to a global.
+      function shpLoad(sh) {
+        shp = sh;
+        if (dbf && shp) {
+          render();
+        }
+      }
+
+      // Adds overlays for all features in the shpfile
+      function render() {
+        var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
+        var sw = new google.maps.LatLng(shp.minY, shp.minX);
+		var bounds = new google.maps.LatLngBounds(sw, ne);
+        map.fitBounds(bounds);
+
+		var side_html = '<table style="border-collapse: collapse" border="1" \
+          cellpadding="5" class="tablesorter"> \
+            <thead> \
+              <tr style="background-color:#e0e0e0"> \
+                <th>Division</th> \
+                <th>Address</th> \
+                <th>City</th> \
+                <th>State</th> \
+              </tr> \
+            </thead> \
+            <tbody>';
+
+        for (var i = 0; i < shp.records.length; i++) {
+          var shape = shp.records[i].shape;
+
+          var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
+          var dbfRecord = dbf.records[i];
+		  var division = dbfRecord["DIV"];
+		  var address = dbfRecord["ADDRESS"];
+		  var city = dbfRecord["CITY"];
+		  var state = dbfRecord["STATE"];
+		  var info = '<strong>' + city + '</strong><br />' + address;
+		  createMarker(pt, info);
+
+          side_html += 
+            '<tr> \
+               <td>' + division + '</a></td> \
+               <td><a href="javascript:myclick(' + i + ')">' + address + '</td> \
+               <td>' + city + '</td> \
+               <td>' + state + '</td> \
+             </tr>';
+        }
+        
+        side_html += 
+            '</tbody> \
+          </table>';
+          
+        document.getElementById("sidebar").innerHTML = side_html;
+      }
+
+
+      // error handler for shploader.
+      function shpLoadError() {
+        window.console.log('shp file failed to load');
+      }
+
+      // error handler for dbfloader.
+      function dbfLoadError() {
+        console.log('dbf file failed to load');
+      }
+
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap">
+    </script>
+  </body>
+</html>
