@@ -111,7 +111,15 @@
 		var bounds = new google.maps.LatLngBounds(sw, ne);
         map.fitBounds(bounds);
 
-		    var side_html = "";
+		    var side_html = '<table style="border-collapse: collapse" border="1" \
+          cellpadding="5"> \
+            <thead> \
+              <tr style="background-color:#e0e0e0"> \
+                <th>City</th> \
+                <th>Population</th> \
+              </tr> \
+            </thead> \
+            <tbody>';
 
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
@@ -123,9 +131,17 @@
 		  var info = '<strong>' + name + '</strong><br />' + pop;
 		  createMarker(pt, info);
 
-          side_html += '<a href="javascript:myclick(' + i + ')">' + name + '</a><br />';
+          side_html += 
+            '<tr> \ 
+              <td><a href="javascript:myclick(' + i + ')">' + name + '</a></td> \
+              <td>' + pop + '</td> \
+            </tr>';
         }
 
+        side_html += 
+            '</tbody> \
+          </table>';
+          
         document.getElementById("sidebar").innerHTML = side_html;
       }
 
