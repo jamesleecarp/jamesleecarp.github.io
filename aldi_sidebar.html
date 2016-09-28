@@ -24,12 +24,12 @@
     }
     </style>
   </head>
-  	<script type="text/javascript" src="assets/js/jquery-latest.js"></script> 
+  	<script type="text/javascript" src="js/jquery-latest.js"></script>
 	<script type="text/javascript" src="assets/js/jquery.tablesorter.js"></script>
-	<script type="text/javascript"> 
+	<script type="text/javascript" id="js">
 	$(document).ready(function() { 
 	    // call the tablesorter plugin 
-	    $("myTable").tablesorter({ 
+	    $("table").tablesorter({ 
 	        // sort on the first column and second column, order asc 
 	        sortList: [[0,0],[1,0]] 
 	    }); 
@@ -120,7 +120,7 @@
 		var bounds = new google.maps.LatLngBounds(sw, ne);
         map.fitBounds(bounds);
 
-		var side_html = '<table id="myTable" class="tablesorter"> \
+		var side_html = 'table cellspacing="1" class="tablesorter"> \
             <thead> \
               <tr style="background-color:#e0e0e0"> \
                 <th>Division</th> \
