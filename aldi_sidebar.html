@@ -161,7 +161,23 @@
         document.getElementById("sidebar").innerHTML = side_html;
       }
 
-      <h1>Demo</h1>
+
+
+      // error handler for shploader.
+      function shpLoadError() {
+        window.console.log('shp file failed to load');
+      }
+
+      // error handler for dbfloader.
+      function dbfLoadError() {
+        console.log('dbf file failed to load');
+      }
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap">
+    </script>
+
+    <h1>Demo</h1>
 	<div id="demo">
 		<table cellspacing="1" class="tablesorter">
 		<thead>
@@ -222,19 +238,5 @@
 			</tbody>
 		</table>
 	</div>
-
-      // error handler for shploader.
-      function shpLoadError() {
-        window.console.log('shp file failed to load');
-      }
-
-      // error handler for dbfloader.
-      function dbfLoadError() {
-        console.log('dbf file failed to load');
-      }
-    </script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap">
-    </script>
   </body>
 </html>
