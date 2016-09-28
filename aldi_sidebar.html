@@ -17,23 +17,27 @@
        padding: 0;
        height: 600px;
        width: 100%;
-       float: right;
     }
     #sidebar {
       height: 600px;
+      position: absolute;
+      top:0px;
+      background-color: white;
+    }
+    table.scroll {
+    }
+    table.scroll tbody,
+    table.scroll thead tr { display: block; }
+
+    table.scroll tbody {
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
     }
     </style>
   </head>
   	<script type="text/javascript" src="assets/js/jquery-latest.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.tablesorter.js"></script>
 	<script type="text/javascript" id="js">
-	  $(document).ready(function() { 
-	    // call the tablesorter plugin 
-	    $("table").tablesorter({ 
-	        // sort on the first column and second column, order asc 
-	        sortList: [[0,0],[1,0]] 
-	    }); 
-	}); 
 	</script>
   <body>
     <div id="map"></div><div id="sidebar"></div><div id="demo"></div>
@@ -121,7 +125,7 @@
         map.fitBounds(bounds);
 
 		var side_html = '<table style="border-collapse: collapse" border="1" \
-          cellpadding="5" class="tablesorter"> \
+          cellpadding="5" class="scroll"> \
             <thead> \
               <tr style="background-color:#e0e0e0"> \
                 <th>Division</th> \
