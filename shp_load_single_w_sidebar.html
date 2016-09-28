@@ -37,9 +37,14 @@
 	  var dbf;
     var infoWindow;
     var markers;
+
+      function myclick(num) {
+        google.maps.event.trigger(markers[num], "click");
+      }
+
       function createMarker(point,info) {
         var iconURL = 'icons/cone.png';				var iconSize = new google.maps.Size(20,34);
-        var iconOrigin = new google.maps.Point(0,0);	var iconAnchor = new google.maps.Point(10,34);
+        var iconOrigin = new google.maps.Point(0,0);  var iconAnchor = new google.maps.Point(10,34);
 
         var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
 
@@ -69,8 +74,8 @@
 	  
       // Creates the map, loads in the SHP and DBF files.
       function initMap() {
-        markers = [];
         infoWindow = new google.maps.InfoWindow();
+        markers = [];
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: new google.maps.LatLng(39.3, -95.8),
@@ -106,7 +111,7 @@
 		var bounds = new google.maps.LatLngBounds(sw, ne);
         map.fitBounds(bounds);
 
-		var side_html = "";
+		    var side_html = "";
 
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
@@ -118,16 +123,10 @@
 		  var info = '<strong>' + name + '</strong><br />' + pop;
 		  createMarker(pt, info);
 
-      document.getElementById("sidebar").innerHTML = side_html;
+          side_html += '<a href="javascript:myclick(' + i + ')">' + name + '</a><br />';
         }
 
-      side_html += '<a href="javascript:myclick(' + i + ')">' + 
-        name + '</a><br />';
-
-      }
-
-      function myclick(num) {
-        google.maps.event.trigger(markers[num], "click");
+        document.getElementById("sidebar").innerHTML = side_html;
       }
 
       // error handler for shploader.
