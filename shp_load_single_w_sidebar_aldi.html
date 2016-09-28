@@ -126,8 +126,8 @@
 
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
-		  var name = dbfRecord["NAME"];
-		  var pop = dbfRecord["POPULATION"];
+		  var name = dbfRecord["NUMBER"];
+		  var pop = dbfRecord["ADDRESS"];
 		  var info = '<strong>' + name + '</strong><br />' + pop;
 		  createMarker(pt, info);
 
