@@ -36,16 +36,14 @@
 	}); 
 	</script>
   <body>
-    <div id="map"></div><div id="sidebar"></div>
+    <div id="map"></div><div id="sidebar"></div><div id="demo"></div>
     <script src="assets/js/dbf.js"></script>
     <script src="assets/js/shp.js"></script>
     <script type="text/javascript">
-
-
-
       var map;
 	  var shp;
 	  var dbf;
+	  var demo;
     var infoWindow;
       var markers;
 
@@ -123,7 +121,7 @@
         map.fitBounds(bounds);
 
 		var side_html = '<table style="border-collapse: collapse" border="1" \
-          cellpadding="5"> \
+          cellpadding="5" class="tablesorter"> \
             <thead> \
               <tr style="background-color:#e0e0e0"> \
                 <th>Division</th> \
@@ -163,7 +161,6 @@
       }
 
 
-
       // error handler for shploader.
       function shpLoadError() {
         window.console.log('shp file failed to load');
@@ -173,6 +170,7 @@
       function dbfLoadError() {
         console.log('dbf file failed to load');
       }
+
     </script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap">
