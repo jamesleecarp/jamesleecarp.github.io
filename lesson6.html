@@ -171,6 +171,18 @@
               //clintoncounties.setRenderer(renderer);
 
               clintoncounties.setDefinitionExpression(qryAZ);
+              
+              // var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, 
+                // new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, 
+                // new Color([0,0,0,0.35]), 1), new Color([240,248,255,0.75]));
+              // clintoncounties.setRenderer(new SimpleRenderer(symbol));
+
+              //obamacounties.setDefinitionExpression(qryObama);
+
+              //var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, 
+                //new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, 
+                //new Color([0,0,0,0.35]), 1), new Color([220,20,60,0.75]));
+              //obamacounties.setRenderer(new SimpleRenderer(symbol));
 
               var selectionSymbol = new SimpleFillSymbol().setColor(new Color([255,255,100,0.5]));
               counties.setSelectionSymbol(selectionSymbol);              
