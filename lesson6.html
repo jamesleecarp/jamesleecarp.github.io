@@ -1,0 +1,249 @@
+    <!DOCTYPE html>  
+    <html>  
+    <head>  
+      <meta charset="utf-8">  
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">  
+      <title>FeatureLayer with Clickable Sidebar</title>
+                                   
+      <link rel="stylesheet" href="http://js.arcgis.com/3.14/dojo/resources/dojo.css">  
+      <link rel="stylesheet" href="http://js.arcgis.com/3.14/dgrid/css/dgrid.css">
+      <link rel="stylesheet" href="http://js.arcgis.com/3.14/dgrid/css/skins/tundra.css">
+      <link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/tundra/tundra.css">
+      <link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
+ 
+      <style>  
+        html, body {   
+          height: 100%;   
+          width: 100%;   
+          margin: 0;   
+          padding: 0;   
+          overflow: hidden;  
+        }  
+        #container {   
+          height: 100%;   
+          visibility: hidden;  
+        }  
+        #sidePane { width: 230px; }  
+        #grid { height: 100%; }  
+        .dgrid { border: none; }  
+        .field-id { cursor: pointer; }  
+      </style>  
+      
+      <script src="http://js.arcgis.com/3.14/"></script>  
+      <script>  
+        var map, grid, memStore;  
+        var countiesUrl = "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/SuperTuesdaySample/MapServer/0";  
+        var outFields = ["OBJECTID", "NAME", "ClintonP", "ObamaP", "STCounty"];  
+        var qryAZ = "STATE_NAME='Arizona'";
+        //var qryClinton = "ClintonP>ObamaP";
+        //var qryObama = "ObamaP>ClintonP";
+
+        require([  
+          "dgrid/OnDemandGrid",  
+          "dgrid/Selection",   
+          "dojo/store/Memory",   
+          "dojo/_base/array",  
+          "dojo/dom-style",  
+          "dijit/registry",  
+          "esri/map",   
+          "esri/layers/FeatureLayer",
+          "esri/InfoTemplate",
+          "esri/symbols/SimpleFillSymbol",  
+          "esri/symbols/SimpleLineSymbol",
+          "esri/Color",
+          "esri/renderers/SimpleRenderer",
+          "esri/tasks/QueryTask",  
+          "esri/tasks/query",  
+          "dojo/_base/declare",   
+          "dojo/number",   
+          "dojo/on",   
+          "dojo/parser",   
+          "dgrid/extensions/ColumnResizer",  
+          "dgrid/extensions/ColumnHider",
+          "dijit/layout/BorderContainer",   
+          "dijit/layout/ContentPane",
+          "dojo/domReady!",
+          "esri/renderers/ClassBreaksRenderer"
+          
+          ], function(    
+            Grid,   
+            Selection,   
+            Memory,   
+            array,  
+            domStyle,  
+            registry,  
+            Map,   
+            FeatureLayer,
+            InfoTemplate,
+            SimpleFillSymbol,
+            SimpleLineSymbol,
+            Color,
+            SimpleRenderer,
+            QueryTask,  
+            Query,  
+            declare,   
+            dojoNum,   
+            on,   
+            parser,  
+            ColumnResizer,
+            ColumnHider,
+            ClassBreaksRenderer
+          ) {
+              parser.parse();  
+      
+              // Create the grid   
+              var StandardGrid = declare([Grid, Selection, ColumnHider]);  
+              grid = new StandardGrid({  
+                bufferRows: Infinity,  
+                selectionMode: "single",  
+                sortable: true  
+              }, "grid");  
+              grid.startup();  
+                
+              grid.on("dgrid-select", function(event){   
+                var rowID = event.rows[0].id;  
+                var fl = map.getLayer("counties");  
+                var query = new Query();  
+                query.objectIds = [rowID];
+
+                fl.queryFeatures(query, function(featureSet) {  
+                  if ( featureSet.features.length ) {  
+                    var selectedCounty = featureSet.features[0];
+                    var screenpoint = map.toScreen(selectedCounty.geometry.getExtent().getCenter());
+                  
+                    var infoWindow = map.infoWindow;
+                    infoWindow.setTitle(selectedCounty.getTitle());
+                    infoWindow.setContent(selectedCounty.getContent());
+
+                    map.infoWindow.show(screenpoint, map.getInfoWindowAnchor(screenpoint));
+                  } 
+                });  
+              });  
+                
+              var startExtent = new esri.geometry.Extent(-114, 30, -110, 38, new esri.SpatialReference({wkid:4326}));
+                
+              // Create the map object  
+              map = new Map("mapDiv", {  
+                basemap: "topo",  
+                extent: startExtent
+              });  
+                
+              // Map Load Event  
+              map.on("load", function( evt ){
+                domStyle.set(registry.byId("container").domNode, "visibility", "visible");  
+                populateGrid();  
+              });  
+              
+              var infoTemplate = new InfoTemplate;
+              infoTemplate.setTitle("<b>${NAME} County</b>");
+              infoTemplate.setContent("<b>Clinton: </b>${ClintonP:NumberFormat}%<br/>"
+                             + "<b>Obama: </b>${ObamaP:NumberFormat}%<br/>");
+
+              var clintoncounties = new FeatureLayer(countiesUrl, {  
+                id: "clintoncounties",  
+                mode: FeatureLayer.MODE_ONDEMAND,
+                outFields: outFields,
+              });  
+
+              //var obamacounties = new FeatureLayer(countiesUrl, {  
+                //id: "obamacounties",  
+                //mode: FeatureLayer.MODE_ONDEMAND,
+                //outFields: outFields,
+              //});  
+
+              var counties = new FeatureLayer(countiesUrl, {  
+                id: "counties",  
+                mode: FeatureLayer.MODE_ONDEMAND,
+                outFields: outFields,
+                infoTemplate: infoTemplate
+              });  
+              
+              counties.setDefinitionExpression(qryAZ);
+
+              var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, 
+                new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, 
+                new Color([0,0,0,0.35]), 1), new Color([240,248,255,0]));
+              counties.setRenderer(new SimpleRenderer(symbol));
+
+              //var renderer = new ClassBreaksRenderer(symbol, "ClintonP");
+              //renderer.addBreak(0, 50, new SimpleFillSymbol().setColor(new Color([56, 168, 0, 0.5])));
+              //renderer.addBreak(50, 80, new SimpleFillSymbol().setColor(new Color([139, 209, 0, 0.5])));
+              //clintoncounties.setRenderer(renderer);
+
+              clintoncounties.setDefinitionExpression(qryAZ);
+
+              var selectionSymbol = new SimpleFillSymbol().setColor(new Color([255,255,100,0.5]));
+              counties.setSelectionSymbol(selectionSymbol);              
+              
+              counties.on("load", function(data) {  
+                counties.maxScale = 0;
+                map.addLayer(clintoncounties);
+                //map.addLayer(obamacounties);                 
+                map.addLayer(counties);  
+              });  
+
+              // change cursor to indicate features are click-able  
+              counties.on("mouse-over", function() {  
+                map.setMapCursor("pointer");  
+              });  
+              counties.on("mouse-out", function() {  
+                map.setMapCursor("default");  
+              });  
+      
+
+              function populateGrid() {  
+                var qt = new QueryTask(countiesUrl);  
+                var query = new Query();  
+                query.where = qryAZ;  
+                query.returnGeometry = false;  
+                query.outFields = ["OBJECTID","NAME","ClintonP","ObamaP"];  
+                qt.execute(query, function(results) {                    
+                  var data = array.map(results.features, function(feature) {  
+                    return {  
+                      // property names used here match those used when creating the dgrid  
+                      "OBJECTID": feature.attributes[outFields[0]],
+                      "NAME": feature.attributes[outFields[1]],
+                      "ObamaP": feature.attributes[outFields[3]],  
+                      "ClintonP": feature.attributes[outFields[2]]
+                    }  
+                  });  
+                  grid.set("columns", generateColumns(results.fields));  
+                  var memStore = new Memory({ data: data, "idProperty": "OBJECTID" });  
+                  
+                  var object = memStore.query(function (item) { return item; }, 
+                    { sort: [{ attribute: "NAME" }] });
+                  var newStore = new Memory({ data: object, "idProperty": "OBJECTID" });
+                  grid.set("store", newStore);
+                });  
+      
+              }  
+                
+              // Returns Columns object for dgrid store  
+              function generateColumns(fields){  
+                var columns = [];  
+                fields.forEach (function (field){  
+                    var objects = {};  
+                    objects.label = field.alias;  
+                    objects.field = field.name;
+                    if (field.name == 'OBJECTID') { 
+                      objects.hidden = true;
+                    } else {
+                      objects.hidden = false;
+                    }
+                    columns.push(objects);  
+                });  
+                return columns;            
+              }  
+                
+            }
+        );
+      </script>  
+    </head>  
+    <body class="tundra">  
+      <div id="container" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design: 'headline', gutters: false">  
+        <div id="mapDiv" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'"></div>  
+        <div id="sidePane" data-dojo-type="dijit/layout/ContentPane"  data-dojo-props="region: 'right'"> <div id="grid"></div>  
+        </div>  
+      </div>  
+    </body>  
+    </html>  
