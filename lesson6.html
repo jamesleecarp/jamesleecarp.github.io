@@ -3,7 +3,7 @@
     <head>  
       <meta charset="utf-8">  
       <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">  
-      <title>FeatureLayer with Clickable Sidebar</title>
+      <title>Arizona Super Tuesday</title>
                                    
       <link rel="stylesheet" href="http://js.arcgis.com/3.14/dojo/resources/dojo.css">  
       <link rel="stylesheet" href="http://js.arcgis.com/3.14/dgrid/css/dgrid.css">
@@ -24,9 +24,13 @@
           visibility: hidden;  
         }  
         #sidePane { width: 230px; }  
-        #grid { height: 100%; }  
+        #grid { height: 335px; }  
         .dgrid { border: none; }  
-        .field-id { cursor: pointer; }  
+        .field-id { cursor: pointer; 
+        }
+        h3,li {
+          padding:5px;
+        }
       </style>  
       
       <script src="http://js.arcgis.com/3.14/"></script>  
@@ -35,8 +39,8 @@
         var countiesUrl = "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/SuperTuesdaySample/MapServer/0";  
         var outFields = ["OBJECTID", "NAME", "ClintonP", "ObamaP", "STCounty"];  
         var qryAZ = "STATE_NAME='Arizona'";
-        //var qryClinton = "ClintonP>ObamaP";
-        //var qryObama = "ObamaP>ClintonP";
+        var qryClinton = "ClintonP>ObamaP AND STATE_NAME='Arizona'";
+        var qryObama = "ObamaP>ClintonP AND STATE_NAME='Arizona'";
 
         require([  
           "dgrid/OnDemandGrid",  
@@ -52,6 +56,7 @@
           "esri/symbols/SimpleLineSymbol",
           "esri/Color",
           "esri/renderers/SimpleRenderer",
+          "esri/renderers/ClassBreaksRenderer",
           "esri/tasks/QueryTask",  
           "esri/tasks/query",  
           "dojo/_base/declare",   
@@ -62,8 +67,7 @@
           "dgrid/extensions/ColumnHider",
           "dijit/layout/BorderContainer",   
           "dijit/layout/ContentPane",
-          "dojo/domReady!",
-          "esri/renderers/ClassBreaksRenderer"
+          "dojo/domReady!"
           
           ], function(    
             Grid,   
@@ -79,6 +83,7 @@
             SimpleLineSymbol,
             Color,
             SimpleRenderer,
+            ClassBreaksRenderer,
             QueryTask,  
             Query,  
             declare,   
@@ -86,8 +91,8 @@
             on,   
             parser,  
             ColumnResizer,
-            ColumnHider,
-            ClassBreaksRenderer
+            ColumnHider
+            
           ) {
               parser.parse();  
       
@@ -120,11 +125,11 @@
                 });  
               });  
                 
-              var startExtent = new esri.geometry.Extent(-114, 30, -110, 38, new esri.SpatialReference({wkid:4326}));
+              var startExtent = new esri.geometry.Extent(-115, 29, -109, 39, new esri.SpatialReference({wkid:4326}));
                 
               // Create the map object  
               map = new Map("mapDiv", {  
-                basemap: "topo",  
+                basemap: "gray",  
                 extent: startExtent
               });  
                 
@@ -142,14 +147,14 @@
               var clintoncounties = new FeatureLayer(countiesUrl, {  
                 id: "clintoncounties",  
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: outFields,
+                outFields: outFields
               });  
 
-              //var obamacounties = new FeatureLayer(countiesUrl, {  
-                //id: "obamacounties",  
-                //mode: FeatureLayer.MODE_ONDEMAND,
-                //outFields: outFields,
-              //});  
+              var obamacounties = new FeatureLayer(countiesUrl, {  
+                id: "obamacounties",  
+                mode: FeatureLayer.MODE_ONDEMAND,
+                outFields: outFields,
+              });  
 
               var counties = new FeatureLayer(countiesUrl, {  
                 id: "counties",  
@@ -165,33 +170,30 @@
                 new Color([0,0,0,0.35]), 1), new Color([240,248,255,0]));
               counties.setRenderer(new SimpleRenderer(symbol));
 
-              //var renderer = new ClassBreaksRenderer(symbol, "ClintonP");
-              //renderer.addBreak(0, 50, new SimpleFillSymbol().setColor(new Color([56, 168, 0, 0.5])));
-              //renderer.addBreak(50, 80, new SimpleFillSymbol().setColor(new Color([139, 209, 0, 0.5])));
-              //clintoncounties.setRenderer(renderer);
+              var renderer = new ClassBreaksRenderer(symbol, "ClintonP");
+              renderer.addBreak(0, 50, new SimpleFillSymbol().setColor(new Color([255, 204, 204, 0.5])));
+              renderer.addBreak(50, 60, new SimpleFillSymbol().setColor(new Color([255, 0, 0, 0.5])));
+              renderer.addBreak(60, Infinity, new SimpleFillSymbol().setColor(new Color([128, 0, 0, 0.5])));
+              clintoncounties.setRenderer(renderer);
 
-              clintoncounties.setDefinitionExpression(qryAZ);
+              clintoncounties.setDefinitionExpression(qryClinton);
               
-              // var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, 
-                // new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, 
-                // new Color([0,0,0,0.35]), 1), new Color([240,248,255,0.75]));
-              // clintoncounties.setRenderer(new SimpleRenderer(symbol));
+              var renderer = new ClassBreaksRenderer(symbol, "ObamaP");
+              renderer.addBreak(0, 50, new SimpleFillSymbol().setColor(new Color([153, 187, 255, 0.5])));
+              renderer.addBreak(50, 60, new SimpleFillSymbol().setColor(new Color([0, 85, 255, 0.5])));
+              renderer.addBreak(60, Infinity, new SimpleFillSymbol().setColor(new Color([0, 43, 128, 0.5])));
+              obamacounties.setRenderer(renderer);
 
-              //obamacounties.setDefinitionExpression(qryObama);
-
-              //var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, 
-                //new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, 
-                //new Color([0,0,0,0.35]), 1), new Color([220,20,60,0.75]));
-              //obamacounties.setRenderer(new SimpleRenderer(symbol));
+              obamacounties.setDefinitionExpression(qryObama);
 
               var selectionSymbol = new SimpleFillSymbol().setColor(new Color([255,255,100,0.5]));
               counties.setSelectionSymbol(selectionSymbol);              
               
               counties.on("load", function(data) {  
                 counties.maxScale = 0;
+                map.addLayer(counties); 
                 map.addLayer(clintoncounties);
-                //map.addLayer(obamacounties);                 
-                map.addLayer(counties);  
+                map.addLayer(obamacounties);                 
               });  
 
               // change cursor to indicate features are click-able  
@@ -254,7 +256,16 @@
     <body class="tundra">  
       <div id="container" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design: 'headline', gutters: false">  
         <div id="mapDiv" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'"></div>  
-        <div id="sidePane" data-dojo-type="dijit/layout/ContentPane"  data-dojo-props="region: 'right'"> <div id="grid"></div>  
+        <div id="sidePane" data-dojo-type="dijit/layout/ContentPane"  data-dojo-props="region: 'right'"> <div id="grid"></div> 
+        <h3>Comments</h3>
+        <ul>
+          <li>Transferring the ArcGIS REST service to the Super Tuesday data from the demographic data was pretty self-explanatory. You need to make sure all your field names are the exact same or the data will not transfer. We run into this problem at work with our online application. You must overwrite your feature service in the same schema with the same field names. I’m becoming more and more comfortable with ArcGIS Rest Services and this class is to thank for this. I find it enjoyable to discover publicly accessible ArcGIS Rest Services instead of downloading your own GIS data.</li>
+          <li>I initially had my references to the <b>ClassBreaksRenderer </b>module after the <b>domReady!</b> reference in my require([. This threw my code off, thank you for your help.</li>
+          <li>The combined query of <b>var qryClinton = "ClintonP>ObamaP AND STATE_NAME='Arizona'";</b> was the last thing I figured out. <b>AND</b> connected the previous <b>qryAZ=” STATE_NAME='Arizona'"</b> and my new query <b>var qryClinton = "ClintonP>ObamaP”.</b></li>
+          <li>Clinton was successful in the 2008 Arizona Primary and the map reflects she won all but two counties. Judging by the geography, she won her 51% statewide by urban and rural voters. Most importantly winning Maricopa County, home to Phoenix the largest city. </li>
+          <li>Added the Comments section under the sidebar grid because there was room here due to the lack of counties in Arizona. Made the height of the #grid to 335px to line up with the height of the last row.</li>
+          <li>How do you change the title of the columns in the sidePane? I’d like ClintonP and ObamaP to say Clinton % and Obama %. </li>
+        </ul>
         </div>  
       </div>  
     </body>  
