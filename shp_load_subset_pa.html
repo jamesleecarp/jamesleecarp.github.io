@@ -25,7 +25,7 @@
     <div id="map" data-options="region:'center',split:true"></div>
     <div data-options="region:'east',split:true" title="County Viewer" style="width:230px;">
       <fieldset>
-        <label>Pick a state:<br /> <select id="states"></select></label><br />
+        <label>Pick a county:<br /> <select id="counties"></select></label><br />
         <input type="button" id="btnShow" value="Show" onclick="process()" />
         <input type="button" id="btnClear" value="Clear" onclick="clearMap()" />
       </fieldset>
@@ -52,11 +52,11 @@
       var infoWindow;
       var counties;
       
-      var arrStates = {
-          'AL' : 'Alabama', 'AK' : 'Alaska', 'AZ' : 'Arizona'
+      var arrCounties = {
+          'Thompson', 'Viceroy', 'AZ' : 'Arizona'
       };
 
-      var select = $('#states');
+      var select = $('#counties');
       if(select.prop) {
         var options = select.prop('options');
       } else {
@@ -64,7 +64,7 @@
       }
       $('option', select).remove();
 
-      $.each(arrStates, function(val, text) {
+      $.each(arrCounties, function(val, text) {
         options[options.length] = new Option(text, val);
       });
       
@@ -133,12 +133,12 @@
       }
            
 	  function process() {      
-		var selState = $('#states').val();
-		render(selState);
+		var selcounty = $('#counties').val();
+		render(selcounty);
 	  }
 	  
       // Adds counties for specified state
-      function render(state) {   
+      function render(county) {   
         clearMap();
         
         var bounds = new google.maps.LatLngBounds();
@@ -147,7 +147,7 @@
         for (var i = 0; i < shp.records.length; i++) {
           var cnty_dbf = dbf.records[i];
  
-          if (cnty_dbf["STATE_ABBR"] == state) {
+          if (cnty_dbf["NAME"] == county) {
             stage = 1;
             var name = cnty_dbf['NAME'];
             var shape = shp.records[i].shape;
@@ -215,7 +215,7 @@
           infoWindow.setPosition(overlay.getBounds().getCenter());
           infoWindow.open(map);           
         });
-      }
+      }AREA
 				
       // Format shapefile attribute data for info window
       function recordHtmlContent(record) {
