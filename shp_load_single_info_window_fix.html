@@ -8,26 +8,30 @@
 
   <head>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/jquery-easyui/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/jquery-easyui/themes/default/easyui.css">
     <title>Shapefile Loader Example - Single</title>
-  <style type="text/css">
+	<style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0px; padding: 0px }
-    #map { height: 100% }
+	  #map { height: 100% }
     </style>
   </head>
-  <body>
-    <div id="map"></div>
-    <script src="assets/js/dbf.js"></script>
-    <script src="assets/js/shp.js"></script>
+  <body class="easyui-layout">
+    <div id="map" data-options="region:'center',split:true"></div>
+    <div data-options="region:'east',split:true" title="Cities" style="width:230px;"></div>
+    <script src="dbf.js"></script>
+    <script src="shp.js"></script>
     <script type="text/javascript">
       var map;
-    var shp;
-    var dbf;
-    var infoWindow;
+	  var shp;
+	  var dbf;
+	  var infoWindow;
       
       function createMarker(point,info) {
-        var iconURL = 'icons/cone.png';        var iconSize = new google.maps.Size(20,34);
-        var iconOrigin = new google.maps.Point(0,0);  var iconAnchor = new google.maps.Point(10,34);
+        var iconURL = '../cone.png';				var iconSize = new google.maps.Size(20,34);
+        var iconOrigin = new google.maps.Point(0,0);	var iconAnchor = new google.maps.Point(10,34);
 
         var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
 
@@ -52,7 +56,7 @@
           infoWindow.open(map,marker); 
         });
       }
-    
+	  
       // Creates the map, loads in the SHP and DBF files.
       function initMap() {
         infoWindow = new google.maps.InfoWindow();
@@ -61,8 +65,8 @@
           center: new google.maps.LatLng(39.3, -95.8),
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-    
-        shpfile = 'assets/shp/candidate_cities';
+		
+        shpfile = 'candidate_cities';
 
         SHPParser.load(shpfile + '.shp', shpLoad, shpLoadError);
         DBFParser.load(shpfile + '.dbf', dbfLoad, dbfLoadError);
@@ -88,18 +92,18 @@
       function render() {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
-    var bounds = new google.maps.LatLngBounds(sw, ne);
+		var bounds = new google.maps.LatLngBounds(sw, ne);
         map.fitBounds(bounds);
-    
+		
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
 
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
-      var name = dbfRecord["NAME"];
-      var pop = dbfRecord["POPULATION"];
-      var info = '<strong>' + name + '</strong><br />' + pop;
-      createMarker(pt, info);
+		  var name = dbfRecord["NAME"];
+		  var pop = dbfRecord["POPULATION"];
+		  var info = '<strong>' + name + '</strong><br />' + pop;
+		  createMarker(pt, info);
         }
       }
 
