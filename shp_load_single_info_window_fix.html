@@ -20,7 +20,19 @@
   </head>
   <body class="easyui-layout">
     <div id="map" data-options="region:'center',split:true"></div>
-    <div data-options="region:'east',split:true" title="Cities" style="width:230px;"></div>
+    <div data-options="region:'east',split:true" title="Cities" style="width:230px;">
+      <table id="sidebar" class="easyui-datagrid" rownumbers="true" sortName="city" sortOrder="asc" remoteSort="false" 
+        striped="true" singleSelect="true">
+        <thead>
+          <tr>
+            <th field="city" sortable="true">City</th>
+            <th field="pop" sortable="true">Population</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
     <script src="assets/js/dbf.js"></script>
     <script src="assets/js/shp.js"></script>
     <script type="text/javascript">
@@ -28,6 +40,17 @@
 	  var shp;
 	  var dbf;
 	  var infoWindow;
+      var markers;
+
+      function myclick(num) {
+        google.maps.event.trigger(markers[num], "click");
+      }
+
+      function addToSidebar(name, pop, i) {
+        var lastRow = $('<tr/>').appendTo($("#sidebar").find('tbody:last'));
+        lastRow.append( $('<td><a href="javascript:myclick(' + i + ')">' + name + '</a></td>') );
+        lastRow.append($('<td/>').text(pop));  
+      }
       
       function createMarker(point,info) {
         var iconURL = 'icons/cone.png';				var iconSize = new google.maps.Size(20,34);
@@ -50,6 +73,8 @@
 
         var marker = new google.maps.Marker(myMarkerOpts);
 
+        markers.push(marker);
+
         google.maps.event.addListener(marker, 'click', function() {
           infoWindow.close();
           infoWindow.setContent(info);
@@ -60,6 +85,7 @@
       // Creates the map, loads in the SHP and DBF files.
       function initMap() {
         infoWindow = new google.maps.InfoWindow();
+        markers = [];
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: new google.maps.LatLng(39.3, -95.8),
@@ -104,7 +130,11 @@
 		  var pop = dbfRecord["POPULATION"];
 		  var info = '<strong>' + name + '</strong><br />' + pop;
 		  createMarker(pt, info);
+
+          addToSidebar(name,pop,i);
         }
+
+        $('#sidebar').datagrid();
       }
 
       // error handler for shploader.
