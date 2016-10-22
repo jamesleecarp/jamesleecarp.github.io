@@ -20,13 +20,13 @@
   </head>
   <body class="easyui-layout">
     <div id="map" data-options="region:'center',split:true"></div>
-    <div data-options="region:'east',split:true" title="Cities" style="width:230px;">
+    <div data-options="region:'east',split:true" title="Stores" style="width:230px;">
       <table id="sidebar" class="easyui-datagrid" rownumbers="true" sortName="city" sortOrder="asc" remoteSort="false" 
         striped="true" singleSelect="true">
         <thead>
           <tr>
             <th field="city" sortable="true">City</th>
-            <th field="address" sortable="true">address</th>
+            <th field="address" sortable="true">Address</th>
           </tr>
         </thead>
         <tbody>
@@ -133,7 +133,7 @@
       var info = '<strong>' + city + '</strong><br />' + address;
       createMarker(pt, info);
 
-          addToSidebar(name,address,i);
+          addToSidebar(city,address,i);
         }
 
         $('#sidebar').datagrid();
