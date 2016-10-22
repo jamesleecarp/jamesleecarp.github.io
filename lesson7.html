@@ -48,7 +48,7 @@
         google.maps.event.trigger(markers[num], "click");
       }
 
-      function addToSidebar(name, address, divison, i) {
+      function addToSidebar(division, address, i) {
         var lastRow = $('<tr/>').appendTo($("#sidebar").find('tbody:last'));
         lastRow.append( $('<td><a href="javascript:myclick(' + i + ')">' + name + '</a></td>') );
         lastRow.append($('<td/>').text(address));  
