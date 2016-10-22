@@ -21,12 +21,14 @@
   <body class="easyui-layout">
     <div id="map" data-options="region:'center',split:true"></div>
     <div data-options="region:'east',split:true" title="Stores" style="width:300px;">
-      <table id="sidebar" class="easyui-datagrid" rownumbers="true" sortOrder="asc" remoteSort="false" 
+      <table id="sidebar" class="easyui-datagrid" rownumbers="true" sortName="address" sortOrder="asc" remoteSort="false" 
         striped="true" singleSelect="true">
         <thead>
           <tr>
-            <th field="city" sortable="true">City</th>
+            <th field="division" sortable="true">Division</th>
             <th field="address" sortable="true">Address</th>
+            <th field="city" sortable="true">City</th>
+            <th field="state" sortable="true">State</th>
           </tr>
         </thead>
         <tbody>
@@ -46,7 +48,7 @@
         google.maps.event.trigger(markers[num], "click");
       }
 
-      function addToSidebar(name, address, i) {
+      function addToSidebar(name, address, divison, i) {
         var lastRow = $('<tr/>').appendTo($("#sidebar").find('tbody:last'));
         lastRow.append( $('<td><a href="javascript:myclick(' + i + ')">' + name + '</a></td>') );
         lastRow.append($('<td/>').text(address));  
