@@ -23,7 +23,7 @@
     <div id="divisionform">
       <p>Select a Division</p>
         <form name="myform" id="myform" method="post">
-        <select id="divisions" size="1" onchange="load()">
+        <select name="division" id="divisions" size="1" onchange="load()">
         </select>
     </div>
     <div id="map" data-options="region:'center',split:true"></div>
@@ -161,8 +161,6 @@
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
 
-          if (shape["DIV"] == divison) {
-
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
 		  var division = dbfRecord["DIV"];
@@ -171,11 +169,10 @@
       var state = dbfRecord["STATE"];
       var info = '<strong>' + city + '</strong><br />' + address;
       createMarker(pt, info);
-          } else {
 
           addToSidebar(address,city,state,division,i);
         }
-      }
+
         $('#sidebar').datagrid();
       }
 
