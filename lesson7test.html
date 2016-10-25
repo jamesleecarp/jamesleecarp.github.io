@@ -56,7 +56,7 @@
           'JEF' : 'Jefferson', 'CTV' : 'Center Valley', 'SBY' : 'Salisbury', 'SXB' : 'Saxonburg', 'FRE' : 'Frederick', 'MTJ' : 'MT Juliet'
       };
 
-      var select = $('#divSel');
+      var select = $('#divisions');
       if(select.prop) {
         var options = select.prop('options');
       } else {
@@ -147,12 +147,12 @@
       //}
 
       function load() {
-        var selDiv = $('#divSel').val();
+        var selDiv = $('#divisions').val();
         render(selDiv);
       }
 
       // Adds overlays for all features in the shpfile
-      function render(selDiv) {
+      function render(division) {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
 		var bounds = new google.maps.LatLngBounds(sw, ne);
