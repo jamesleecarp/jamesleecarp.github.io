@@ -153,7 +153,7 @@
       }
 
       // Adds overlays for all features in the shpfile
-      function render(division) {
+      function render(selDiv) {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
 		var bounds = new google.maps.LatLngBounds(sw, ne);
@@ -164,7 +164,7 @@
 
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
-		  var div = dbfRecord["DIV"];
+		  var division = dbfRecord["DIV"];
       var city = dbfRecord["CITY"];
       var address = dbfRecord["ADDRESS"];
       var state = dbfRecord["STATE"];
