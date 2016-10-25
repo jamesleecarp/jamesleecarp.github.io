@@ -56,7 +56,7 @@
           'JEF' : 'Jefferson', 'CTV' : 'Center Valley', 'SBY' : 'Salisbury', 'SXB' : 'Saxonburg', 'FRE' : 'Frederick', 'MTJ' : 'MT Juliet'
       };
 
-      var select = $('#divisions');
+      var select = $('#divSel');
       if(select.prop) {
         var options = select.prop('options');
       } else {
@@ -147,7 +147,7 @@
       //}
 
       function load() {
-        var selDiv = $('#divisions').val();
+        var selDiv = $('#divSel').val();
         render(selDiv);
       }
 
