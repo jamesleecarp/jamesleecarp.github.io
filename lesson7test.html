@@ -152,7 +152,7 @@
       }
 
       // Adds overlays for all features in the shpfile
-      function render(division) {
+      function render(divisions) {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
 		var bounds = new google.maps.LatLngBounds(sw, ne);
