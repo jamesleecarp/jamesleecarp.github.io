@@ -173,11 +173,12 @@
       createMarker(pt, info);
 
           addToSidebar(address,city,state,division,i);
-        }
-
-        $('#sidebar').datagrid();
+        
+          $('#sidebar').datagrid();
+        } else {
       }
     }
+  }
       // error handler for shploader.
       function shpLoadError() {
         window.console.log('shp file failed to load');
