@@ -16,7 +16,7 @@
       html { height: 100% }
       body { height: 100%; margin: 0px; padding: 0px }
 	  #map { height: 100% }
-    #divisionform { position: absolute; z-index:1; top:3px; right:3px; background-color: grey; border:1px solid; border-color: black}
+    #divisionform { position: absolute; z-index:1; top:3px; right:3px; background-color: white; border:1px solid; border-color: black; padding:5px;}
     </style>
   </head>
   <body class="easyui-layout">
@@ -133,8 +133,8 @@
       }
 
       function process() {
-        var selDiv = $('#division').val();
-        render(;
+        //var selDiv = $('#division').val();
+        //render(;
       }
       // Adds overlays for all features in the shpfile
       function render() {
