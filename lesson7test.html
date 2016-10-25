@@ -23,13 +23,7 @@
     <div id="divisionform">
       <p>Select a Division</p>
         <form name="myform" id="myform" method="post">
-        <select name="division" id="division" size="1" onchange="load(division.value)">
-            <option value="JEF">Jefferson
-            <option value="SBY">Salisbury
-            <option value="CTV">Center Valley
-            <option value="FRE">Frederick
-            <option value="MTJ">Mt Juliet
-            <option value="SXB">Saxonburg
+        <select name="division" id="divisions" size="1" onchange="load(division.value)">
         </select>
     </div>
     <div id="map" data-options="region:'center',split:true"></div>
@@ -57,6 +51,22 @@
 	  var dbf;
 	  var infoWindow;
       var markers;
+
+      var arrDivisions = {
+          'JEF' : 'Jefferson', 'CTV' : 'Center Valley', 'SBY' : 'Salisbury', 'SXB' : 'Saxonburg', 'FRE' : 'Frederick', 'MTJ' : 'MT Juliet'
+      };
+
+      var select = $('#divisions');
+      if(select.prop) {
+        var options = select.prop('options');
+      } else {
+        var options = select.attr('options');
+      }
+      $('option', select).remove();
+
+      $.each(arrDivisions, function(val, text) {
+        options[options.length] = new Option(text, val);
+      });
 
       function myclick(num) {
         google.maps.event.trigger(markers[num], "click");
@@ -132,11 +142,17 @@
         }
       }
 
+      //function load() {
+        //alert("load does something");
+      //}
+
       function load() {
-        alert("load does something");
+        var selDiv = $('#divisions').val();
+        render(selDiv);
       }
+
       // Adds overlays for all features in the shpfile
-      function render() {
+      function render(division) {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
 		var bounds = new google.maps.LatLngBounds(sw, ne);
