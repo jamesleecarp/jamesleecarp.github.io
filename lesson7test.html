@@ -23,7 +23,7 @@
     <div id="divisionform">
       <p>Select a Division</p>
         <form name="myform" id="myform" method="post">
-        <select name="divisions" id="divisions" size="1" onchange="load()">
+        <select name="divisions id="divisions" size="1" onchange="load()">
         </select>
     </div>
     <div id="map" data-options="region:'center',split:true"></div>
@@ -85,6 +85,12 @@
         var iconOrigin = new google.maps.Point(0,0);	var iconAnchor = new google.maps.Point(10,34);
 
         var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
+
+        var iconShape = [8,33, 4,15, 1,15, 0,12, 0,5, 6,0, 12,0, 19,14, 15,15, 10,33];
+        var myMarkerShape = {
+          coord: iconShape,
+          type: 'poly'
+        };
 
         var myMarkerOpts = {
           position: point,
