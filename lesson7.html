@@ -137,7 +137,7 @@
         //var selDiv = $('#division').val();
         //render(selDiv);
       //}
-      
+
       // Adds overlays for all features in the shpfile
       function render(division) {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
@@ -148,7 +148,7 @@
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
 
-          if (shape["DIV"] == division){
+          //if (shape["DIV"] == division){
 
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
@@ -164,7 +164,7 @@
 
           $('#sidebar').datagrid();
 
-        }
+        //}
       }
       // error handler for shploader.
       function shpLoadError() {
