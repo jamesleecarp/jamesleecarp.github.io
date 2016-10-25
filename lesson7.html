@@ -23,7 +23,7 @@
     <div id="divisionform">
       <p>stay woke</p>
         <form name="myform" id="myform" method="post">
-        <select name="division" id="division" size="1" onchange="load(window.document.myform.division.options[selectedIndex].value)">
+        <select name="division" id="division" size="1" onclick="process(divison.value)">
             <option value="JEF">Jefferson
             <option value="SBY">Salisbury
             <option value="CTV">Center Valley
@@ -58,8 +58,8 @@
 	  var infoWindow;
       var markers;
 
-      function load(division) {
-        
+      function process(division) {
+
       }
 
       function myclick(num) {
