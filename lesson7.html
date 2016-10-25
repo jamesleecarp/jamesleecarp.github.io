@@ -23,8 +23,7 @@
     <div id="divisionform">
       <p>Select a Division</p>
         <form name="myform" id="myform" method="post">
-        <select name="division" id="division" size="1" onclick="load(division.value)">
-            <option value="">All
+        <select name="division" id="division" size="1" onchange="=load(division.value)">
             <option value="JEF">Jefferson
             <option value="SBY">Salisbury
             <option value="CTV">Center Valley
@@ -133,11 +132,10 @@
         }
       }
 
-      //function load(division) {
+      //function load() {
         //var selDiv = $('#division').val();
-        //render(selDiv);
+        //render(;
       //}
-
       // Adds overlays for all features in the shpfile
       function render() {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
@@ -160,10 +158,9 @@
           addToSidebar(address,city,state,division,i);
         }
 
-          $('#sidebar').datagrid();
-
-        //}
+        $('#sidebar').datagrid();
       }
+
       // error handler for shploader.
       function shpLoadError() {
         window.console.log('shp file failed to load');
