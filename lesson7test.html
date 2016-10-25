@@ -161,8 +161,6 @@
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
 
-          if (shape["DIV"] == division) {
-
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
 		  var division = dbfRecord["DIV"];
@@ -173,12 +171,11 @@
       createMarker(pt, info);
 
           addToSidebar(address,city,state,division,i);
-        
-          $('#sidebar').datagrid();
-        } else {
+        }
+
+        $('#sidebar').datagrid();
       }
-    }
-  }
+
       // error handler for shploader.
       function shpLoadError() {
         window.console.log('shp file failed to load');
