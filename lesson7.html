@@ -20,7 +20,18 @@
     </style>
   </head>
   <body class="easyui-layout">
-    <div id="form"><p>stay woke</p></div>
+    <div id="divisionform">
+      <p>stay woke</p>
+        <form name="myform" id="myform" method="post">
+        <select name="division" id="division" size="1" onchange="load(window.document.myform.division.options[selectedIndex].value)">
+            <option value="JEF">Jefferson
+            <option value="SBY">Salisbury
+            <option value="CTV">Center Valley
+            <option value="FRE">Frederick
+            <option value="MTJ">Mt Juliet
+            <option value="SXB">Saxonburg
+        </select>
+    </div>
     <div id="map" data-options="region:'center',split:true"></div>
     <div data-options="region:'west',split:true" title="Stores" style="width:500px;">
       <table id="sidebar" class="easyui-datagrid" rownumbers="true" sortName="city" sortOrder="asc" remoteSort="false" 
@@ -40,7 +51,7 @@
     <script src="assets/js/dbf.js"></script>
     <script src="assets/js/shp.js"></script>
     <script type="text/javascript">
-      var form;
+      var divisionform;
       var map;
 	  var shp;
 	  var dbf;
