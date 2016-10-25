@@ -25,7 +25,7 @@
         <form name="myform" id="myform" method="post">
         <select name="division" id="divisions" size="1" onchange="load()">
         </select>
-    </div>
+    </div>james
     <div id="map" data-options="region:'center',split:true"></div>
     <div data-options="region:'west',split:true" title="Stores" style="width:500px;">
       <table id="sidebar" class="easyui-datagrid" rownumbers="true" sortName="city" sortOrder="asc" remoteSort="false" 
@@ -72,12 +72,13 @@
         google.maps.event.trigger(markers[num], "click");
       }
 
-      function addToSidebar(address, city, state, division, i) {
+      function addToSidebar(address, city, state, division, div, i) {
         var lastRow = $('<tr/>').appendTo($("#sidebar").find('tbody:last'));
         lastRow.append( $('<td><a href="javascript:myclick(' + i + ')">' + address + '</a></td>') );
         lastRow.append($('<td/>').text(city));
         lastRow.append($('<td/>').text(state));
-        lastRow.append($('<td/>').text(division));  
+        lastRow.append($('<td/>').text(division));
+        lastRow.append($('<td/>').text(div));  
       }
       
       function createMarker(point,info) {
@@ -163,14 +164,14 @@
 
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
-		  var division = dbfRecord["DIV"];
+		  var div = dbfRecord["DIV"];
       var city = dbfRecord["CITY"];
       var address = dbfRecord["ADDRESS"];
       var state = dbfRecord["STATE"];
       var info = '<strong>' + city + '</strong><br />' + address;
       createMarker(pt, info);
 
-          addToSidebar(address,city,state,division,i);
+          addToSidebar(address,city,state,division,div,i);
         }
 
         $('#sidebar').datagrid();
