@@ -16,11 +16,12 @@
       html { height: 100% }
       body { height: 100%; margin: 0px; padding: 0px }
 	  #map { height: 100% }
+    #form { position: absolute; z-index:1; top:3px; right:3px;}
     </style>
   </head>
   <body class="easyui-layout">
+    <div id="form"><p>stay woke</p></div>
     <div id="map" data-options="region:'center',split:true"></div>
-    <p>Stay Woke</p>
     <div data-options="region:'west',split:true" title="Stores" style="width:500px;">
       <table id="sidebar" class="easyui-datagrid" rownumbers="true" sortName="city" sortOrder="asc" remoteSort="false" 
         striped="true" singleSelect="true">
@@ -39,6 +40,7 @@
     <script src="assets/js/dbf.js"></script>
     <script src="assets/js/shp.js"></script>
     <script type="text/javascript">
+      var form;
       var map;
 	  var shp;
 	  var dbf;
