@@ -139,7 +139,7 @@
       //}
 
       // Adds overlays for all features in the shpfile
-      function render(division) {
+      function render() {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
 		var bounds = new google.maps.LatLngBounds(sw, ne);
@@ -147,8 +147,6 @@
 		
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
-
-          //if (shape["DIV"] == division){
 
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
