@@ -23,7 +23,7 @@
     <div id="divisionform">
       <p>Select a Division</p>
         <form name="myform" id="myform" method="post">
-        <select name="division" id="division" size="1" onclick="process(division.value)">
+        <select name="division" id="division" size="1" onclick="load(division.value)">
             <option value="JEF">Jefferson
             <option value="SBY">Salisbury
             <option value="CTV">Center Valley
@@ -120,7 +120,6 @@
       function dbfLoad(db) {
         dbf = db;
         if (dbf && shp) {
-          render();
         }
       }
 
@@ -128,11 +127,10 @@
       function shpLoad(sh) {
         shp = sh;
         if (dbf && shp) {
-          render();
         }
       }
 
-      function process(division) {
+      function load(division) {
         //var selDiv = $('#division').val();
         //render(;
       }
