@@ -131,7 +131,6 @@
       //}
       // Adds overlays for all features in the shpfile
       function render(divisionSel) {
-        alert(divisionSel)
 
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
@@ -146,6 +145,9 @@
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
 		  var division = dbfRecord["DIV"];
+
+        if (division == divisionSel) {
+
       var city = dbfRecord["CITY"];
       var address = dbfRecord["ADDRESS"];
       var state = dbfRecord["STATE"];
@@ -155,6 +157,7 @@
           addToSidebar(address,city,state,division,i);
         }
       }
+    }
         $('#sidebar').datagrid();
       }
 
