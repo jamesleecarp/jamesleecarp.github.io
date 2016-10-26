@@ -24,6 +24,7 @@
       <p>Select a Division</p>
         <form name="myform" id="myform" method="post">
         <select name="division" id="division" size="1" onchange="render(division.value)">
+            <option value="">
             <option value="ALL">All
             <option value="JEF">Jefferson
             <option value="SBY">Salisbury
@@ -134,7 +135,7 @@
       //}
       // Adds overlays for all features in the shpfile
       function render(divisionSel) {
-        clearMap();
+        //clearMap();
 
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
