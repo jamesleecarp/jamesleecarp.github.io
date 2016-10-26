@@ -24,6 +24,7 @@
       <p>Select a Division</p>
         <form name="myform" id="myform" method="post">
         <select name="division" id="division" size="1" onchange="render(division.value)">
+            <option value="ALL">All
             <option value="JEF">Jefferson
             <option value="SBY">Salisbury
             <option value="CTV">Center Valley
@@ -131,6 +132,7 @@
       //}
       // Adds overlays for all features in the shpfile
       function render(divisionSel) {
+        clearMap();
 
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
@@ -146,7 +148,7 @@
           var dbfRecord = dbf.records[i];
 		  var division = dbfRecord["DIV"];
 
-        if (division == divisionSel) {
+        if (divisionSel == "ALL" or division == divisionSel) {
 
       var city = dbfRecord["CITY"];
       var address = dbfRecord["ADDRESS"];
@@ -159,6 +161,23 @@
       }
     }
         $('#sidebar').datagrid();
+      }
+
+      function clearMap() {
+        if (typeof infoWindow != 'undefined') {
+          infoWindow.close();
+        }
+        
+        var rows = $('#sidebar').datagrid('getRows');
+      
+    for (var i = 0; i < rows.length; i++){
+          var id = rows[i].id;
+          markers[id].setMap(null);
+    }
+
+        // Need to do both of these, not sure why
+        $('#sidebar').datagrid('loadData', {"total":0,"rows":[]});
+        $('#sidebar tr').remove();
       }
 
       // error handler for shploader.
