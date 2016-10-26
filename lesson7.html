@@ -113,7 +113,7 @@
       function dbfLoad(db) {
         dbf = db;
         if (dbf && shp) {
-          render();
+          render("");
         }
       }
 
@@ -121,7 +121,7 @@
       function shpLoad(sh) {
         shp = sh;
         if (dbf && shp) {
-          render();
+          render("");
         }
       }
 
@@ -137,7 +137,9 @@
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
 		var bounds = new google.maps.LatLngBounds(sw, ne);
         map.fitBounds(bounds);
-		
+		    
+        if (divisionSel) {
+
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
 
@@ -152,7 +154,7 @@
 
           addToSidebar(address,city,state,division,i);
         }
-
+      }
         $('#sidebar').datagrid();
       }
 
