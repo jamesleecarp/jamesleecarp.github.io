@@ -86,7 +86,7 @@
 
         var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
 
-        var iconShape = [];
+        var iconShape = [8,33, 4,15, 1,15, 0,12, 0,5, 6,0, 12,0, 19,14, 15,15, 10,33];
         var myMarkerShape = {
           coord: iconShape,
           type: 'poly'
@@ -152,7 +152,7 @@
       }
 
       // Adds overlays for all features in the shpfile
-      function render(division) {
+      function render(selDiv) {
         var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
         var sw = new google.maps.LatLng(shp.minY, shp.minX);
 		var bounds = new google.maps.LatLngBounds(sw, ne);
