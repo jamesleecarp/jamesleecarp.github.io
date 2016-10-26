@@ -43,6 +43,7 @@
             <th field="city" sortable="true">City</th>
             <th field="state" sortable="true">State</th>
             <th field="division" sortable="true">Division</th>
+            <th data-options="field:'id',sortable:true,hidden:true">ID</th>
           </tr>
         </thead>
         <tbody>
@@ -68,7 +69,8 @@
         lastRow.append( $('<td><a href="javascript:myclick(' + i + ')">' + address + '</a></td>') );
         lastRow.append($('<td/>').text(city));
         lastRow.append($('<td/>').text(state));
-        lastRow.append($('<td/>').text(division));  
+        lastRow.append($('<td/>').text(division));
+        lastRow.append($('<td/>').text(i));
       }
       
       function createMarker(point,info) {
