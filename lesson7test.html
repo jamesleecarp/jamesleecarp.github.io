@@ -23,7 +23,7 @@
     <div id="divisionform">
       <p>Select a Division</p>
         <form name="myform" id="myform" method="post">
-        <select name="divSel" id="divSel" size="1" onchange="load(division.value)">
+        <select id="divisionSel" size="1" onchange="load(division.value)">
             <option value="JEF">Jefferson
             <option value="SBY">Salisbury
             <option value="CTV">Center Valley
@@ -58,6 +58,9 @@
 	  var infoWindow;
       var markers;
 
+      var select = $('#divisonSel');
+
+
       function myclick(num) {
         google.maps.event.trigger(markers[num], "click");
       }
@@ -72,21 +75,14 @@
       
       function createMarker(point,info) {
         var iconURL = 'icons/Aldi.png';				var iconSize = new google.maps.Size(20,34);
-        var iconOrigin = new google.maps.Point(0,0);	var iconAnchor = new google.maps.Point(10,34);
+        var iconOrigin = new google.maps.Point(0,0);	var iconAnchor = new google.maps.Point(0,0);
 
         var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
-
-        var iconShape = [8,33, 4,15, 1,15, 0,12, 0,5, 6,0, 12,0, 19,14, 15,15, 10,33];
-        var myMarkerShape = {
-          coord: iconShape,
-          type: 'poly'
-        };
 
         var myMarkerOpts = {
           position: point,
           map: map,
           icon: myIcon,
-          shape: myMarkerShape
         };
 
         var marker = new google.maps.Marker(myMarkerOpts);
@@ -133,10 +129,7 @@
       }
 
       function load() {
-        //alert("load does something");
-        var selState = $('#divisions').val();
-        render(selState);
-    }
+        alert("load does something");
       }
       // Adds overlays for all features in the shpfile
       function render() {
