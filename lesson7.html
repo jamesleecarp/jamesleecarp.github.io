@@ -74,7 +74,28 @@
         lastRow.append($('<td/>').text(i));
       }
       
+      function createMarker(point,info) {
+        var iconURL = 'icons/Aldi.png';				var iconSize = new google.maps.Size(20,34);
+        var iconOrigin = new google.maps.Point(0,0);	var iconAnchor = new google.maps.Point(0,0);
 
+        var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
+
+        var myMarkerOpts = {
+          position: point,
+          map: map,
+          icon: myIcon,
+        };
+
+        var marker = new google.maps.Marker(myMarkerOpts);
+
+        markers.push(marker);
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infoWindow.close();
+          infoWindow.setContent(info);
+          infoWindow.open(map,marker); 
+        });
+      }
 	  
       // Creates the map, loads in the SHP and DBF files.
       function initMap() {
@@ -145,29 +166,6 @@
         $('#sidebar').datagrid();
       }
 
-      function createMarker(point,info) {
-        var iconURL = 'icons/Aldi.png';       var iconSize = new google.maps.Size(20,34);
-        var iconOrigin = new google.maps.Point(0,0);  var iconAnchor = new google.maps.Point(0,0);
-
-        var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
-
-        var myMarkerOpts = {
-          position: point,
-          map: map,
-          icon: myIcon,
-        };
-
-        var marker = new google.maps.Marker(myMarkerOpts);
-
-        markers[i]=marker;
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infoWindow.close();
-          infoWindow.setContent(info);
-          infoWindow.open(map,marker); 
-        });
-      }
-      
       function clearMap() {
         if (typeof infoWindow != 'undefined') {
           infoWindow.close();
