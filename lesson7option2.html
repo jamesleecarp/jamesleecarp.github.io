@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<!--
+ * Demonstrates how to load a single shapefile with a clickable sidebar
+ * Adapted from https://code.google.com/p/gmaps-samples/source/browse/trunk/shapefileloader/?r=2692, authored by Mano Marks, Google
+ * 
+-->
+
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/jquery-easyui/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/jquery-easyui/themes/default/easyui.css">
+    <title>ALDI Store Locations</title>
+	<style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0px; padding: 0px }
+	  #map { height: 100% }
+    #divisionform { position: absolute; z-index:1; top:3px; right:3px; background-color: white; border:1px solid; border-color: black; padding:5px;}
+    </style>
+  </head>
+  <body class="easyui-layout">
+    <div id="divisionform">
+      <p>Select a Division</p>
+        <form name="myform" id="myform" method="post">
+        <select name="division" id="division" size="1" onchange="render(division.value)">
+            <option value="">
+            <option value="ALL">All
+            <option value="JEF">Jefferson
+            <option value="SBY">Salisbury
+            <option value="CTV">Center Valley
+            <option value="FRE">Frederick
+            <option value="MTJ">Mt Juliet
+            <option value="SXB">Saxonburg
+        </select>
+    </div>
+    <div id="map" data-options="region:'center',split:true"></div>
+    <div data-options="region:'west',split:true" title="Stores" style="width:500px;">
+      <table id="sidebar" class="easyui-datagrid" rownumbers="true" sortName="city" sortOrder="asc" remoteSort="false" 
+        striped="true" singleSelect="true">
+        <thead>
+          <tr>
+            <th field="address" sortable="true">Address</th>
+            <th field="city" sortable="true">City</th>
+            <th field="state" sortable="true">State</th>
+            <th field="division" sortable="true">Division</th>
+            <th data-options="field:'id',sortable:true,hidden:true">ID</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <script src="assets/js/dbf.js"></script>
+    <script src="assets/js/shp.js"></script>
+    <script type="text/javascript">
+      var divisionform;
+      var map;
+	  var shp;
+	  var dbf;
+	  var infoWindow;
+      var markers;
+
+      function myclick(num) {
+        google.maps.event.trigger(markers[num], "click");
+      }
+
+      function addToSidebar(address, city, state, division, i) {
+        var lastRow = $('<tr/>').appendTo($("#sidebar").find('tbody:last'));
+        lastRow.append( $('<td><a href="javascript:myclick(' + i + ')">' + address + '</a></td>') );
+        lastRow.append($('<td/>').text(city));
+        lastRow.append($('<td/>').text(state));
+        lastRow.append($('<td/>').text(division));
+        lastRow.append($('<td/>').text(i));
+      }
+      
+      function createMarker(point,info,i) {
+        var iconURL = 'icons/Aldi.png';				var iconSize = new google.maps.Size(20,34);
+        var iconOrigin = new google.maps.Point(0,0);	var iconAnchor = new google.maps.Point(0,0);
+
+        var myIcon = new google.maps.MarkerImage(iconURL, iconSize, iconOrigin, iconAnchor);
+
+        var myMarkerOpts = {
+          position: point,
+          map: map,
+          icon: myIcon,
+        };
+
+        var marker = new google.maps.Marker(myMarkerOpts);
+
+        markers[i] = marker;
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infoWindow.close();
+          infoWindow.setContent(info);
+          infoWindow.open(map,marker); 
+        });
+      }
+	  
+      // Creates the map, loads in the SHP and DBF files.
+      function initMap() {
+        infoWindow = new google.maps.InfoWindow();
+        markers = [];
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: new google.maps.LatLng(39.3, -95.8),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+		
+        shpfile = 'assets/data/aldi_merge';
+
+        SHPParser.load(shpfile + '.shp', shpLoad, shpLoadError);
+        DBFParser.load(shpfile + '.dbf', dbfLoad, dbfLoadError);
+      }
+
+      // Handles the callback from loading DBFParser by assigning the dbf to a global.
+      function dbfLoad(db) {
+        dbf = db;
+        if (dbf && shp) {
+          render("");
+        }
+      }
+
+      // Handles the callback from loading SHPParser by assigning the shp to a global.
+      function shpLoad(sh) {
+        shp = sh;
+        if (dbf && shp) {
+          render("");
+        }
+      }
+
+      //function load() {
+        //alert("load does something");
+
+      //}
+      // Adds overlays for all features in the shpfile
+      function render(divisionSel) {
+        clearMap();
+
+        var ne = new google.maps.LatLng(shp.maxY, shp.maxX);
+        var sw = new google.maps.LatLng(shp.minY, shp.minX);
+		var bounds = new google.maps.LatLngBounds(sw, ne);
+        map.fitBounds(bounds);
+		    
+        if (divisionSel) {
+
+        for (var i = 0; i < shp.records.length; i++) {
+          var shape = shp.records[i].shape;
+
+          var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
+          var dbfRecord = dbf.records[i];
+		  var division = dbfRecord["DIV"];
+
+        if (divisionSel == "ALL" || division == divisionSel) {
+
+      var city = dbfRecord["CITY"];
+      var address = dbfRecord["ADDRESS"];
+      var state = dbfRecord["STATE"];
+      var info = '<strong>' + city + '</strong><br />' + address;
+      createMarker(pt, info);
+
+          addToSidebar(address,city,state,division,i);
+        }
+      }
+    }
+        $('#sidebar').datagrid();
+      }
+
+      function clearMap() {
+        if (typeof infoWindow != 'undefined') {
+          infoWindow.close();
+        }
+        
+        var rows = $('#sidebar').datagrid('getRows');
+      
+    for (var i = 0; i < rows.length; i++){
+          var id = rows[i].id;
+          console.log(id);
+          markers[id].setMap(null);
+    }
+
+        // Need to do both of these, not sure why
+        $('#sidebar').datagrid('loadData', {"total":0,"rows":[]});
+        $('#sidebar tr').remove();
+      }
+
+      // error handler for shploader.
+      function shpLoadError() {
+        window.console.log('shp file failed to load');
+      }
+
+      // error handler for dbfloader.
+      function dbfLoadError() {
+        console.log('dbf file failed to load');
+      }
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap">
+    </script>
+  </body>
+</html>
