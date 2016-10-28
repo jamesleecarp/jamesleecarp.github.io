@@ -147,6 +147,7 @@
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
 
+          var j += i;
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
 		  var division = dbfRecord["DIV"];
@@ -159,7 +160,7 @@
       var info = '<strong>' + city + '</strong><br />' + address;
       createMarker(pt, info);
 
-          addToSidebar(address,city,state,division,i);
+          addToSidebar(address,city,state,division,j);
         }
       }
     }
