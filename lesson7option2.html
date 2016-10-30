@@ -157,7 +157,7 @@
       var address = dbfRecord["ADDRESS"];
       var state = dbfRecord["STATE"];
       var info = '<strong>' + city + '</strong><br />' + address;
-      createMarker(pt, info);
+      createMarker(pt, info, i);
 
           addToSidebar(address,city,state,division,i);
         }
