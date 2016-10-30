@@ -74,7 +74,7 @@
         lastRow.append($('<td/>').text(i));
       }
       
-      function createMarker(point,info) {
+      function createMarker(point,info,i) {
         var iconURL = 'icons/Aldi.png';				var iconSize = new google.maps.Size(20,34);
         var iconOrigin = new google.maps.Point(0,0);	var iconAnchor = new google.maps.Point(0,0);
 
@@ -88,7 +88,7 @@
 
         var marker = new google.maps.Marker(myMarkerOpts);
 
-        markers.push(marker);
+        markers[i] = marker;
 
         google.maps.event.addListener(marker, 'click', function() {
           infoWindow.close();
@@ -157,7 +157,7 @@
       var address = dbfRecord["ADDRESS"];
       var state = dbfRecord["STATE"];
       var info = '<strong>' + city + '</strong><br />' + address;
-      createMarker(pt, info);
+      createMarker(pt, info, i);
 
           addToSidebar(address,city,state,division,i);
         }
