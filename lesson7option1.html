@@ -147,7 +147,7 @@
         for (var i = 0; i < shp.records.length; i++) {
           var shape = shp.records[i].shape;
 
-          var j = i;
+
           var pt = new google.maps.LatLng(shape.content.y,shape.content.x)
           var dbfRecord = dbf.records[i];
 		  var division = dbfRecord["DIV"];
@@ -159,6 +159,8 @@
       var state = dbfRecord["STATE"];
       var info = '<strong>' + city + '</strong><br />' + address;
       createMarker(pt, info);
+
+      j = j + 1;
 
           addToSidebar(address,city,state,division,j);
         }
