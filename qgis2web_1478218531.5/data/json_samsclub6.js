@@ -1,0 +1,22 @@
+var json_samsclub6={
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                                                                  
+"features": [
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "200 Emily Dr", "City": "Clarksburg", "State": "WV", "Zip": "26301", "Latitude": 39.263248, "Longitude": -80.286354 }, "geometry": { "type": "Point", "coordinates": [ -80.286354, 39.263248 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "200 Moraine Pointe Plz", "City": "Butler", "State": "PA", "Zip": "16001", "Latitude": 40.877740, "Longitude": -79.952378 }, "geometry": { "type": "Point", "coordinates": [ -79.952378, 40.87774 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "2000 Village Center Dr", "City": "Tarentum", "State": "PA", "Zip": "15084", "Latitude": 40.565661, "Longitude": -79.803605 }, "geometry": { "type": "Point", "coordinates": [ -79.803604899999982, 40.565661 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "2251 Century Dr", "City": "West Mifflin", "State": "PA", "Zip": "15122", "Latitude": 40.344492, "Longitude": -79.949500 }, "geometry": { "type": "Point", "coordinates": [ -79.9495, 40.344492 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "249 Summit Park Dr", "City": "Pittsburgh", "State": "PA", "Zip": "15275", "Latitude": 40.450512, "Longitude": -80.177895 }, "geometry": { "type": "Point", "coordinates": [ -80.177895, 40.450512 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "2500 Plank Rd", "City": "Altoona", "State": "PA", "Zip": "16601", "Latitude": 40.453710, "Longitude": -78.409642 }, "geometry": { "type": "Point", "coordinates": [ -78.409641779999959, 40.453710340000043 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "289 Mount Nebo Pointe Rd", "City": "Pittsburgh", "State": "PA", "Zip": "15237", "Latitude": 40.534334, "Longitude": -80.067141 }, "geometry": { "type": "Point", "coordinates": [ -80.067141099999958, 40.534334100000081 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "3621 William Penn Hwy", "City": "Monroeville", "State": "PA", "Zip": "15146", "Latitude": 40.435295, "Longitude": -79.801804 }, "geometry": { "type": "Point", "coordinates": [ -79.801804, 40.435295 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "381 Benner Pike", "City": "State College", "State": "PA", "Zip": "16801", "Latitude": 40.832445, "Longitude": -77.803848 }, "geometry": { "type": "Point", "coordinates": [ -77.803847709999957, 40.832444620000047 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "5045 University Town Centre Dr", "City": "Morgantown", "State": "WV", "Zip": "26501", "Latitude": 39.648014, "Longitude": -80.000868 }, "geometry": { "type": "Point", "coordinates": [ -80.000868, 39.648014 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "6211 State Route 30", "City": "Greensburg", "State": "PA", "Zip": "15601", "Latitude": 40.306599, "Longitude": -79.592569 }, "geometry": { "type": "Point", "coordinates": [ -79.592569, 40.306599 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "720 Fairmount Ave", "City": "Jamestown", "State": "NY", "Zip": "14701", "Latitude": 42.099251, "Longitude": -79.280058 }, "geometry": { "type": "Point", "coordinates": [ -79.280058, 42.099251 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "7200 Peach St", "City": "Erie", "State": "PA", "Zip": "16509", "Latitude": 42.053133, "Longitude": -80.086553 }, "geometry": { "type": "Point", "coordinates": [ -80.086553299999935, 42.053133100000025 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "80 Trinity Point Dr", "City": "Washington", "State": "PA", "Zip": "15301", "Latitude": 40.184608, "Longitude": -80.222554 }, "geometry": { "type": "Point", "coordinates": [ -80.222553719999951, 40.184607740000047 ] } },
+{ "type": "Feature", "properties": { "Name": "Sam's Club", "Address": "50555 Valley Plaza Dr", "City": "Saint Clairsville", "State": "OH", "Zip": "43950", "Latitude": 40.074687, "Longitude": -80.878081 }, "geometry": { "type": "Point", "coordinates": [ -80.878081049999935, 40.074687060000031 ] } }
+]
+}

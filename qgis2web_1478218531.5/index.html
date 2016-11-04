@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css" />
+        <link rel="stylesheet" type="text/css" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/label.css" />
+        <link rel="stylesheet" href="css/MarkerCluster.css" />
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+        <link rel="stylesheet" href="http://k4r573n.github.io/leaflet-control-osm-geocoder/Control.OSMGeocoder.css" />
+        <script src="js/leaflet.js"></script>
+        <script src="js/OSMBuildings-Leaflet.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/label.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="http://k4r573n.github.io/leaflet-control-osm-geocoder/Control.OSMGeocoder.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="data/json_wholefoods0.js"></script>
+        <script src="data/json_walmart1.js"></script>
+        <script src="data/json_traderjoes2.js"></script>
+        <script src="data/json_target3.js"></script>
+        <script src="data/json_savealot4.js"></script>
+        <script src="data/json_shopnsave5.js"></script>
+        <script src="data/json_samsclub6.js"></script>
+        <script src="data/json_freshmarket7.js"></script>
+        <script src="data/json_kuhns8.js"></script>
+        <script src="data/json_gianteagle9.js"></script>
+        <script src="data/json_costco10.js"></script>
+        <script src="data/json_ALDISites11.js"></script>
+        <script>
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        })
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var feature_group = new L.featureGroup([]);
+        var bounds_group = new L.featureGroup([]);
+        var raster_group = new L.LayerGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        var initialOrder = new Array();
+        var layerOrder = new Array();
+        function stackLayers() {
+            for (index = 0; index < initialOrder.length; index++) {
+                map.removeLayer(initialOrder[index]);
+                map.addLayer(initialOrder[index]);
+            }
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+        }
+        function restackLayers() {
+            for (index = 0; index < layerOrder.length; index++) {
+                layerOrder[index].bringToFront();
+            }
+        }
+        layerControl = L.control.layers({},{},{collapsed:false});
+        function pop_wholefoods0(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStylewholefoods0() {
+            return {
+                radius: 4.0,
+                fillColor: '#acfc6a',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayerwholefoods0(feature, latlng) {
+            return L.circleMarker(latlng, doStylewholefoods0())
+        }
+        var json_wholefoods0JSON = new L.geoJson(json_wholefoods0, {
+            onEachFeature: pop_wholefoods0, 
+            pointToLayer: doPointToLayerwholefoods0
+            });
+        layerOrder[layerOrder.length] = json_wholefoods0JSON;
+
+        bounds_group.addLayer(json_wholefoods0JSON);
+        initialOrder[initialOrder.length] = json_wholefoods0JSON;
+        feature_group.addLayer(json_wholefoods0JSON);
+        function pop_walmart1(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStylewalmart1() {
+            return {
+                radius: 4.0,
+                fillColor: '#f05cba',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayerwalmart1(feature, latlng) {
+            return L.circleMarker(latlng, doStylewalmart1())
+        }
+        var json_walmart1JSON = new L.geoJson(json_walmart1, {
+            onEachFeature: pop_walmart1, 
+            pointToLayer: doPointToLayerwalmart1
+            });
+        layerOrder[layerOrder.length] = json_walmart1JSON;
+
+        bounds_group.addLayer(json_walmart1JSON);
+        initialOrder[initialOrder.length] = json_walmart1JSON;
+        feature_group.addLayer(json_walmart1JSON);
+        function pop_traderjoes2(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStyletraderjoes2() {
+            return {
+                radius: 4.0,
+                fillColor: '#e74db6',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayertraderjoes2(feature, latlng) {
+            return L.circleMarker(latlng, doStyletraderjoes2())
+        }
+        var json_traderjoes2JSON = new L.geoJson(json_traderjoes2, {
+            onEachFeature: pop_traderjoes2, 
+            pointToLayer: doPointToLayertraderjoes2
+            });
+        layerOrder[layerOrder.length] = json_traderjoes2JSON;
+
+        bounds_group.addLayer(json_traderjoes2JSON);
+        initialOrder[initialOrder.length] = json_traderjoes2JSON;
+        feature_group.addLayer(json_traderjoes2JSON);
+        function pop_target3(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStyletarget3() {
+            return {
+                radius: 4.0,
+                fillColor: '#cca241',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayertarget3(feature, latlng) {
+            return L.circleMarker(latlng, doStyletarget3())
+        }
+        var json_target3JSON = new L.geoJson(json_target3, {
+            onEachFeature: pop_target3, 
+            pointToLayer: doPointToLayertarget3
+            });
+        layerOrder[layerOrder.length] = json_target3JSON;
+
+        bounds_group.addLayer(json_target3JSON);
+        initialOrder[initialOrder.length] = json_target3JSON;
+        feature_group.addLayer(json_target3JSON);
+        function pop_savealot4(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStylesavealot4() {
+            return {
+                radius: 4.0,
+                fillColor: '#29cef3',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayersavealot4(feature, latlng) {
+            return L.circleMarker(latlng, doStylesavealot4())
+        }
+        var json_savealot4JSON = new L.geoJson(json_savealot4, {
+            onEachFeature: pop_savealot4, 
+            pointToLayer: doPointToLayersavealot4
+            });
+        layerOrder[layerOrder.length] = json_savealot4JSON;
+
+        bounds_group.addLayer(json_savealot4JSON);
+        initialOrder[initialOrder.length] = json_savealot4JSON;
+        feature_group.addLayer(json_savealot4JSON);
+        function pop_shopnsave5(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStyleshopnsave5() {
+            return {
+                radius: 4.0,
+                fillColor: '#208a03',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayershopnsave5(feature, latlng) {
+            return L.circleMarker(latlng, doStyleshopnsave5())
+        }
+        var json_shopnsave5JSON = new L.geoJson(json_shopnsave5, {
+            onEachFeature: pop_shopnsave5, 
+            pointToLayer: doPointToLayershopnsave5
+            });
+        layerOrder[layerOrder.length] = json_shopnsave5JSON;
+
+        bounds_group.addLayer(json_shopnsave5JSON);
+        initialOrder[initialOrder.length] = json_shopnsave5JSON;
+        feature_group.addLayer(json_shopnsave5JSON);
+        function pop_samsclub6(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStylesamsclub6() {
+            return {
+                radius: 4.0,
+                fillColor: '#72849d',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayersamsclub6(feature, latlng) {
+            return L.circleMarker(latlng, doStylesamsclub6())
+        }
+        var json_samsclub6JSON = new L.geoJson(json_samsclub6, {
+            onEachFeature: pop_samsclub6, 
+            pointToLayer: doPointToLayersamsclub6
+            });
+        layerOrder[layerOrder.length] = json_samsclub6JSON;
+
+        bounds_group.addLayer(json_samsclub6JSON);
+        initialOrder[initialOrder.length] = json_samsclub6JSON;
+        feature_group.addLayer(json_samsclub6JSON);
+        function pop_freshmarket7(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStylefreshmarket7() {
+            return {
+                radius: 4.0,
+                fillColor: '#f479f0',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayerfreshmarket7(feature, latlng) {
+            return L.circleMarker(latlng, doStylefreshmarket7())
+        }
+        var json_freshmarket7JSON = new L.geoJson(json_freshmarket7, {
+            onEachFeature: pop_freshmarket7, 
+            pointToLayer: doPointToLayerfreshmarket7
+            });
+        layerOrder[layerOrder.length] = json_freshmarket7JSON;
+
+        bounds_group.addLayer(json_freshmarket7JSON);
+        initialOrder[initialOrder.length] = json_freshmarket7JSON;
+        feature_group.addLayer(json_freshmarket7JSON);
+        function pop_kuhns8(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStylekuhns8() {
+            return {
+                radius: 4.0,
+                fillColor: '#940e65',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayerkuhns8(feature, latlng) {
+            return L.circleMarker(latlng, doStylekuhns8())
+        }
+        var json_kuhns8JSON = new L.geoJson(json_kuhns8, {
+            onEachFeature: pop_kuhns8, 
+            pointToLayer: doPointToLayerkuhns8
+            });
+        layerOrder[layerOrder.length] = json_kuhns8JSON;
+
+        bounds_group.addLayer(json_kuhns8JSON);
+        initialOrder[initialOrder.length] = json_kuhns8JSON;
+        feature_group.addLayer(json_kuhns8JSON);
+        function pop_gianteagle9(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStylegianteagle9() {
+            return {
+                radius: 4.0,
+                fillColor: '#6ce1ca',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayergianteagle9(feature, latlng) {
+            return L.circleMarker(latlng, doStylegianteagle9())
+        }
+        var json_gianteagle9JSON = new L.geoJson(json_gianteagle9, {
+            onEachFeature: pop_gianteagle9, 
+            pointToLayer: doPointToLayergianteagle9
+            });
+        layerOrder[layerOrder.length] = json_gianteagle9JSON;
+
+        bounds_group.addLayer(json_gianteagle9JSON);
+        initialOrder[initialOrder.length] = json_gianteagle9JSON;
+        feature_group.addLayer(json_gianteagle9JSON);
+        function pop_costco10(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Address'] !== null ? Autolinker.link(String(feature.properties['Address'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['City'] !== null ? Autolinker.link(String(feature.properties['City'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['State'] !== null ? Autolinker.link(String(feature.properties['State'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Zip'] !== null ? Autolinker.link(String(feature.properties['Zip'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Latitude'] !== null ? Autolinker.link(String(feature.properties['Latitude'])) : '') + '</td></tr><tr><td colspan="2">' + (feature.properties['Longitude'] !== null ? Autolinker.link(String(feature.properties['Longitude'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStylecostco10() {
+            return {
+                radius: 4.0,
+                fillColor: '#816920',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayercostco10(feature, latlng) {
+            return L.circleMarker(latlng, doStylecostco10())
+        }
+        var json_costco10JSON = new L.geoJson(json_costco10, {
+            onEachFeature: pop_costco10, 
+            pointToLayer: doPointToLayercostco10
+            });
+        layerOrder[layerOrder.length] = json_costco10JSON;
+
+        bounds_group.addLayer(json_costco10JSON);
+        initialOrder[initialOrder.length] = json_costco10JSON;
+        feature_group.addLayer(json_costco10JSON);
+        function pop_ALDISites11(feature, layer) {
+            var popupContent = '<table><tr><td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td></tr></table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function doStyleALDISites11() {
+            return {
+                radius: 4.0,
+                fillColor: '#b75b66',
+                color: '#000000',
+                weight: 0.0,
+                opacity: 1.0,
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                fillOpacity: 1.0
+            }
+        }
+        function doPointToLayerALDISites11(feature, latlng) {
+            return L.circleMarker(latlng, doStyleALDISites11())
+        }
+        var json_ALDISites11JSON = new L.geoJson(json_ALDISites11, {
+            onEachFeature: pop_ALDISites11, 
+            pointToLayer: doPointToLayerALDISites11
+            });
+        layerOrder[layerOrder.length] = json_ALDISites11JSON;
+
+        bounds_group.addLayer(json_ALDISites11JSON);
+        initialOrder[initialOrder.length] = json_ALDISites11JSON;
+        feature_group.addLayer(json_ALDISites11JSON);
+        raster_group.addTo(map);
+        feature_group.addTo(map);
+        var osmGeocoder = new L.Control.OSMGeocoder({
+            collapsed: false,
+            position: 'topright',
+            text: 'Search',
+        });
+        osmGeocoder.addTo(map);
+        var baseMaps = {'OSM': basemap0};
+        L.control.layers(baseMaps,{'<img src="legend/ALDISites11.png" /> ALDI_Sites': json_ALDISites11JSON,'<img src="legend/costco10.png" /> costco': json_costco10JSON,'<img src="legend/gianteagle9.png" /> giant_eagle': json_gianteagle9JSON,'<img src="legend/kuhns8.png" /> kuhns': json_kuhns8JSON,'<img src="legend/freshmarket7.png" /> fresh_market': json_freshmarket7JSON,'<img src="legend/samsclub6.png" /> sams_club': json_samsclub6JSON,'<img src="legend/shopnsave5.png" /> shop_n_save': json_shopnsave5JSON,'<img src="legend/savealot4.png" /> save_a_lot': json_savealot4JSON,'<img src="legend/target3.png" /> target': json_target3JSON,'<img src="legend/traderjoes2.png" /> trader_joes': json_traderjoes2JSON,'<img src="legend/walmart1.png" /> walmart': json_walmart1JSON,'<img src="legend/wholefoods0.png" /> whole_foods': json_wholefoods0JSON,},{collapsed:false}).addTo(map);
+        map.locate({setView: true, maxZoom: 16});
+        function onLocationFound(e) {
+            var radius = e.accuracy / 2;
+            L.marker(e.latlng).addTo(map)
+            .bindPopup("You are within " + radius + " meters from this point")
+            .openPopup();
+            L.circle(e.latlng, radius).addTo(map);
+        }
+        map.on('locationfound', onLocationFound);
+        L.control.scale({options: {position: 'bottomleft', maxWidth: 100, metric: true, imperial: false, updateWhenIdle: false}}).addTo(map);
+        stackLayers();
+        map.on('overlayadd', restackLayers);
+        </script>
+    </body>
+</html>
