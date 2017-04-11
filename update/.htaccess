@@ -1,5 +1,5 @@
 AuthName "update"
 AuthTypeBasic
-AuthUserFile /update/.htpasswd
+AuthUserFile master/update/.htpasswd
 
 Require valid-user
