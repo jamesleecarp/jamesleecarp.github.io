@@ -1,0 +1,5 @@
+AuthName "update"
+AuthTypeBasic
+AuthUserFile /update/.htpasswds
+
+Require valid-user
