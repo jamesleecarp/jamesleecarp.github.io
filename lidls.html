@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>LIDL Locations</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.3/"></script>
+
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .esri-legend {
+      background-color: white;
+      color: black;
+      opacity: 0.85;
+    }
+    #titleDiv {
+    	margin: auto;
+    	position: absolute;
+    	top: 50px;
+    	width: 300px;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    	background-color: white;
+      	color: black;
+      	opacity: 0.85;
+    }
+    #title {
+    	text-align: center;
+    }
+  </style>
+	<SCRIPT>
+	function passWord() {
+	var testV = 1;
+	var pass1 = prompt('Please Enter Your Password',' ');
+	while (testV < 3) {
+	if (!pass1) 
+	history.go(-1);
+	if (pass1.toLowerCase() == "letmein") {
+	alert('You Got it Right!');
+	window.open('www.wikihow.com');
+	break;
+	} 
+	testV+=1;
+	var pass1 = 
+	prompt('Access Denied - Password Incorrect, Please Try Again.','Password');
+	}
+	if (pass1.toLowerCase()!="password" & testV ==3) 
+	history.go(-1);
+	return " ";
+	} 
+	</SCRIPT>
+	<CENTER>
+	<FORM>
+	<input type="button" value="Enter Protected Area" onClick="passWord()">
+	</FORM>
+	</CENTER>
+  <script>
+    require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/FeatureLayer",
+        "esri/renderers/SimpleRenderer",
+        "esri/renderers/UniqueValueRenderer",
+        "esri/symbols/SimpleMarkerSymbol",
+        "esri/symbols/SimpleLineSymbol",
+        "esri/symbols/SimpleFillSymbol",
+        "esri/widgets/Legend",
+        "esri/symbols/PictureMarkerSymbol",
+        "dojo/domReady!"
+      ],
+      function(
+        Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
+        SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol
+      ) {
+        
+        var renderer = new UniqueValueRenderer({
+          // attribute of interest - Earthquake magnitude
+          field: "Progress"
+        });
+
+        renderer.addUniqueValueInfo({
+          value: "Rumored",
+          symbol: new PictureMarkerSymbol({
+            url: "http://jamesleecarpenter.com/assets/img/LIDL-white.png",
+            width: 12,
+            height: 12
+          })
+        });
+
+        renderer.addUniqueValueInfo({
+          value: "Under Contract",
+          symbol: new PictureMarkerSymbol({
+            url: "http://jamesleecarpenter.com/assets/img/LIDL.png",
+            width: 12,
+            height: 12
+          })
+        });
+
+        var citiesRenderer = new SimpleRenderer({
+          symbol: new PictureMarkerSymbol({
+            url: "https://corporate.aldi.us/fileadmin/_processed_/d/5/csm_ALDI_logo_7ca773be2d.jpg",
+            width: 12,
+            height: 15,
+          })
+        });
+
+      // autocasts as new PopupTemplate()
+      var template = {
+        title: "{Progress}",
+        content: "{Name}",
+        fieldInfos: [{
+          fieldName: "Name",
+          format: {
+            digitSeparator: true, // Use a comma separator for large numbers
+            places: 0 // Sets the number of decimal places to 0 and rounds up
+          }
+        }]
+      };
+
+        var lidlLyr = new FeatureLayer({
+          url: "http://services2.arcgis.com/82iS1Pc7dgs3LFZv/arcgis/rest/services/lsites/FeatureServer/0?token=TO1KgMSHxqVt18MoTu96CKCh_rtjxpbg2TJ47PpS0KHZyGi3W8LZWs8cO0bTqIlAIsv1T-cyK-4MQ6stW27ejBqme1AZAq-SWhCZaw7Cxv-ktyuEmCYikp7sShOAgkcRdZOlhzQPeBnFEftf2oveLDwPY5SUe5SDp-AZjLo_eJLG5Yarx1F_Fd3Av44ScbP3BqbCLFhneg5NEK18xCZ3QSDaX3SNzqGPDLxKCs0PEcw",
+          renderer: renderer,
+          outFields: ["*"],
+          popupTemplate: template
+        });
+
+        // Add the layers to the map
+        var map = new Map({
+          basemap: "streets",
+        });
+
+        var view = new MapView({
+          container: "viewDiv",
+          map: map,
+          center: [-86.145954, 36.166794],
+          zoom: 6
+          
+        });
+
+        var legend = new Legend({
+          view: view,
+          layerInfos: [
+          {
+            layer: lidlLyr,
+            title: "LIDL Locations"
+          }]
+        });
+
+        view.ui.add(legend, "bottom-right");
+        map.add(lidlLyr);
+      });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <div id="titleDiv"><h1 id= "title">LIDL Locations</h1></div>
+</body>
+
+</html>
