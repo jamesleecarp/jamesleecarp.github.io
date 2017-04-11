@@ -23,7 +23,20 @@
       color: black;
       opacity: 0.85;
     }
-
+    #titleDiv {
+    	margin: auto;
+    	position: absolute;
+    	top: 50px;
+    	width: 700px;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    	background-color: white;
+      	color: black;
+      	opacity: 0.85;
+    }
+    #title {
+    	text-align: center;
+    }
   </style>
 
   <script>
@@ -90,7 +103,7 @@
       };
 
         var citiesLyr = new FeatureLayer({
-          url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/Centers/FeatureServer/0?token=KTJCVh0DGJzHndsBk458b3gbpoTJ0fevvmGpb3_bFIWvCnEOKoThKRjaqlvncUVkrdorfUSpwCcoXpLfQKNOtCFtcCWe94KFnJUf0Kt3tbxd_6QKNRVo1M1fVNiYWvVdHDwEgdc93emeI9jvpU3GeTS2QTYlZjNHbjbR13Dj_w-vbdbitCzNNYq-dvhHS9kByF4Ac7iV4XkBDNxvJsUGT3dVblDtGee2zIPfktv0dow",
+          url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/Centers/FeatureServer/0?token=0ogO7q_VyrdCwtPyZO2BLiXKExXolHJR6dc5mn1FJMinGUpzhvNGRKMwj07f3BUp4GPfIwjoUeARsaAJilIeon40X0pOUoOmZakPnRUaOKmyZlFiAzr8Vx2eoTcUrPfSRYLDfEkLn2Bug1BODEeM0OcNnSnJvaqjnsuDK2nKRi4kzLRuIWCZ5rfcTaDqQbSL_BOZf_fBTzN5_OPbhE3_7i9R2uzS26-PA-aSpafBWac",
           renderer: renderer,
           outFields: ["*"],
           popupTemplate: template
@@ -126,6 +139,7 @@
 
 <body>
   <div id="viewDiv"></div>
+  <div id="titleDiv"><h1 id= "title">Current and Prospective Divisional Headquarters</h1></div>
 </body>
 
 </html>
