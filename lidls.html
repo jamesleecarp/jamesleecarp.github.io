@@ -37,7 +37,15 @@
     #title {
     	text-align: center;
     }
+    #button {
+      position: absolute;
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
   </style>
+
 	<SCRIPT>
 	function passWord() {
 	var testV = 1;
@@ -47,7 +55,7 @@
 	history.go(-1);
 	if (pass1.toLowerCase() == "letmein") {
 	alert('You Got it Right!');
-	window.open('www.wikihow.com');
+	window.open('http://jamesleecarpenter.com/lidls');
 	break;
 	} 
 	testV+=1;
@@ -59,11 +67,15 @@
 	return " ";
 	} 
 	</SCRIPT>
+
 	<CENTER>
+  
 	<FORM>
 	<input type="button" value="Enter Protected Area" onClick="passWord()">
 	</FORM>
+
 	</CENTER>
+
   <script>
     require([
         "esri/Map",
