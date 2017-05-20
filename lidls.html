@@ -123,10 +123,6 @@
           
         });
 
-        var searchWidget = new Search({
-		  view: view
-		});
-
         var legend = new Legend({
           view: view,
           layerInfos: [
@@ -136,12 +132,9 @@
           }]
         });
 
-        // the top left corner of the view
-		view.ui.add(searchWidget,"top-left");
         view.ui.add(legend, "bottom-right");
         map.add(lidlLyr);
       });
-
 
   </script>
 </head>
