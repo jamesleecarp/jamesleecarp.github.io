@@ -51,13 +51,12 @@
         "esri/symbols/SimpleLineSymbol",
         "esri/symbols/SimpleFillSymbol",
         "esri/widgets/Legend",
-        "esri/widgets/Search",
         "esri/symbols/PictureMarkerSymbol",
         "dojo/domReady!"
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
-        SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, Search
+        SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -123,16 +122,6 @@
           zoom: 5
           
         });
-
-        var searchWidget = new Search({
-		  view: view
-		});
-		// Adds the search widget below other elements in
-		// the top left corner of the view
-		view.ui.add(searchWidget, {
-		  position: "top-left",
-		  index: 2
-		});
 
         var legend = new Legend({
           view: view,
