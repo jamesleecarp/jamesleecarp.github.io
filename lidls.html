@@ -135,6 +135,16 @@
         view.ui.add(legend, "bottom-right");
         map.add(lidlLyr);
       });
+
+		var searchWidget = new Search({
+		  view: view
+		});
+		// Adds the search widget below other elements in
+		// the top right corner of the view
+		view.ui.add(searchWidget, {
+		  position: "top-right",
+		  index: 2
+		});
   </script>
 </head>
 
