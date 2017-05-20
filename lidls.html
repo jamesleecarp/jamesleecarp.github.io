@@ -56,7 +56,7 @@
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
-        SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol
+        SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, searchWidget
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -122,6 +122,16 @@
           zoom: 5
           
         });
+
+        var searchWidget = new Search({
+		  view: view
+		});
+		// Adds the search widget below other elements in
+		// the top left corner of the view
+		view.ui.add(searchWidget, {
+		  position: "top-left",
+		  index: 2
+		});
 
         var legend = new Legend({
           view: view,
