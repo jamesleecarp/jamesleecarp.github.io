@@ -18,12 +18,12 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiamNhcnBlbnRlciIsImEiOiJmdDh1UG9rIn0.sfFdXB25BjoRDehdEyuQVg';
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/mapbox/dark-v9', //hosted style id
+    style: 'mapbox://styles/jcarpenter/cij1i02or00108xknlcr50u2o', //hosted style id
     center: [-77.38, 39], // starting position
     zoom: 3 // starting zoom
 });
 map.on('load', () => {
-    map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png', (error, image) => {
+    map.loadImage('http://jamesleecarpenter.com/icons/logo-small.png', (error, image) => {
         if (error) throw error;
         map.addImage('cat', image);
         map.addLayer({
@@ -37,18 +37,24 @@ map.on('load', () => {
                         "type": "Feature",
                         "geometry": {
                             "type": "Point",
-                            "coordinates": [0, 0]
+                            "coordinates": [-87.6298, 41.8781]
                         }
                     }]
                 }
             },
             "layout": {
                 "icon-image": "cat",
-                "icon-size": 0.25
+                "icon-size": .5
             }
         });
     });
 });
+map.on('click', 'image', function (e) {
+        new mapboxgl.Popup()
+            .setLngLat(e.features[0].geometry.coordinates)
+            .setHTML(e.features[0].properties.description)
+            .addTo(map);
+    });
 </script>
 
 </body>
