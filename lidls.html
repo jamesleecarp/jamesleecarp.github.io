@@ -94,25 +94,11 @@
       var template = {
         title: "{Progress}",
         content: "{Address}",
-        fieldInfos: [{
-          fieldName: "Name",
-          format: {
-            digitSeparator: true, // Use a comma separator for large numbers
-            places: 0 // Sets the number of decimal places to 0 and rounds up
-          }
-        }, {
-          fieldName: "City",
-          format: {
-            digitSeparator: true,
-            places: 0
-          }
-        }, {
-          fieldName: "State",
-          format: {
-            digitSeparator: true,
-            places: 0
-          }
-        }]
+        fieldInfos: [
+        	{fieldName: "Name"},
+        	{fieldName: "City"},
+        	{fieldName: "State"}
+        ],
       };
 
         var lidlLyr = new FeatureLayer({
@@ -120,6 +106,7 @@
           renderer: renderer,
           outFields: ["*"],
           popupTemplate: template
+          popupTemplate.resize(300, 200);
         });
 
         // Add the layers to the map
@@ -146,7 +133,6 @@
 
         view.ui.add(legend, "bottom-right");
         map.add(lidlLyr);
-        template.resize(300, 200);
       });
   </script>
 </head>
