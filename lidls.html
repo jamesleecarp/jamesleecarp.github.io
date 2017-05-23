@@ -91,7 +91,7 @@
         });
 
       // autocasts as new PopupTemplate()
-      var template = {
+      var template = new PopupTemplate({
         title: "{Progress}",
         content: "{Address}",
         fieldInfos: [{
@@ -113,7 +113,7 @@
             places: 0
           }
         }]
-      };
+      });
 
         var lidlLyr = new FeatureLayer({
           url: "http://services2.arcgis.com/82iS1Pc7dgs3LFZv/arcgis/rest/services/lsites/FeatureServer/0?token=pJvKtNDA9fk5Z7jtmXdOV4MM3ASDcUk3f3MHM1NSO_SjK7w7STRxGciP10w0qdSVxWH5ogznpuUksBheC0zssvqqX386GoykvWCbz6_kD0QP6gxKDPM0LIYiIdrQ6zJKCULx6IC9qqge99ZfLX8iKzsqlIcjG38j6WIddahM8l_hmecH2DattUfxu1wslZnoy7Tj-wOjjT8ChvScuiub0-4mTcp5ngg1vaKPHQDp4sc.",
