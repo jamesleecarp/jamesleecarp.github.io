@@ -56,7 +56,7 @@
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
-        SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol
+        SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, PopupTemplate
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -91,7 +91,7 @@
         });
 
       // autocasts as new PopupTemplate()
-      var template = new PopupTemplate({
+      var poptemplate = new PopupTemplate({
         title: "{Progress}",
         content: "{Address}",
         fieldInfos: [{
