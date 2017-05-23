@@ -93,7 +93,10 @@
       // autocasts as new PopupTemplate()
       var template = {
         title: "{Progress}",
-        content: "{Address},{City},{State},{Zip}",
+        content: "{Address}" +
+        "<br> {City}" +
+        "<br> {State}" +
+        "<br> {Zip}",
       };
 
         var lidlLyr = new FeatureLayer({
