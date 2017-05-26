@@ -8,26 +8,26 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; background-color: black;}
-        p {color: white;}
-        #map { position:absolute; top:40px; bottom:0; width:50%;-moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%;}
-        a {color:inherit;}
+        #text {color: lightblue; text-align:center; width:100%; height: 80px; position:absolute; top:0; bottom:0px; left:0; right:0; margin:auto;font-family: consolas; font-size: 200%; -webkit-text-stroke: 1px black; z-index:1;}
+        #map { position:absolute; width:100%;-moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%; padding-bottom: 100%;}
+        a {color: lightblue; font-family: consolas; font-size: 150%; -webkit-text-stroke: 1px black;}
     </style>
 </head>
 <body>
-<p><a href="index_old.html"><b>LINK TO OLD SITE</b></a>
-<br>This page is under construction.
-<br>New website
-<br>coming soon!
-</p>
-<br>
+<div id='text'>
+<p><a href="index_old.html"><b>Link to Old Site</b></a>
+<br><b>This page is under construction. <br>New website coming soon!</b></p>
+</div>
+
 <div id='map'></div>
+
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiamNhcnBlbnRlciIsImEiOiJmdDh1UG9rIn0.sfFdXB25BjoRDehdEyuQVg';
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/jcarpenter/cij1i02or00108xknlcr50u2o', //hosted style id
-    center: [-90.142355, 25.398015], // starting position
-    zoom: 1 // starting zoom
+    center: [-98.240320, 37.267780], // starting position
+    zoom: 2 // starting zoom
 });
 /*
 map.on('load', () => {
