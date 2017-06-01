@@ -69,12 +69,13 @@
         "esri/symbols/PictureMarkerSymbol",
         "esri/widgets/Expand",
         "esri/widgets/BasemapGallery",
+        "esri/widgets/LayerList",
         "dojo/domReady!"
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
         SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, 
-        Expand, BasemapGallery
+        Expand, BasemapGallery, LayerList
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -158,7 +159,13 @@
 	      expandIconClass: "esri-icon-basemap"
 	    });
 
-	    view.ui.add(bgExpand, "top-right");
+	    view.then(function() {
+        	var layerList = new LayerList({
+          		view: view
+        	});
+        	
+	    view.ui.add(layerList, "top-right");
+	    view.ui.add(bgExpand, "bottom-left");
         view.ui.add(legend, "bottom-right");
         map.add(lidlLyr);
       });
