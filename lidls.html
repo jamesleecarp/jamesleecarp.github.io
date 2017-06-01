@@ -67,12 +67,14 @@
         "esri/symbols/SimpleFillSymbol",
         "esri/widgets/Legend",
         "esri/symbols/PictureMarkerSymbol",
+        "esri/widgets/Expand",
         "esri/widgets/BasemapGallery",
         "dojo/domReady!"
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
-        SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, BasemapGallery
+        SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, 
+        Expand, BasemapGallery
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -146,14 +148,21 @@
         });
 
 	    var basemapGallery = new BasemapGallery({
-	      view: view
+        	view: view,
+        	container: document.createElement("div")
+      	});
+
+	    var bgExpand = new Expand({
+	      view: view,
+	      content: basemapGallery.domNode,
+	      expandIconClass: "esri-icon-basemap"
 	    });
 
-	    // Add the widget to the bottom left corner of the view
-	    view.ui.add(basemapGallery, {
-	      position: "top-right"
-	    });
-	    
+      // Add the expand instance to the ui
+
+      view.ui.add(bgExpand, "top-right");
+    });
+
         view.ui.add(legend, "bottom-right");
         map.add(lidlLyr);
       });
