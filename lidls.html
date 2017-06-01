@@ -159,11 +159,10 @@
 	      expandIconClass: "esri-icon-basemap"
 	    });
 
-	    view.then(function() {
-        	var layerList = new LayerList({
-          		view: view
-        	});
-        	
+	    var layerList = new LayerList({
+          	view: view,
+        });
+
 	    view.ui.add(layerList, "top-right");
 	    view.ui.add(bgExpand, "bottom-left");
         view.ui.add(legend, "bottom-right");
