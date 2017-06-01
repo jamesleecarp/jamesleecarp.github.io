@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>LIDL Locations</title>
+  <title>Locations</title>
 
   <link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">
   <script src="https://js.arcgis.com/4.3/"></script>
@@ -107,11 +107,12 @@
 
       // autocasts as new PopupTemplate()
       var template = {
-        title: "{Progress}",
+        title: "{Address}",
         content: "Address: {Address}" +
         "<br>City: {City}" +
         "<br>State: {State}" +
-        "<br>Zip: {Zip_Code}",
+        "<br>Zip: {Zip_Code}" +
+        "<br>Prograss: {Progress}",
       };
 
         var lidlLyr = new FeatureLayer({
