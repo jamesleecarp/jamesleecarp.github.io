@@ -80,12 +80,13 @@
         "esri/widgets/Expand",
         "esri/widgets/BasemapGallery",
         "esri/widgets/LayerList",
+        "esri/widgets/Print",
         "dojo/domReady!"
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
         SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, 
-        Expand, BasemapGallery, LayerList
+        Expand, BasemapGallery, LayerList, Print
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -107,14 +108,6 @@
             url: "http://jamesleecarpenter.com/assets/img/LIDL.png",
             width: 12,
             height: 12
-          })
-        });
-
-        var citiesRenderer = new SimpleRenderer({
-          symbol: new PictureMarkerSymbol({
-            url: "https://corporate.aldi.us/fileadmin/_processed_/d/5/csm_ALDI_logo_7ca773be2d.jpg",
-            width: 12,
-            height: 15,
           })
         });
 
@@ -164,17 +157,35 @@
       	});
 
 	    var bgExpand = new Expand({
-	      view: view,
-	      content: basemapGallery.domNode,
-	      expandIconClass: "esri-icon-basemap"
+	    	view: view,
+	    	content: basemapGallery.domNode,
+	    	expandIconClass: "esri-icon-basemap"
+	    });
+
+	    var print = new Print({
+        	view: view,
+        	container: document.createElement("div")
+      	});
+
+	    var pExpand = new Expand({
+	    	view: view,
+	     	content: print.domNode,
+	     	expandIconClass: "esri-icon-printer"
 	    });
 
 	    var layerList = new LayerList({
           	view: view,
         });
 
+	    var print = new Print({
+            view: view,
+            // specify your own print service
+            printServiceUrl: "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+        });
+
 	    view.ui.add(layerList, "top-right");
 	    view.ui.add(bgExpand, "bottom-left");
+	    view.ui.add(pExpand,"bottom-left");
         view.ui.add(legend, "bottom-right");
         map.add(lidlLyr);
       });
