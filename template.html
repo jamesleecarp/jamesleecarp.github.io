@@ -96,7 +96,7 @@
           value: "A",
           symbol: new PictureMarkerSymbol({
             url: "http://jamesleecarpenter.com/icons/blue_MarkerA.png",
-            width: 24,
+            width: 16,
             height: 24
           })
         });
@@ -105,7 +105,7 @@
           value: "B",
           symbol: new PictureMarkerSymbol({
             url: "http://jamesleecarpenter.com/icons/green_MarkerB.png",
-            width: 12,
+            width: 16,
             height: 24
           })
         });
@@ -119,9 +119,9 @@
         "<br>Value: {Value}",
       };
 
-        var lyr = new FeatureLayer({
+        var lyr1 = new FeatureLayer({
           url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/template/FeatureServer/0?token=w3ZWDsYbzZK68CGB2Sqzz8yF0Mqi7Kju1tR_2Ng-0yg1jAoaUUGLAR9GjNFaPclLCVun9GwkzziA7yDL6OW5763qPkWX0Ynw58TDGSt1oh0j2OpLWk5y9a4lzFnW0zKz8XawyHqV0VmVK3efJ_M_Uk3bmBpK8W5etPIX2MztMxRfuAotaBZbXpi_VA1jeJIxmwgJJo-A5S3gJjcDT_rL5PXgkMAxOAM6_12xuZpJqII.",
-          title: "Layer",
+          title: "Layer 1",
           renderer: renderer,
           outFields: ["*"],
           popupTemplate: template
@@ -144,7 +144,7 @@
           view: view,
           layerInfos: [
           {
-            layer: lyr,
+            layer: lyr1,
             title: "Legend"
           }]
         });
@@ -167,7 +167,7 @@
 	      view.ui.add(layerList, "top-right");
 	      view.ui.add(bgExpand, "bottom-left");
         view.ui.add(legend, "bottom-right");
-        map.add(lyr);
+        map.add(lyr1);
       });
   </script>
 </head>
