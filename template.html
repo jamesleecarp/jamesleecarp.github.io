@@ -89,48 +89,39 @@
       ) {
         
         var renderer = new UniqueValueRenderer({
-          field: "Progress"
+          field: "Value"
         });
 
         renderer.addUniqueValueInfo({
-          value: "Rumored",
+          value: "A",
           symbol: new PictureMarkerSymbol({
-            url: "http://jamesleecarpenter.com/icons/blue_MarkerR.png",
+            url: "http://jamesleecarpenter.com/icons/blue_MarkerA.png",
             width: 12,
             height: 12
           })
         });
 
         renderer.addUniqueValueInfo({
-          value: "Under Contract",
+          value: "B",
           symbol: new PictureMarkerSymbol({
-            url: "http://jamesleecarpenter.com/icons/green_MarkerU.png",
-            width: 12,
-            height: 12
-          })
-        });
-
-        var citiesRenderer = new SimpleRenderer({
-          symbol: new PictureMarkerSymbol({
-            url: "https://corporate.aldi.us/fileadmin/_processed_/d/5/csm_ALDI_logo_7ca773be2d.jpg",
-            width: 12,
-            height: 15,
+            url: "http://jamesleecarpenter.com/icons/green_MarkerB.png",
+            //width: 12,
+            //eight: 12
           })
         });
 
       // autocasts as new PopupTemplate()
       var template = {
-        title: "{Address}",
-        content: "Address: {Address}" +
-        "<br>City: {City}" +
-        "<br>State: {State}" +
-        "<br>Zip: {Zip_Code}" +
-        "<br>Progress: {Progress}",
+        title: "{Field1}",
+        content: "Field 1: {Field1}" +
+        "<br>Field 2: {Field2}" +
+        "<br>Field 3: Field3}" +
+        "<br>Value: {Value}",
       };
 
-        var lidlLyr = new FeatureLayer({
-          url: "http://services2.arcgis.com/82iS1Pc7dgs3LFZv/arcgis/rest/services/lsites/FeatureServer/0?token=pJvKtNDA9fk5Z7jtmXdOV4MM3ASDcUk3f3MHM1NSO_SjK7w7STRxGciP10w0qdSVxWH5ogznpuUksBheC0zssvqqX386GoykvWCbz6_kD0QP6gxKDPM0LIYiIdrQ6zJKCULx6IC9qqge99ZfLX8iKzsqlIcjG38j6WIddahM8l_hmecH2DattUfxu1wslZnoy7Tj-wOjjT8ChvScuiub0-4mTcp5ngg1vaKPHQDp4sc.",
-          title: "Sites",
+        var lyr = new FeatureLayer({
+          url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/template/FeatureServer/0?token=w3ZWDsYbzZK68CGB2Sqzz8yF0Mqi7Kju1tR_2Ng-0yg1jAoaUUGLAR9GjNFaPclLCVun9GwkzziA7yDL6OW5763qPkWX0Ynw58TDGSt1oh0j2OpLWk5y9a4lzFnW0zKz8XawyHqV0VmVK3efJ_M_Uk3bmBpK8W5etPIX2MztMxRfuAotaBZbXpi_VA1jeJIxmwgJJo-A5S3gJjcDT_rL5PXgkMAxOAM6_12xuZpJqII.",
+          title: "Layer",
           renderer: renderer,
           outFields: ["*"],
           popupTemplate: template
@@ -153,8 +144,8 @@
           view: view,
           layerInfos: [
           {
-            layer: lidlLyr,
-            title: "Locations"
+            layer: lyr,
+            title: "Template"
           }]
         });
 
@@ -173,17 +164,17 @@
           	view: view,
         });
 
-	    view.ui.add(layerList, "top-right");
-	    view.ui.add(bgExpand, "bottom-left");
+	      view.ui.add(layerList, "top-right");
+	      view.ui.add(bgExpand, "bottom-left");
         view.ui.add(legend, "bottom-right");
-        map.add(lidlLyr);
+        map.add(lyr);
       });
   </script>
 </head>
 
 <body>
   <div id="viewDiv"></div>
-  <div id="titleDiv"><h1 id= "title">Locations</h1></div>
+  <div id="titleDiv"><h1 id= "title">Template</h1></div>
 </body>
 
 </html>
