@@ -163,9 +163,10 @@
 	    });
 
 	    var print = new Print({
-        	view: view,
-        	container: document.createElement("div")
-      	});
+            view: view,
+            // specify your own print service
+            printServiceUrl: "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+        });
 
 	    var pExpand = new Expand({
 	    	view: view,
@@ -177,15 +178,9 @@
           	view: view,
         });
 
-	    var print = new Print({
-            view: view,
-            // specify your own print service
-            printServiceUrl: "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
-        });
-
 	    view.ui.add(layerList, "top-right");
 	    view.ui.add(bgExpand, "bottom-left");
-	    view.ui.add(pExpand,"bottom-left");
+	    view.ui.add(pExpand, "bottom-left");
         view.ui.add(legend, "bottom-right");
         map.add(lidlLyr);
       });
