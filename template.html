@@ -111,13 +111,10 @@
         });
 
         var renderer2 = new SimpleRenderer({
-          symbol: new SimpleMarkerSymbol({
-            size: 6,
-            color: "black",
-            outline: {
-              width: 0.5,
-              color: "white"
-            }
+          symbol: new PictureMarkerSymbol({
+            url: "http://jamesleecarpenter.com/icons/orange_MarkerC.png",
+            width: 16,
+            height: 24
           })
         });
 
@@ -186,8 +183,8 @@
 	      view.ui.add(layerList, "top-right");
 	      view.ui.add(bgExpand, "bottom-left");
         view.ui.add(legend, "bottom-right");
-        map.add(lyr1);
         map.add(lyr2);
+        map.add(lyr1);
       });
   </script>
 </head>
