@@ -110,6 +110,17 @@
           })
         });
 
+        var renderer2 = new SimpleRenderer({
+          symbol: new SimpleMarkerSymbol({
+            size: 6,
+            color: "black",
+            outline: {
+              width: 0.5,
+              color: "white"
+            }
+          })
+        });
+
       // autocasts as new PopupTemplate()
       var template = {
         title: "Layer Title: {Field1}",
@@ -123,6 +134,14 @@
           url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/template/FeatureServer/0?token=w3ZWDsYbzZK68CGB2Sqzz8yF0Mqi7Kju1tR_2Ng-0yg1jAoaUUGLAR9GjNFaPclLCVun9GwkzziA7yDL6OW5763qPkWX0Ynw58TDGSt1oh0j2OpLWk5y9a4lzFnW0zKz8XawyHqV0VmVK3efJ_M_Uk3bmBpK8W5etPIX2MztMxRfuAotaBZbXpi_VA1jeJIxmwgJJo-A5S3gJjcDT_rL5PXgkMAxOAM6_12xuZpJqII.",
           title: "Layer 1",
           renderer: renderer,
+          outFields: ["*"],
+          popupTemplate: template
+        });
+
+        var lyr2 = new FeatureLayer({
+          url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/template2/FeatureServer/0?token=cwVvAdM1MJrLzIUn2gzAQ2UvSDrlV8T4xW1pxGGIiwwtpsUypU7P85G9mLSZL16P7j82gBzLErsmgxy2hZ9VUenT1JNEAKOHnmSuKnPM_jyASyNV5Zh7iQaBBwKi_ktuA0UoKAGEVwmgI3vjFoiSVX8DotXec0Ypef9m7-69V3yvYIsYaqHX4nuzMeejLVNmWD3XkYNf-lzW3fJ1hZznlDTEgJy9517lqdTFYVTiCZ4.",
+          title: "Layer 2",
+          renderer: renderer2,
           outFields: ["*"],
           popupTemplate: template
         });
@@ -145,7 +164,7 @@
           layerInfos: [
           {
             layer: lyr1,
-            title: "Legend"
+            title: "Layer 1"
           }]
         });
 
