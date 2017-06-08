@@ -80,12 +80,13 @@
         "esri/widgets/Expand",
         "esri/widgets/BasemapGallery",
         "esri/widgets/LayerList",
+        "esri/widgets/Print",
         "dojo/domReady!"
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
         SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, 
-        Expand, BasemapGallery, LayerList
+        Expand, BasemapGallery, LayerList, Print
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -180,12 +181,26 @@
 	      expandIconClass: "esri-icon-basemap"
 	    });
 
+      var print = new Print({
+            view: view,
+            container: document.createElement("div"),
+            // specify your own print service
+            printServiceUrl: "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+        });
+
+      var pExpand = new Expand({
+        view: view,
+        content: print.domNode,
+        expandIconClass: "esri-icon-printer"
+      });
+
 	    var layerList = new LayerList({
           	view: view,
         });
 
 	      view.ui.add(layerList, "top-right");
 	      view.ui.add(bgExpand, "bottom-left");
+        view.ui.add(pExpand, "bottom-left");
         view.ui.add(legend, "bottom-right");
         map.add(lyr2);
         map.add(lyr1);
