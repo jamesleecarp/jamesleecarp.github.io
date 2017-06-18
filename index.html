@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <title>James Carpenter</title>
+    <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
@@ -10,13 +10,16 @@
         body { margin:0; padding:0; background-color: black;}
         #text {color: lightblue; text-align:center; width:100%; height: 80px; position:absolute; top:0; bottom:0px; left:0; right:0; margin:auto;font-family: consolas; font-size: 200%; -webkit-text-stroke: 1px black; z-index:1;}
         #map { position:absolute; width:100%;-moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%; padding-bottom: 100%;}
-        a {color: lightblue; font-family: consolas; font-size: 150%; -webkit-text-stroke: 1px black;}
+        a {color: lightblue; font-family: consolas; font-size: 150%; -webkit-text-stroke: 1px black; padding: 30px ; text-decoration: none;}
+        a:hover {color: orange; font-family: consolas; font-size: 150%; -webkit-text-stroke: 1px black; padding: 30px ; text-decoration: none;}
     </style>
 </head>
 <body>
 <div id='text'>
-<p><a href="index_old.html"><b>Link to Old Site</b></a>
-<br><b>This page is under construction. <br>New website coming soon!</b></p>
+<p><a href="index_old.html"><b>Home</b></a><a href="projects.html"><b>Projects</b></a><a href="about.html"><b>About</b></a><a href="contact.html"><b>Contact</b></a>
+<br>
+<br><b>James Carpenter</b>
+<br><b>GISP</b></p>
 </div>
 
 <div id='map'></div>
@@ -29,6 +32,9 @@ var map = new mapboxgl.Map({
     center: [-98.240320, 37.267780], // starting position
     zoom: 2 // starting zoom
 });
+
+// disable map zoom when using scroll
+map.scrollZoom.disable();
 /*
 map.on('load', () => {
     map.loadImage('http://jamesleecarpenter.com/icons/logo-small.png', (error, image) => {
