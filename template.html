@@ -4,12 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <title>Template</title>
-
   <link rel="stylesheet" href="https://js.arcgis.com/4.3/esri/css/main.css">
-  <link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/themes/calcite/dijit/calcite.css">
-  <link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/themes/calcite/esri/esri.css">
   <script src="https://js.arcgis.com/4.3/"></script>
-
   <style>
     html,
     body,
@@ -19,7 +15,6 @@
       height: 100%;
       width: 100%;
     }
-    
     .esri-legend {
       background-color: white;
       color: black;
@@ -27,43 +22,43 @@
     }
     .esri-view-width-xsmall .esri-popup__main-container {
     	width: 100%;
-	}
-	.esri-view-width-small .esri-popup__main-container {
-    	width: 100%;
-	}
-	.esri-view-width-medium .esri-popup__main-container {
-    	width: 100%;
-	}
-    .esri-view-width-large .esri-popup__main-container {
-    	width: 100%;
-	}
-    .esri-view-width-xlarge .esri-popup__main-container {
-    	width: 100%;
-	}
-	.esri-layer-list {
-	    color: #323232;
-	    background-color: #f2f2f2;
-	    padding: 6px 7px;
-	    max-height: 420px;
-	    width: 100%;
-	    overflow: hidden;
-	    overflow-y: auto;
-	    transition: max-height 250ms ease-in-out;
-	}
-    #titleDiv {
-    	margin: auto;
-    	position: absolute;
-    	top: 50px;
-    	width: 300px;
-    	left: 50%;
-    	transform: translate(-50%, -50%);
-    	background-color: white;
-      	color: black;
-      	opacity: 0.85;
-    }
-    #title {
-    	text-align: center;
-    }
+  	}
+  	.esri-view-width-small .esri-popup__main-container {
+      	width: 100%;
+  	}
+  	.esri-view-width-medium .esri-popup__main-container {
+      	width: 100%;
+  	}
+      .esri-view-width-large .esri-popup__main-container {
+      	width: 100%;
+  	}
+      .esri-view-width-xlarge .esri-popup__main-container {
+      	width: 100%;
+  	}
+  	.esri-layer-list {
+  	    color: #323232;
+  	    background-color: #f2f2f2;
+  	    padding: 6px 7px;
+  	    max-height: 420px;
+  	    width: 100%;
+  	    overflow: hidden;
+  	    overflow-y: auto;
+  	    transition: max-height 250ms ease-in-out;
+  	}
+      #titleDiv {
+      	margin: auto;
+      	position: absolute;
+      	top: 50px;
+      	width: 300px;
+      	left: 50%;
+      	transform: translate(-50%, -50%);
+      	background-color: white;
+        	color: black;
+        	opacity: 0.85;
+      }
+      #title {
+      	text-align: center;
+      }
 
   </style>
 
@@ -85,47 +80,47 @@
         "esri/widgets/Print",
         "esri/widgets/Search",
         "esri/tasks/Locator",
-        "esri/SnappingManager",
-        "esri/dijit/Measurement",
         "dojo/domReady!"
       ],
-      function(
+
+    function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
         SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, 
-        Expand, BasemapGallery, LayerList, Print, Search, Locator, SnappingManager, Measurement
-      ) {
-        
-        var renderer = new UniqueValueRenderer({
-          field: "Value"
-        });
+        Expand, BasemapGallery, LayerList, Print, Search, Locator, 
+    ) { 
 
-        renderer.addUniqueValueInfo({
-          value: "A",
-          symbol: new PictureMarkerSymbol({
-            url: "http://jamesleecarp.github.io/icons/blue_MarkerA.png",
-            width: 16,
-            height: 24
-          })
-        });
+      //renderer
+      var renderer = new UniqueValueRenderer({
+        field: "Value"
+      });
 
-        renderer.addUniqueValueInfo({
-          value: "B",
-          symbol: new PictureMarkerSymbol({
-            url: "http://jamesleecarp.github.io/icons/green_MarkerB.png",
-            width: 16,
-            height: 24
-          })
-        });
+      renderer.addUniqueValueInfo({
+        value: "A",
+        symbol: new PictureMarkerSymbol({
+          url: "http://jamesleecarp.github.io/icons/blue_MarkerA.png",
+          width: 16,
+          height: 24
+        })
+      });
 
-        var renderer2 = new SimpleRenderer({
-          symbol: new PictureMarkerSymbol({
-            url: "http://jamesleecarp.github.io/icons/orange_MarkerC.png",
-            width: 16,
-            height: 24
-          })
-        });
+      renderer.addUniqueValueInfo({
+        value: "B",
+        symbol: new PictureMarkerSymbol({
+          url: "http://jamesleecarp.github.io/icons/green_MarkerB.png",
+          width: 16,
+          height: 24
+        })
+      });
 
-      // autocasts as new PopupTemplate()
+      var renderer2 = new SimpleRenderer({
+        symbol: new PictureMarkerSymbol({
+          url: "http://jamesleecarp.github.io/icons/orange_MarkerC.png",
+          width: 16,
+          height: 24
+        })
+      });
+
+      // PopupTemplate
       var template = {
         title: "Layer Title: {Field1}",
         content: "Field 1: {Field1}" +
@@ -134,52 +129,43 @@
         "<br>Value: {Value}",
       };
 
-        var lyr1 = new FeatureLayer({
-          url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/template/FeatureServer/0?token=w3ZWDsYbzZK68CGB2Sqzz8yF0Mqi7Kju1tR_2Ng-0yg1jAoaUUGLAR9GjNFaPclLCVun9GwkzziA7yDL6OW5763qPkWX0Ynw58TDGSt1oh0j2OpLWk5y9a4lzFnW0zKz8XawyHqV0VmVK3efJ_M_Uk3bmBpK8W5etPIX2MztMxRfuAotaBZbXpi_VA1jeJIxmwgJJo-A5S3gJjcDT_rL5PXgkMAxOAM6_12xuZpJqII.",
-          title: "Layer 1",
-          renderer: renderer,
-          outFields: ["*"],
-          popupTemplate: template
-        });
+      //layer
+      var lyr1 = new FeatureLayer({
+        url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/template/FeatureServer/0?token=w3ZWDsYbzZK68CGB2Sqzz8yF0Mqi7Kju1tR_2Ng-0yg1jAoaUUGLAR9GjNFaPclLCVun9GwkzziA7yDL6OW5763qPkWX0Ynw58TDGSt1oh0j2OpLWk5y9a4lzFnW0zKz8XawyHqV0VmVK3efJ_M_Uk3bmBpK8W5etPIX2MztMxRfuAotaBZbXpi_VA1jeJIxmwgJJo-A5S3gJjcDT_rL5PXgkMAxOAM6_12xuZpJqII.",
+        title: "Layer 1",
+        renderer: renderer,
+        outFields: ["*"],
+        popupTemplate: template
+      });
 
-        var lyr2 = new FeatureLayer({
-          url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/template2/FeatureServer/0?token=cwVvAdM1MJrLzIUn2gzAQ2UvSDrlV8T4xW1pxGGIiwwtpsUypU7P85G9mLSZL16P7j82gBzLErsmgxy2hZ9VUenT1JNEAKOHnmSuKnPM_jyASyNV5Zh7iQaBBwKi_ktuA0UoKAGEVwmgI3vjFoiSVX8DotXec0Ypef9m7-69V3yvYIsYaqHX4nuzMeejLVNmWD3XkYNf-lzW3fJ1hZznlDTEgJy9517lqdTFYVTiCZ4.",
-          title: "Layer 2",
-          renderer: renderer2,
-          outFields: ["*"],
-          popupTemplate: template
-        });
+      //layer
+      var lyr2 = new FeatureLayer({
+        url: "http://services1.arcgis.com/VA8qSG2eGMxXGKnw/arcgis/rest/services/template2/FeatureServer/0?token=cwVvAdM1MJrLzIUn2gzAQ2UvSDrlV8T4xW1pxGGIiwwtpsUypU7P85G9mLSZL16P7j82gBzLErsmgxy2hZ9VUenT1JNEAKOHnmSuKnPM_jyASyNV5Zh7iQaBBwKi_ktuA0UoKAGEVwmgI3vjFoiSVX8DotXec0Ypef9m7-69V3yvYIsYaqHX4nuzMeejLVNmWD3XkYNf-lzW3fJ1hZznlDTEgJy9517lqdTFYVTiCZ4.",
+        title: "Layer 2",
+        renderer: renderer2,
+        outFields: ["*"],
+        popupTemplate: template
+      });
 
-        // Add the layers to the map
-        var map = new Map({
-          basemap: "streets",
-        });
+      //legend wigit
+      var legend = new Legend({
+        view: view,
+        layerInfos: [
+        {
+          layer: lyr1,
+          title: "Layer 1"
+        },
+        {
+          layer: lyr2,
+          title: "Layer 2"
+        }]
+      });
 
-        var view = new MapView({
-          container: "viewDiv",
-          map: map,
-          center: [-98.051651, 38.482911],
-          zoom: 5
-          
-        });
-
-        var legend = new Legend({
-          view: view,
-          layerInfos: [
-          {
-            layer: lyr1,
-            title: "Layer 1"
-          },
-          {
-            layer: lyr2,
-            title: "Layer 2"
-          }]
-        });
-
+      //basemap wigit
 	    var basemapGallery = new BasemapGallery({
         	view: view,
         	container: document.createElement("div")
-      	});
+      });
 
 	    var bgExpand = new Expand({
 	      view: view,
@@ -187,6 +173,7 @@
 	      expandIconClass: "esri-icon-basemap"
 	    });
 
+      //print wigit
       var print = new Print({
             view: view,
             container: document.createElement("div"),
@@ -200,10 +187,12 @@
         expandIconClass: "esri-icon-printer"
       });
 
+      //layer list wigit
 	    var layerList = new LayerList({
           	view: view,
         });
 
+      //search wigit
       var searchWidget = new Search({
         view: view,
         allPlaceholder: "Search Address or Site",
@@ -236,28 +225,28 @@
         }]
       });
 
-        var snapManager = map.enableSnapping({
-          snapKey: has("mac") ? keys.META : keys.CTRL
-        });
-        var layerInfos = [{
-          layer: parcelsLayer
-        }];
-        snapManager.setLayerInfos(layerInfos);
-
-        var measurement = new Measurement({
-          map: map
-        }, dom.byId("measurementDiv"));
-        measurement.startup();
-
-	      view.ui.add(layerList, "top-right");
-	      view.ui.add(bgExpand, "bottom-left");
-        view.ui.add(pExpand, "bottom-left");
-        view.ui.add(legend, "bottom-right");
-        view.ui.add(searchWidget, {position: "top-left", index:0});
-        view.ui.add(measurementDiv, "bottom-left");
-        map.add(lyr2);
-        map.add(lyr1);
+      //map
+      var map = new Map({
+        basemap: "streets",
       });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-98.051651, 38.482911],
+        zoom: 5
+      });
+
+      //add wigits and layers
+      view.ui.add(layerList, "top-right");
+      view.ui.add(bgExpand, "bottom-left");
+      view.ui.add(pExpand, "bottom-left");
+      view.ui.add(legend, "bottom-right");
+      view.ui.add(searchWidget, {position: "top-left", index:0});
+      map.add(lyr2);
+      map.add(lyr1);
+    });
+
   </script>
 </head>
 
