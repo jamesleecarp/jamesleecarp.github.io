@@ -8,7 +8,7 @@
 }
 h1 {
 	color: black;
-	font-family: sans-serif;
+	font-family: consolas;
 	font-size: 38px;
 	font-style: italic;
 }
@@ -24,7 +24,7 @@ html {
 	background-color: #f6e8c3;
 }
 body {
-	font-family: sans-serif;
+	font-family: consolas;
 	background: #5ab4ac; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#5ab4ac, #f6e8c3); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#5ab4ac, #f6e8c3); /* For Opera 11.1 to 12.0 */
@@ -33,7 +33,7 @@ body {
 	margin: 0 auto;
 }
 ul {
-	font-family: sans-serif;
+	font-family: consolas;
     display: inline-block;
     width: 100%;
     padding: 0;
@@ -42,7 +42,7 @@ ul {
     display: inline-block;
 }
 li {
-	font-family: sans-serif;
+	font-family: consolas;
     display: inline-block;
     width: 24%;
 }
@@ -59,7 +59,7 @@ li.qual {
 a.one.home:link, a.one:visited {
     display: block;
     font-weight: bold;
-    font-family: sans-serif;
+    font-family: consolas;
     color: white;
     background-color: black;
     text-align: center;
@@ -70,7 +70,7 @@ a.one.home:link, a.one:visited {
 a.one.projects:link, a.one:visited {
     display: block;
     font-weight: bold;
-    font-family: sans-serif;
+    font-family: consolas;
     color: white;
     background-color: black;
     text-align: center;
@@ -81,7 +81,7 @@ a.one.projects:link, a.one:visited {
 a.one.about:link, a.one:visited {
     display: block;
     font-weight: bold;
-    font-family: sans-serif;
+    font-family: consolas;
     color: white;
     background-color: black;
     text-align: center;
@@ -92,7 +92,7 @@ a.one.about:link, a.one:visited {
 a.one.contact:link, a.one:visited {
     display: block;
     font-weight: bold;
-    font-family: sans-serif;
+    font-family: consolas;
     color: white;
     background-color: black;
     text-align: center;
@@ -170,7 +170,7 @@ a.one:hover {
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
    color: white;
    font-size: 14px;
-   font-family: Helvetica, Arial, Sans-Serif;
+   font-family: Helvetica, Arial, consolas;
    text-decoration: none;
    vertical-align: middle;
    }
