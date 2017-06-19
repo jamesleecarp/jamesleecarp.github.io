@@ -81,12 +81,14 @@
         "esri/widgets/BasemapGallery",
         "esri/widgets/LayerList",
         "esri/widgets/Print",
+        "esri/widgets/Search",
+        "esri/tasks/Locator",
         "dojo/domReady!"
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
         SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, 
-        Expand, BasemapGallery, LayerList, Print
+        Expand, BasemapGallery, LayerList, Print, Search, Locator
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -179,10 +181,35 @@
           	view: view,
         });
 
+		//search wigit
+		var searchWidget = new Search({
+		view: view,
+		allPlaceholder: "Search Address or Site",
+		sources: [{
+		  locator: new Locator("http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
+		  singleLineFieldName: "SingleLine",
+		  outFields: ["Addr_type"],
+		  name: "Address",
+		  placeholder: "Search Address",
+		  localSearchOptions: {
+		    minScale: 300000,
+		    distance: 50000   }
+		},{
+		  featureLayer: lidlLyr,
+		  searchFields: ["Address"],
+		  displayField: "Address",
+		  exactMatch: false,
+		  outFields: ["Address"],
+		  name: "LIDL",
+		  placeholder: "Search Address",
+		}]
+		});
+
 	    view.ui.add(layerList, "top-right");
 	    view.ui.add(bgExpand, "bottom-left");
 	    view.ui.add(pExpand, "bottom-left");
         view.ui.add(legend, "bottom-right");
+        view.ui.add(searchWidget, {position: "top-left", index:0});
         map.add(lidlLyr);
       });
   </script>
