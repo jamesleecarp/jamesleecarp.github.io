@@ -83,12 +83,14 @@
         "esri/widgets/Print",
         "esri/widgets/Search",
         "esri/tasks/Locator",
+        "esri/SnappingManager",
+        "esri/dijit/Measurement",
         "dojo/domReady!"
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
         SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, 
-        Expand, BasemapGallery, LayerList, Print, Search, Locator
+        Expand, BasemapGallery, LayerList, Print, Search, Locator, SnappingManager, Measurement
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -232,11 +234,25 @@
         }]
       });
 
+        var snapManager = map.enableSnapping({
+          snapKey: has("mac") ? keys.META : keys.CTRL
+        });
+        var layerInfos = [{
+          layer: parcelsLayer
+        }];
+        snapManager.setLayerInfos(layerInfos);
+
+        var measurement = new Measurement({
+          map: map
+        }, dom.byId("measurementDiv"));
+        measurement.startup();
+
 	      view.ui.add(layerList, "top-right");
 	      view.ui.add(bgExpand, "bottom-left");
         view.ui.add(pExpand, "bottom-left");
         view.ui.add(legend, "bottom-right");
         view.ui.add(searchWidget, {position: "top-left", index:0});
+        view.ui.add(measurementDiv, "bottom-left");
         map.add(lyr2);
         map.add(lyr1);
       });
