@@ -203,7 +203,9 @@
         view: view,
         allPlaceholder: "Search Address or Site",
         sources: [{
+          locator: new Locator("//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
           name: "Address",
+          placeholder: "Search Address",
         },{
           featureLayer: lyr1,
           searchFields: ["Field1"],
@@ -211,7 +213,7 @@
           exactMatch: false,
           outFields: ["Field1"],
           name: "Layer 1",
-          placeholder: "Search Address or Site",
+          placeholder: "Search Layer 1",
         }, {
           featureLayer: lyr2,
           searchFields: ["Field1"],
@@ -219,7 +221,7 @@
           exactMatch: false,
           outFields: ["Field1"],
           name: "Layer 2",
-          placeholder: "Search Address or Site",
+          placeholder: "Search Layer 2",
         }]
       });
 
