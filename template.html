@@ -89,6 +89,18 @@
         Expand, BasemapGallery, LayerList, Print, Search, Locator, 
     ) { 
 
+      //map
+      var map = new Map({
+        basemap: "streets",
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-98.051651, 38.482911],
+        zoom: 5
+      });
+
       //renderer
       var renderer = new UniqueValueRenderer({
         field: "Value"
@@ -223,18 +235,6 @@
           name: "Layer 2",
           placeholder: "Search Layer 2",
         }]
-      });
-
-      //map
-      var map = new Map({
-        basemap: "streets",
-      });
-
-      var view = new MapView({
-        container: "viewDiv",
-        map: map,
-        center: [-98.051651, 38.482911],
-        zoom: 5
       });
 
       //add wigits and layers
