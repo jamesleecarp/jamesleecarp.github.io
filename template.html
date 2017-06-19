@@ -207,20 +207,9 @@
           locator: new Locator("http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
           singleLineFieldName: "SingleLine",
           outFields: ["Addr_type"],
-          name: i18n.esriLocatorName,
           localSearchOptions: {
             minScale: 300000,
             distance: 50000
-          },
-          placeholder: i18n.placeholder,
-          resultSymbol: new PictureMarkerSymbol({
-             url: this.basePath + "/images/search-symbol-32.png",
-             size: 24,
-             width: 24,
-             height: 24,
-             xoffset: 0,
-             yoffset: 0
-         })
         },{
           featureLayer: lyr1,
           searchFields: ["Field1"],
