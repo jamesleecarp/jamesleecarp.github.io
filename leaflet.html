@@ -4,8 +4,11 @@
 		<title>leaflet</title>
 		<meta name="description" content="portfolio">
 		<link href="assets/css/screen.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+		<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js"></script>
+		 <!-- Load Esri Leaflet from CDN -->
+  		<script src="https://unpkg.com/esri-leaflet@2.0.8"></script>
+
 	<style>
         #map {height: 400px; width: 75%; margin: 0; padding: 0; }
     </style>
@@ -13,7 +16,12 @@
 	<div class="page-wrap">
 		<h1>Rex Hospital Map</h1>
   	<body>
+
+  	<!-- load the latest release from the cdn automatically -->
+	<script src="https://unpkg.com/esri-leaflet-vector"></script>
+
 		<div class="nav">
+
 			<ul>
 				<li><a class="one home" href="index.html">Home</a></li>
 				<li><a class="one projects" href="projects.html">Projects</a></li>
@@ -26,13 +34,16 @@
 			<script>
   			// Add map
   			var map = L.map('map').setView([35.817894, -78.702989], 10);
-  
-  			// Add base tiles to the map
-  			L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  				maxZoom: 20
-  			}).addTo(map);
-  
+  			var layer = L.esri.Vector.basemap('Newspaper').addTo(map);
+
+			  function setBasemap(basemap) {
+			    if (layer) {
+			      map.removeLayer(layer);
+			    }
+
+			    layer = L.esri.Vector.basemap(basemap);
+			    map.addLayer(layer);
+		  	}
   			// Add marker
   			L.marker([35.817894, -78.702989]).addTo(map)
   				.bindPopup('Rex Hospital')
