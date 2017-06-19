@@ -82,12 +82,13 @@
         "esri/widgets/LayerList",
         "esri/widgets/Print",
         "esri/widgets/Search",
+        "esri/tasks/Locator",
         "dojo/domReady!"
       ],
       function(
         Map, MapView, FeatureLayer, SimpleRenderer, UniqueValueRenderer,
         SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, 
-        Expand, BasemapGallery, LayerList, Print, Search
+        Expand, BasemapGallery, LayerList, Print, Search, Locator
       ) {
         
         var renderer = new UniqueValueRenderer({
@@ -203,7 +204,7 @@
         view: view,
         allPlaceholder: "Search Address or Site",
         sources: [{
-          locator: new Locator("//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
+          locator: new Locator("http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
           singleLineFieldName: "SingleLine",
           outFields: ["Addr_type"],
           name: i18n.esriLocatorName,
