@@ -6,7 +6,8 @@
 		<link href="assets/css/screen.css" rel="stylesheet" type="text/css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="assets/js/global.js"></script>
-		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
+    	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
 
 	</head>
 	<div class="page-wrap">
@@ -118,6 +119,15 @@
       <br>
       High School Varsity Soccer: 05-08, Captain: 07, 08
 		</p>
-	</body>
 	</div>
+	</body>
+	<script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoiamNhcnBlbnRlciIsImEiOiJmdDh1UG9rIn0.sfFdXB25BjoRDehdEyuQVg';
+		var map = new mapboxgl.Map({
+		    container: 'map', // container id
+		    style: 'mapbox://styles/jcarpenter/cij1i02or00108xknlcr50u2o', //hosted style id
+		    center: [-98.240320, 34.267780], // starting position
+		    zoom: 2 // starting zoom
+		});
+	</script>
 </html>
