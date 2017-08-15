@@ -184,7 +184,7 @@
 		//search wigit
 		var searchWidget = new Search({
 		view: view,
-		allPlaceholder: "Search Address",
+		allPlaceholder: "Search Address or Sites",
 		sources: [{
 		  locator: new Locator("http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"),
 		  singleLineFieldName: "SingleLine",
@@ -193,8 +193,17 @@
 		  placeholder: "Search Address",
 		  localSearchOptions: {
 		    minScale: 300000,
-		    distance: 50000   }
-		}]
+		    distance: 50000
+        }
+      }, {
+          featureLayer: lidlLyr,
+          searchFields: ["Address"],
+          displayField: "Address",
+          exactMatch: false,
+          outFields: ["Address"],
+          name: "Sites",
+          placeholder: "Search Sites",
+		  }]
 		});
 
 	    view.ui.add(layerList, "top-right");
