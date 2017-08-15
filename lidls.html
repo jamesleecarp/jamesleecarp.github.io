@@ -94,19 +94,7 @@
         SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Legend, PictureMarkerSymbol, 
         Expand, BasemapGallery, LayerList, Print, Search, Locator, Polyline, geometryEngine, Graphic, SimpleLineSymbol
       ) {
-        // options for configuring and managing
-        // measurement and draw tools
-        var measureConfig = {
-          isActive: false,
-          // meters | feet | kilometers | miles | nautical-miles | yards
-          units: "miles",
-          activeFeature: null,
-          finsishedFeature: null,
-          symbol: new SimpleLineSymbol({
-            color: "#21BAED",
-            width: 1.5
-          })
-        };
+
         var renderer = new UniqueValueRenderer({
           field: "Progress"
         });
@@ -221,13 +209,12 @@
             placeholder: "Search Sites",
   		  }]
   		});
-      
+
 	    view.ui.add(layerList, "top-right");
 	    view.ui.add(bgExpand, "bottom-left");
 	    view.ui.add(pExpand, "bottom-left");
       view.ui.add(legend, "bottom-right");
       view.ui.add(searchWidget, {position: "top-left", index:0});
-      view.ui.add("measure-button", "top-left");
       map.add(lidlLyr);
       });
   </script>
