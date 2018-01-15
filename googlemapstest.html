@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Google Maps</title>
+		<meta name="description" content="portfolio">
+		<link href="assets/css/screen.css" rel="stylesheet" type="text/css">
+		</script>
+		<style type="text/css">
+		  #map {height: 400px; width: 100%; margin: 0; padding: 0; }
+		  #ctaLayer {width: 5px}
+		</style>
+	</head>
+	<div class="page-wrap">
+		  	<h1>Google Maps API</h1>
+	<body>
+		<div class="nav">
+			<ul>
+				<li><a class="one home" href="index.html">Home</a></li>
+				<li><a class="one projects" href="projects.html">Projects</a></li>
+				<li><a class="one about" href="about.html">About</a></li>
+				<li><a class="one contact" href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		<br>
+    <div id="map"></div>
+    <script>
+		function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+        	zoom: 7,
+			center: {lat: 40.545066, lng: -76.515343}
+        });
+
+        var drawingManager = new google.maps.drawing.DrawingManager({
+          drawingMode: google.maps.drawing.OverlayType.MARKER,
+          drawingControl: true,
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
+          },
+          markerOptions: {icon: 'http://jamesleecarp.github.io/icons/blue_MarkerA.png'},
+          circleOptions: {
+            fillColor: '#ffff00',
+            fillOpacity: 1,
+            strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+          }
+        });
+        drawingManager.setMap(map);
+
+		var divisonLayer = new google.maps.KmlLayer({
+			url: 'http://jamesleecarp.github.io/assets/division.kml',
+			map: map
+		  });
+		
+		map.divisonLayer.setStyle({
+	          fillColor: 'green',
+	          strokeWeight: 1
+	        });
+      }
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&libraries=drawing&callback=initMap">
+    </script>
+		<br>
+		<p>.</p>  			
+	</body>
+	</div>
+</html>
