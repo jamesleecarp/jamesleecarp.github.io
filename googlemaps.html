@@ -30,10 +30,17 @@
 			center: {lat: 40.545066, lng: -76.515343}
 		  });
 
-		  var ctaLayer = new google.maps.KmlLayer({
+		  var divisonLayer = new google.maps.KmlLayer({
 			url: 'http://jamesleecarp.github.io/assets/division.kml',
 			map: map
 		  });
+
+			// Set the stroke width, and fill color for each polygon
+	        map.divisonLayer.setStyle({
+	          fillColor: 'orange',
+	          strokeWeight: 1
+	        });
+
 		}
     </script>
     <script async defer
