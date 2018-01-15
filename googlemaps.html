@@ -25,30 +25,19 @@
     <div id="map"></div>
     <script>
 		function initMap() {
-		  var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 7,
+        var map = new google.maps.Map(document.getElementById('map'), {
+        	zoom: 7,
 			center: {lat: 40.545066, lng: -76.515343}
-		  });
+        });
 
-		  var divisonLayer = new google.maps.KmlLayer({
-			url: 'http://jamesleecarp.github.io/assets/division.kml',
-			map: map
-		  });
-
-			// Set the stroke width, and fill color for each polygon
-	      map.divisonLayer.setStyle({
-	          fillColor: 'green',
-	          strokeWeight: 1
-	        });
-
-		var drawingManager = new google.maps.drawing.DrawingManager({
+        var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.MARKER,
           drawingControl: true,
           drawingControlOptions: {
             position: google.maps.ControlPosition.TOP_CENTER,
             drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
           },
-          markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
+          markerOptions: {icon: 'http://jamesleecarp.github.io/icons/blue_MarkerA.png'},
           circleOptions: {
             fillColor: '#ffff00',
             fillOpacity: 1,
@@ -59,7 +48,12 @@
           }
         });
         drawingManager.setMap(map);
-		}
+
+		var divisonLayer = new google.maps.KmlLayer({
+			url: 'http://jamesleecarp.github.io/assets/division2.kml',
+			map: map,
+		  });
+      }
     </script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&libraries=drawing&callback=initMap">
