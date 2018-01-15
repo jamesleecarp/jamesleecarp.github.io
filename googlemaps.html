@@ -6,12 +6,12 @@
 		<link href="assets/css/screen.css" rel="stylesheet" type="text/css">
 		</script>
 		<style type="text/css">
-		  #map {height: 400px; width: 75%; margin: 0; padding: 0; }
+		  #map {height: 400px; width: 100%; margin: 0; padding: 0; }
 		  #ctaLayer {width: 5px}
 		</style>
 	</head>
 	<div class="page-wrap">
-		  	<h1>Charlotte Nurseries</h1>
+		  	<h1>Google Maps API</h1>
 	<body>
 		<div class="nav">
 			<ul>
@@ -26,12 +26,12 @@
     <script>
 		function initMap() {
 		  var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 11,
-			center: {lat: 35.218455, lng: -80.812960}
+			zoom: 7,
+			center: {lat: 40.545066, lng: -76.515343}
 		  });
 
 		  var ctaLayer = new google.maps.KmlLayer({
-			url: 'http://jamesleecarp.github.io/assets/Nuseries.kml',
+			url: 'http://jamesleecarp.github.io/assets/division.kml',
 			map: map
 		  });
 		}
@@ -40,7 +40,7 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap">
     </script>
 		<br>
-		<p>Nurseries in Charlotte, NC.</p>  			
+		<p>.</p>  			
 	</body>
 	</div>
 </html>
