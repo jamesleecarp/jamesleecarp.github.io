@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/prizm_0.js"></script>
+        <script src="data/walmart_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[42.1438530011,-71.6954229839],[42.4820618488,-70.9238515535]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_prizm_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(String(feature.properties['OBJECTID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID'] !== null ? Autolinker.link(String(feature.properties['ID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? Autolinker.link(String(feature.properties['NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ST_ABBREV'] !== null ? Autolinker.link(String(feature.properties['ST_ABBREV'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOTPOP_CY'] !== null ? Autolinker.link(String(feature.properties['TOTPOP_CY'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOTHH_CY'] !== null ? Autolinker.link(String(feature.properties['TOTHH_CY'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['group3sum'] !== null ? Autolinker.link(String(feature.properties['group3sum'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? Autolinker.link(String(feature.properties['Shape_Leng'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? Autolinker.link(String(feature.properties['Shape_Area'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Normalized'] !== null ? Autolinker.link(String(feature.properties['Normalized'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_prizm_0_0(feature) {
+            if (feature.properties['group3sum / Shape_Area'] >= 0.000000 && feature.properties['group3sum / Shape_Area'] <= 0.000636 ) {
+                return {
+                pane: 'pane_prizm_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,212,0.5)',
+            }
+            }
+            if (feature.properties['group3sum / Shape_Area'] >= 0.000636 && feature.properties['group3sum / Shape_Area'] <= 0.002253 ) {
+                return {
+                pane: 'pane_prizm_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,217,142,0.5)',
+            }
+            }
+            if (feature.properties['group3sum / Shape_Area'] >= 0.002253 && feature.properties['group3sum / Shape_Area'] <= 0.005790 ) {
+                return {
+                pane: 'pane_prizm_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,153,41,0.5)',
+            }
+            }
+            if (feature.properties['group3sum / Shape_Area'] >= 0.005790 && feature.properties['group3sum / Shape_Area'] <= 0.010403 ) {
+                return {
+                pane: 'pane_prizm_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,95,14,0.5)',
+            }
+            }
+            if (feature.properties['group3sum / Shape_Area'] >= 0.010403 && feature.properties['group3sum / Shape_Area'] <= 0.017772 ) {
+                return {
+                pane: 'pane_prizm_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(153,52,4,0.5)',
+            }
+            }
+        }
+        map.createPane('pane_prizm_0');
+        map.getPane('pane_prizm_0').style.zIndex = 400;
+        map.getPane('pane_prizm_0').style['mix-blend-mode'] = 'normal';
+        var layer_prizm_0 = new L.geoJson(json_prizm_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_prizm_0',
+            onEachFeature: pop_prizm_0,
+            style: style_prizm_0_0,
+        });
+        bounds_group.addLayer(layer_prizm_0);
+        map.addLayer(layer_prizm_0);
+        function pop_walmart_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['store_numb'] !== null ? Autolinker.link(String(feature.properties['store_numb'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['store_name'] !== null ? Autolinker.link(String(feature.properties['store_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['store_type'] !== null ? Autolinker.link(String(feature.properties['store_type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['open_date'] !== null ? Autolinker.link(String(feature.properties['open_date'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['address'] !== null ? Autolinker.link(String(feature.properties['address'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['city'] !== null ? Autolinker.link(String(feature.properties['city'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['state'] !== null ? Autolinker.link(String(feature.properties['state'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['zip_code'] !== null ? Autolinker.link(String(feature.properties['zip_code'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['phone_numb'] !== null ? Autolinker.link(String(feature.properties['phone_numb'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['store_hour'] !== null ? Autolinker.link(String(feature.properties['store_hour'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['pharm_phon'] !== null ? Autolinker.link(String(feature.properties['pharm_phon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['pharm_hour'] !== null ? Autolinker.link(String(feature.properties['pharm_hour'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['vision_pho'] !== null ? Autolinker.link(String(feature.properties['vision_pho'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['photo_phon'] !== null ? Autolinker.link(String(feature.properties['photo_phon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tire_phone'] !== null ? Autolinker.link(String(feature.properties['tire_phone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['store_serv'] !== null ? Autolinker.link(String(feature.properties['store_serv'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['latitude'] !== null ? Autolinker.link(String(feature.properties['latitude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['longitude'] !== null ? Autolinker.link(String(feature.properties['longitude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['geo_accura'] !== null ? Autolinker.link(String(feature.properties['geo_accura'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['country'] !== null ? Autolinker.link(String(feature.properties['country'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['country_co'] !== null ? Autolinker.link(String(feature.properties['country_co'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['county'] !== null ? Autolinker.link(String(feature.properties['county'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_walmart_1_0() {
+            return {
+                pane: 'pane_walmart_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(156,128,189,1.0)',
+            }
+        }
+        map.createPane('pane_walmart_1');
+        map.getPane('pane_walmart_1').style.zIndex = 401;
+        map.getPane('pane_walmart_1').style['mix-blend-mode'] = 'normal';
+        var layer_walmart_1 = new L.geoJson(json_walmart_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_walmart_1',
+            onEachFeature: pop_walmart_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_walmart_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_walmart_1);
+        map.addLayer(layer_walmart_1);
+        setBounds();
+        </script>
+    </body>
+</html>
