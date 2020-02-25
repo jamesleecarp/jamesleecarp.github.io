@@ -24,10 +24,9 @@
 }
 h1 {
 	color: black;
-	font-family: burgues;
+	font-family: consolas;
 	font-size: 38px;
 	font-style: italic;
-  position: center;
 }
 h3 {
 	position: absolute;
@@ -50,7 +49,6 @@ body {
 	font-family: consolas;
 	background: white; /* For browsers that do not support gradients */
 	margin: 0 auto;
-  height: 100%;
 }
 ul {
 	font-family: consolas;

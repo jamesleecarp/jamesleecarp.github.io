@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Portfolio</title>
+		<meta name="description" content="portfolio">
+		<link href="assets/css/screen.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="assets/js/global.js"></script>
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
+    	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
+		<link rel="icon" href="assets/img/logo_white.png" type="image/png" sizes="16x16">
+		<link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+
+	</head>
+	<div class="page-wrap">
+		<h1>Juliette and James</h1>
+	<body>
+	<div class="nav">
+		<ul>
+			<li><a class="one home" href="index.html">Home</a></li>
+			<li><a class="one projects" href="projects.html">Map</a></li>
+			<li><a class="one about" href="about.html">About</a></li>
+			<li><a class="one contact" href="contact.html">Lodging</a></li>
+		</ul>
+	</div>
+	<br>
+	<div id="map" class="map"></div>
+    	<script>
+      		import Map from 'ol/Map.js';
+		    import View from 'ol/View.js';
+		    import TileLayer from 'ol/layer/Tile.js';
+		    import {fromLonLat} from 'ol/proj.js';
+		    import Stamen from 'ol/source/Stamen.js';
+
+
+		    var map = new Map({
+		      layers: [
+		        new TileLayer({
+		          source: new Stamen({
+		            layer: 'watercolor'
+		          })
+		        }),
+		        new TileLayer({
+		          source: new Stamen({
+		            layer: 'terrain-labels'
+		          })
+		        })
+		      ],
+		      target: 'map',
+		      view: new View({
+		        center: fromLonLat([-122.416667, 37.783333]),
+		        zoom: 12
+		      })
+		    });
+		</script>
+	<!-- <script>
+		mapboxgl.accessToken = 'pk.eyJ1IjoiamNhcnBlbnRlciIsImEiOiJmdDh1UG9rIn0.sfFdXB25BjoRDehdEyuQVg';
+		var map = new mapboxgl.Map({
+		    container: 'map', // container id
+		    style: 'mapbox://styles/jcarpenter/cij1i02or00108xknlcr50u2o', //hosted style id
+		    center: [-98.240320, 34.267780], // starting position
+		    zoom: 2 // starting zoom
+		});
+	</script> -->
+	</body>
+</html>
