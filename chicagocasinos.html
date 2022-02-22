@@ -137,9 +137,9 @@
       }
 
       #locations-panel-list .section-name {
-        font-weight: 500;
-        font-size: 0.9em;
-        margin: 1.8em 0 1em 1.5em;
+        font-weight: 1000;
+        font-size: 1.2em;
+        margin: 1.8em 0 1em 0.5em;
       }
 
       #locations-panel-list .location-result {
@@ -210,6 +210,7 @@
         locator.searchLocationMarker = null;
         locator.selectedLocationIdx = null;
         locator.userCountry = null;
+
 
         // Initialize the map -------------------------------------------------------
         locator.map = new google.maps.Map(mapEl, configuration.mapOptions);
@@ -287,7 +288,7 @@
               return getLocationDistance(a) - getLocationDistance(b);
             });
           } else {
-            sectionNameEl.textContent = `All locations (${locations.length})`;
+            sectionNameEl.textContent = `Potential Casino Sites (${locations.length})`;
           }
           const resultItemContext = { locations: locations };
           resultsContainerEl.innerHTML = itemsTemplate(resultItemContext);
@@ -412,7 +413,7 @@
           {"title":"Rush Street Gaming","address1":"The 78","coords":{"lat":41.86485047792079,"lng":-87.63237262209013},"placeId":"ChIJmeEKF44sDogRrYE3qAK9pvw"},
           {"title":"Hard Rock","address1":"One Central","coords":{"lat":41.86061923894049,"lng":-87.61921023754272},"placeId":"EiUyMDEgRSAxNXRoIFBsLCBDaGljYWdvLCBJTCA2MDYwNSwgVVNBIlESTwo0CjIJNyEkz4MsDogRxMtdtqA6kT8aHgsQ7sHuoQEaFAoSCQEWhHR_Kw6IEamPEVvssh8mDBDJASoUChIJTYBFz4MsDogROM5mc0_aKTU"}
         ],
-        "mapOptions": {"center":{"lat":38.0,"lng":-100.0},"fullscreenControl":true,"mapTypeControl":false,"streetViewControl":false,"zoom":4,"zoomControl":true,"maxZoom":17},
+        "mapOptions": {"center":{"lat":38.0,"lng":-100.0},"fullscreenControl":true,"mapTypeControl":true,"streetViewControl":true,"zoom":4,"zoomControl":true,"maxZoom":17},
         "mapsApiKey": "AIzaSyD3X3FQ2XHY3IB-0cnog_MyfKcuXMvonmA",
         "capabilities": {"input":true,"autocomplete":false,"directions":false,"distanceMatrix":false,"details":false}
       };
@@ -437,9 +438,16 @@
       <div id="locations-panel">
         <div id="locations-panel-list">
           <header>
+            <div class="section-name" id="location-results-section-name">
+              All locations
+            </div>
+            <div class="results">
+              <ul id="location-results-list"></ul>
+            </div>
+          </header>
             <h1 class="search-title">
               <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg"/>
-              Find a location near you
+              Find a casino near you
             </h1>
             <div class="search-input">
               <input id="location-search-input" placeholder="Enter your address or zip code">
@@ -449,13 +457,6 @@
                 </button>
               </div>
             </div>
-          </header>
-          <div class="section-name" id="location-results-section-name">
-            All locations
-          </div>
-          <div class="results">
-            <ul id="location-results-list"></ul>
-          </div>
         </div>
       </div>
       <div id="map"></div>
