@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Locator</title>
+    <title>Chicago Casino Sites</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -139,7 +139,7 @@
       #locations-panel-list .section-name {
         font-weight: 1000;
         font-size: 1.2em;
-        margin: 1.8em 0 1em 0.5em;
+        margin: 0.1em 0 1em 0.5em;
       }
 
       #locations-panel-list .location-result {
@@ -288,7 +288,7 @@
               return getLocationDistance(a) - getLocationDistance(b);
             });
           } else {
-            sectionNameEl.textContent = `Potential Casino Sites (${locations.length})`;
+            sectionNameEl.textContent = `Chicago Casino Sites (${locations.length})`;
           }
           const resultItemContext = { locations: locations };
           resultsContainerEl.innerHTML = itemsTemplate(resultItemContext);
@@ -413,8 +413,8 @@
           {"title":"Rush Street Gaming","address1":"The 78","coords":{"lat":41.86485047792079,"lng":-87.63237262209013},"placeId":"ChIJmeEKF44sDogRrYE3qAK9pvw"},
           {"title":"Hard Rock","address1":"One Central","coords":{"lat":41.86061923894049,"lng":-87.61921023754272},"placeId":"EiUyMDEgRSAxNXRoIFBsLCBDaGljYWdvLCBJTCA2MDYwNSwgVVNBIlESTwo0CjIJNyEkz4MsDogRxMtdtqA6kT8aHgsQ7sHuoQEaFAoSCQEWhHR_Kw6IEamPEVvssh8mDBDJASoUChIJTYBFz4MsDogROM5mc0_aKTU"}
         ],
-        "mapOptions": {"center":{"lat":38.0,"lng":-100.0},"fullscreenControl":true,"mapTypeControl":true,"streetViewControl":true,"zoom":4,"zoomControl":true,"maxZoom":17},
-        "mapsApiKey": "AIzaSyD3X3FQ2XHY3IB-0cnog_MyfKcuXMvonmA",
+        "mapOptions": {"center":{"lat":38.0,"lng":-100.0},"fullscreenControl":true,"mapTypeControl":true,"streetViewControl":true,"zoom":4,"zoomControl":true,"maxZoom":17, "mapTypeID":'satellite'},
+        "mapsApiKey": "AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow",
         "capabilities": {"input":true,"autocomplete":false,"directions":false,"distanceMatrix":false,"details":false}
       };
 
@@ -447,7 +447,7 @@
           </header>
             <h1 class="search-title">
               <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg"/>
-              Find a casino near you
+              Find the casino near you
             </h1>
             <div class="search-input">
               <input id="location-search-input" placeholder="Enter your address or zip code">
@@ -457,10 +457,11 @@
                 </button>
               </div>
             </div>
+            <p>More information at <a href="https://www.chicago.gov/city/en/sites/chicago-casino/home.html">Chicago.gov</a></p>
         </div>
       </div>
       <div id="map"></div>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3X3FQ2XHY3IB-0cnog_MyfKcuXMvonmA&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v4_cA" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQD9y5K9N-fQZ40jwFbXpBKcbjXxvbDow&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v4_cA" async defer></script>
   </body>
 </html>
